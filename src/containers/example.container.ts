@@ -1,5 +1,5 @@
 import { prismaClient } from '../connection/connection.js';
-import { ExampleData } from '../data/example.data.js';
+import { ExampleData } from '../repositories/example.repository.js';
 import { ExampleService } from '../services/example.service.js';
 import { ExampleController } from '../controllers/example.controller.js';
 

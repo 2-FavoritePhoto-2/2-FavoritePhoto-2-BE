@@ -1,7 +1,7 @@
 // service 계층은 핵심적인 비즈니스 로직을 수행하고 요구사항을 구현하는 역할
 // 데이터가 필요할 때 data 계층에 요청하는 controller와 data 사이의 중개 역할
 
-import { ExampleData } from '../data/example.data.js';
+import { ExampleData } from '../repositories/example.repository.js';
 
 export class ExampleService {
 	data: any;
