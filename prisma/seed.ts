@@ -1,13 +1,23 @@
-import { PrismaClient } from '@prisma/client';
-import { USER } from '../mock/mock';
-
-const prisma = new PrismaClient();
+import { prismaClient as prisma } from '../src/connection/connection';
+import { CARDS, SHOPS, USERS } from '../mock/mock';
 
 async function main() {
 	await prisma.user.deleteMany();
+	await prisma.card.deleteMany();
+	await prisma.shop.deleteMany();
 
 	await prisma.user.createMany({
-		data: USER,
+		data: USERS,
+		skipDuplicates: true,
+	});
+
+	await prisma.card.createMany({
+		data: CARDS,
+		skipDuplicates: true,
+	});
+
+	await prisma.shop.createMany({
+		data: SHOPS,
 		skipDuplicates: true,
 	});
 }
