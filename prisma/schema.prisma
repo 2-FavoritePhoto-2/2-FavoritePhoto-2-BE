@@ -13,9 +13,79 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// FIXME 모델 수정 및 추가 필요!!!
 model User {
-  id    String @id @default(uuid())
-  email String @unique
-  name  String
+  id               String     @id @default(uuid())
+  email            String     @unique @db.VarChar(254)
+  nickname         String     @unique
+  password         String
+  point            Int
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  shop             Shop[]
+  purchase         Purchase[]
+  sellingExchanges Exchange[] @relation("SellerRelation")
+  buyingExchanges  Exchange[] @relation("BuyerRelation")
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  content   String
+  isRead    Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Card {
+  id                String   @id @default(uuid())
+  name              String
+  price             Int
+  grade             Grades
+  // ****** FIXME genre 필드 추가
+  description       String
+  totalQuantity     Int
+  remainingQuantity Int
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  Shop              Shop[]
+}
+
+model Shop {
+  id        String   @id @default(uuid())
+  price     Int
+  quantity  Int
+  available Boolean  @default(true) // NOTE quantity=0 이면 available=false
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String   @unique
+  card      Card     @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  cardId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Purchase {
+  id         String   @id @default(uuid())
+  quantity   Int
+  totalPrice Int
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String   @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Exchange {
+  id        String   @id @default(uuid())
+  complete  Boolean  @default(false)
+  seller    User     @relation("SellerRelation", fields: [sellerId], references: [id], onDelete: Cascade)
+  sellerId  String   @unique
+  buyer     User     @relation("BuyerRelation", fields: [buyerId], references: [id], onDelete: Cascade)
+  buyerId   String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Grades {
+  COMMON
+  RARE
+  SUPER_RARE
+  LEGENDARY
 }
