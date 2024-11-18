@@ -74,6 +74,7 @@ model Purchase {
 
 model Exchange {
   id        String   @id @default(uuid())
+  quantity  Int
   complete  Boolean  @default(false)
   seller    User     @relation("SellerRelation", fields: [sellerId], references: [id], onDelete: Cascade)
   sellerId  String   @unique
