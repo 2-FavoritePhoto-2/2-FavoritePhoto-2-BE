@@ -21,8 +21,10 @@ model User {
   point            Int
   createdAt        DateTime   @default(now())
   updatedAt        DateTime   @updatedAt
-  shop             Shop[]
-  purchase         Purchase[]
+  uploadedCards    Card[]     @relation("UploadedCardRelation")
+  myCards          Card[]     @relation("MyCardRelation")
+  shops            Shop[]
+  purchases        Purchase[]
   sellingExchanges Exchange[] @relation("SellerRelation")
   buyingExchanges  Exchange[] @relation("BuyerRelation")
 }
@@ -36,52 +38,69 @@ model Notification {
 }
 
 model Card {
-  id                String   @id @default(uuid())
+  id                String     @id @default(uuid())
+  uploadedBy        User?      @relation("UploadedCardRelation", fields: [uploaderId], references: [id], onDelete: SetNull)
+  uploaderId        String?
+  owner             User?      @relation("MyCardRelation", fields: [ownerId], references: [id], onDelete: SetNull)
+  ownerId           String?
   name              String
   price             Int
   grade             Grades
-  // ****** FIXME genre 필드 추가
+  type              String[]
   description       String
   totalQuantity     Int
   remainingQuantity Int
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  Shop              Shop[]
+  image             String
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  shops             Shop[]
+  sellerExchanges   Exchange[] @relation("SellerRelation")
+  buyerExchanges    Exchange[] @relation("BuyerRelation")
 }
 
 model Shop {
-  id        String   @id @default(uuid())
-  price     Int
-  quantity  Int
-  available Boolean  @default(true) // NOTE quantity=0 이면 available=false
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId    String   @unique
-  card      Card     @relation(fields: [cardId], references: [id], onDelete: Cascade)
-  cardId    String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id              String     @id @default(uuid())
+  price           Int
+  quantity        Int
+  exchangeGrade   Grades
+  exchangeType    String
+  exchangeDetails String
+  available       Boolean    @default(true) // NOTE quantity=0 이면 available=false
+  seller          User?      @relation(fields: [sellerId], references: [id], onDelete: SetNull)
+  sellerId        String?
+  card            Card?      @relation(fields: [cardId], references: [id], onDelete: SetNull)
+  cardId          String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  purchases       Purchase[]
 }
 
 model Purchase {
   id         String   @id @default(uuid())
   quantity   Int
   totalPrice Int
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId     String   @unique
+  buyer      User?    @relation(fields: [buyerId], references: [id], onDelete: SetNull)
+  buyerId    String?
+  shop       Shop?    @relation(fields: [shopId], references: [id], onDelete: SetNull)
+  shopId     String?
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }
 
 model Exchange {
-  id        String   @id @default(uuid())
-  quantity  Int
-  complete  Boolean  @default(false)
-  seller    User     @relation("SellerRelation", fields: [sellerId], references: [id], onDelete: Cascade)
-  sellerId  String   @unique
-  buyer     User     @relation("BuyerRelation", fields: [buyerId], references: [id], onDelete: Cascade)
-  buyerId   String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String   @id @default(uuid())
+  description  String
+  complete     Boolean  @default(false)
+  seller       User?    @relation("SellerRelation", fields: [sellerId], references: [id], onDelete: SetNull)
+  sellerId     String?
+  buyer        User?    @relation("BuyerRelation", fields: [buyerId], references: [id], onDelete: SetNull)
+  buyerId      String?
+  sellerCard   Card?    @relation("SellerRelation", fields: [sellerCardId], references: [id], onDelete: SetNull)
+  sellerCardId String?
+  buyerCard    Card?    @relation("BuyerRelation", fields: [buyerCardId], references: [id], onDelete: SetNull)
+  buyerCardId  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 enum Grades {

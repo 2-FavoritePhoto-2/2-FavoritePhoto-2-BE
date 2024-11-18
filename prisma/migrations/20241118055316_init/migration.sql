@@ -28,12 +28,16 @@ CREATE TABLE "Notification" (
 -- CreateTable
 CREATE TABLE "Card" (
     "id" TEXT NOT NULL,
+    "uploaderId" TEXT,
+    "ownerId" TEXT,
     "name" TEXT NOT NULL,
     "price" INTEGER NOT NULL,
     "grade" "Grades" NOT NULL,
+    "type" TEXT[],
     "description" TEXT NOT NULL,
     "totalQuantity" INTEGER NOT NULL,
     "remainingQuantity" INTEGER NOT NULL,
+    "image" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -45,9 +49,12 @@ CREATE TABLE "Shop" (
     "id" TEXT NOT NULL,
     "price" INTEGER NOT NULL,
     "quantity" INTEGER NOT NULL,
+    "exchangeGrade" "Grades" NOT NULL,
+    "exchangeType" TEXT NOT NULL,
+    "exchangeDetails" TEXT NOT NULL,
     "available" BOOLEAN NOT NULL DEFAULT true,
-    "userId" TEXT NOT NULL,
-    "cardId" TEXT NOT NULL,
+    "sellerId" TEXT,
+    "cardId" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -59,7 +66,8 @@ CREATE TABLE "Purchase" (
     "id" TEXT NOT NULL,
     "quantity" INTEGER NOT NULL,
     "totalPrice" INTEGER NOT NULL,
-    "userId" TEXT NOT NULL,
+    "buyerId" TEXT,
+    "shopId" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -69,9 +77,12 @@ CREATE TABLE "Purchase" (
 -- CreateTable
 CREATE TABLE "Exchange" (
     "id" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
     "complete" BOOLEAN NOT NULL DEFAULT false,
-    "sellerId" TEXT NOT NULL,
-    "buyerId" TEXT NOT NULL,
+    "sellerId" TEXT,
+    "buyerId" TEXT,
+    "sellerCardId" TEXT,
+    "buyerCardId" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -84,29 +95,32 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 -- CreateIndex
 CREATE UNIQUE INDEX "User_nickname_key" ON "User"("nickname");
 
--- CreateIndex
-CREATE UNIQUE INDEX "Shop_userId_key" ON "Shop"("userId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Purchase_userId_key" ON "Purchase"("userId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Exchange_sellerId_key" ON "Exchange"("sellerId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Exchange_buyerId_key" ON "Exchange"("buyerId");
+-- AddForeignKey
+ALTER TABLE "Card" ADD CONSTRAINT "Card_uploaderId_fkey" FOREIGN KEY ("uploaderId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Shop" ADD CONSTRAINT "Shop_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Card" ADD CONSTRAINT "Card_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Shop" ADD CONSTRAINT "Shop_cardId_fkey" FOREIGN KEY ("cardId") REFERENCES "Card"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Shop" ADD CONSTRAINT "Shop_sellerId_fkey" FOREIGN KEY ("sellerId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Purchase" ADD CONSTRAINT "Purchase_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Shop" ADD CONSTRAINT "Shop_cardId_fkey" FOREIGN KEY ("cardId") REFERENCES "Card"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Exchange" ADD CONSTRAINT "Exchange_sellerId_fkey" FOREIGN KEY ("sellerId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Purchase" ADD CONSTRAINT "Purchase_buyerId_fkey" FOREIGN KEY ("buyerId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Exchange" ADD CONSTRAINT "Exchange_buyerId_fkey" FOREIGN KEY ("buyerId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Purchase" ADD CONSTRAINT "Purchase_shopId_fkey" FOREIGN KEY ("shopId") REFERENCES "Shop"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Exchange" ADD CONSTRAINT "Exchange_sellerId_fkey" FOREIGN KEY ("sellerId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Exchange" ADD CONSTRAINT "Exchange_buyerId_fkey" FOREIGN KEY ("buyerId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Exchange" ADD CONSTRAINT "Exchange_sellerCardId_fkey" FOREIGN KEY ("sellerCardId") REFERENCES "Card"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Exchange" ADD CONSTRAINT "Exchange_buyerCardId_fkey" FOREIGN KEY ("buyerCardId") REFERENCES "Card"("id") ON DELETE SET NULL ON UPDATE CASCADE;
