@@ -5,11 +5,9 @@ export class ShopService {
 	}
 
 	getShopList = async ({ page, pageSize, orderBy, keyword, filter }) => {
-		const list = await this.data.getShopList(page, pageSize, orderBy, keyword, filter);
+		const shops = await this.data.getShopList(page, pageSize, orderBy, keyword, filter);
 
-		const totalCount = await this.data.getCount();
-
-		return { totalCount, list };
+		return shops;
 	};
 
 	createShop = async data => {

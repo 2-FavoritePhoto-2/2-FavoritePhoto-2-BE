@@ -52,7 +52,7 @@ export class ShopRepository {
 			}
 		}
 
-		const shops = await this.data.findMany({
+		const list = await this.data.findMany({
 			where,
 			...sortOption,
 			skip: (page - 1) * pageSize,
@@ -60,14 +60,9 @@ export class ShopRepository {
 			include: { seller: true, card: true },
 		});
 
-		return shops;
-	};
+		const totalCount = await this.data.count({ where });
 
-	// totalCount
-	getCount = async () => {
-		const count = await this.data.count();
-
-		return count;
+		return { totalCount, list };
 	};
 
 	// POST
