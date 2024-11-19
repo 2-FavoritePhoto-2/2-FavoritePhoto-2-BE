@@ -1,7 +1,7 @@
-GET http://localhost:3100/shop/cards
+GET http://localhost:3100/shop/cards?filter[type]=type&filter[value]=격투
 
 ###
-GET http://localhost:3100/shop/cards/04f88823-92c4-4f66-9e68-ef56b7d6ecca
+GET http://localhost:3100/shop/cards/9b5a14eb-7f0b-4ad8-ae54-c3a9e97f2d1b
 
 ###
 POST http://localhost:3100/shop/cards
@@ -18,15 +18,15 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://localhost:3100/shop/cards/9b5a14eb-7f0b-4ad8-ae54-c3a9e97f2d1b
+PATCH http://localhost:3100/shop/cards/1ade0a6a-dfd0-49a6-beea-77326a4e13aa
 Content-Type: application/json
 
 {
-	"price": 12
+	"price": 6
 }
 
 ###
-DELETE http://localhost:3100/shop/cards/04f88823-92c4-4f66-9e68-ef56b7d6ecca
+DELETE http://localhost:3100/shop/cards/1ade0a6a-dfd0-49a6-beea-77326a4e13aa
 
 ###
 POST http://localhost:3100/shop/cards/9b5a14eb-7f0b-4ad8-ae54-c3a9e97f2d1b/purchase

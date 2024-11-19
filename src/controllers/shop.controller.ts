@@ -7,12 +7,12 @@ export class ShopController {
 	}
 
 	getShopList = async (req, res) => {
-		const { offset = 1, limit = 10, orderBy = 'priceLowest', keyword = '', filter = '' } = req.query;
+		const { page = 1, pageSize = 10, orderBy = 'priceLowest', keyword = '', filter } = req.query;
 
 		try {
 			const shops = await this.service.getShopList({
-				offset,
-				limit,
+				page,
+				pageSize,
 				orderBy,
 				keyword: decodeURIComponent(keyword).trim(),
 				filter,

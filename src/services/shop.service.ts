@@ -4,8 +4,8 @@ export class ShopService {
 		this.data = shopRepository;
 	}
 
-	getShopList = async ({ offset, limit, orderBy, keyword, filter }) => {
-		const list = await this.data.getShopList(offset, limit, orderBy, keyword, filter);
+	getShopList = async ({ page, pageSize, orderBy, keyword, filter }) => {
+		const list = await this.data.getShopList(page, pageSize, orderBy, keyword, filter);
 
 		const totalCount = await this.data.getCount();
 

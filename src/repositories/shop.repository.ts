@@ -1,5 +1,10 @@
 import { Grades } from '@prisma/client';
 
+interface Filter {
+	type: 'grade' | 'type' | 'available';
+	value: string | string[] | boolean;
+}
+
 export class ShopRepository {
 	data: any;
 	constructor(client) {
@@ -7,7 +12,7 @@ export class ShopRepository {
 	}
 
 	// GET all
-	getShopList = async (offset: number, limit: number, orderBy: string, keyword: string, filter: string) => {
+	getShopList = async (page, pageSize, orderBy, keyword, filter?: Filter) => {
 		let sortOption;
 		switch (orderBy) {
 			case 'oldest':
@@ -24,19 +29,34 @@ export class ShopRepository {
 				sortOption = { orderBy: { price: 'asc' } };
 		}
 
-		const where = {
-			...(keyword
-				? {
-						card: { name: { contains: keyword, mode: 'insensitive' } },
-					}
-				: undefined),
-		};
+		let where: {
+			card?: {
+				name?: { contains: string; mode: 'insensitive' };
+				grade?: string;
+				type?: { has: string[] };
+			};
+			available?: boolean;
+		} = {};
+
+		if (keyword) {
+			where.card = { ...where.card, name: { contains: keyword, mode: 'insensitive' } };
+		}
+
+		if (filter) {
+			if (filter.type === 'grade') {
+				where.card = { ...where.card, grade: filter.value as Grades };
+			} else if (filter.type === 'type') {
+				where.card = { ...where.card, type: { has: filter.value as string[] } };
+			} else if (filter.type === 'available') {
+				where.available = filter.value as boolean;
+			}
+		}
 
 		const shops = await this.data.findMany({
-			...where,
+			where,
 			...sortOption,
-			offset,
-			limit,
+			skip: (page - 1) * pageSize,
+			take: Number(pageSize),
 			include: { seller: true, card: true },
 		});
 
@@ -65,9 +85,9 @@ export class ShopRepository {
 	};
 
 	// GET by shopId
-	getShopById = async shopId => {
+	getShopById = async id => {
 		const shop = await this.data.findUnique({
-			where: { id: shopId },
+			where: { id },
 		});
 
 		return shop;
@@ -88,4 +108,9 @@ export class ShopRepository {
 	};
 
 	// POST purchase by shopId
+	createPurchase = async id => {
+		const newShop = await this.data.create({ where: { id } });
+
+		return newShop;
+	};
 }
