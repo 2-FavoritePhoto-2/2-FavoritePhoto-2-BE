@@ -1,0 +1,17 @@
+GET http://localhost:3100/shop/cards?keyword=뚜
+
+###
+POST http://localhost:3100/shop/cards
+Content-Type: application/json
+
+{
+	"price": 5,
+	"quantity": 3,
+	"exchangeGrade": "LEGENDARY",
+	"exchangeType": "Card",
+	"exchangeDetails": "교환",
+	"sellerId": "efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335",
+	"cardId": "32e9359c-fd10-44d8-bab4-e4c9cf28a87c"
+}
+
+###
