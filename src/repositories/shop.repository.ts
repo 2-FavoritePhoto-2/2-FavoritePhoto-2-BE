@@ -7,7 +7,7 @@ export class ShopRepository {
 	}
 
 	// GET all
-	getShopList = async ({ offset, limit, orderBy, keyword, filter }) => {
+	getShopList = async (offset: number, limit: number, orderBy: string, keyword: string, filter: string) => {
 		let sortOption;
 		switch (orderBy) {
 			case 'oldest':
@@ -43,7 +43,14 @@ export class ShopRepository {
 		return shops;
 	};
 
-	// GET by shopId
+	// totalCount
+	getCount = async () => {
+		const count = await this.data.count();
+
+		return count;
+	};
+
+	// POST
 	createShop = async data => {
 		const { grade, ...rest } = data;
 
@@ -57,11 +64,28 @@ export class ShopRepository {
 		return newShop;
 	};
 
-	// POST by shopId
+	// GET by shopId
+	getShopById = async shopId => {
+		const shop = await this.data.findUnique({
+			where: { id: shopId },
+		});
+
+		return shop;
+	};
 
 	// PATCH by shopId
+	updateShop = async (id, data) => {
+		const shop = await this.data.update({ where: { id }, data });
+
+		return shop;
+	};
 
 	// DELETE by shopId
+	deleteShop = async id => {
+		const shop = await this.data.delete({ where: { id } });
+
+		return shop;
+	};
 
 	// POST purchase by shopId
 }
