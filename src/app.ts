@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Routes: 각 엔드포인트는 라우터로 연결
 app.use('/examples', exampleRouter);
-app.use('/api', pointRouter);
+app.use('/points', pointRouter);
 // ****** 여기에 엔드포인트 추가하세요
 // ****** 여기에 엔드포인트 추가하세요
 

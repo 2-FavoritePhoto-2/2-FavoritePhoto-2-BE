@@ -9,7 +9,6 @@ export class PointsController {
 		try {
 			const { userId } = req.body;
 			const { randomPoints, remainingTime } = await this.service.drawRandomPoints(userId);
-			console.log('User ID:', userId);
 
 			if (remainingTime) {
 				// 1시간 이내에 이미 뽑았으면 남은 시간과 함께 응답

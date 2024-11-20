@@ -1,5 +1,5 @@
 ### 랜덤 포인트 뽑기 요청 (POST)
-POST http://localhost:3100/api/points/box
+POST http://localhost:3100/points/box
 Content-Type: application/json
 
 {
@@ -7,4 +7,4 @@ Content-Type: application/json
 }
 
 ### 마지막 뽑기 시간 조회 요청 (GET)
-GET http://localhost:3100/api/points/last-draw-time?userId=e6cd05c6-34d5-4871-82c1-f882988d0ece
+GET http://localhost:3100/points/last-draw-time?userId=e6cd05c6-34d5-4871-82c1-f882988d0ece
