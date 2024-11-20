@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import { exampleRouter } from './routes/example.route.js';
+import { pointRouter } from './routes/points.route.js';
 import { Prisma } from '@prisma/client';
 import { CastError, CustomAuthorizationError, DatabaseConnectionError, ValidationError } from './utils/errors.js';
 import { StructError } from 'superstruct';
@@ -13,6 +14,7 @@ app.use(express.json());
 
 // Routes: 각 엔드포인트는 라우터로 연결
 app.use('/examples', exampleRouter);
+app.use('/api', pointRouter);
 // ****** 여기에 엔드포인트 추가하세요
 // ****** 여기에 엔드포인트 추가하세요
 
