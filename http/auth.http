@@ -18,5 +18,4 @@ Content-Type: application/json
 
 ###
 POST http://localhost:3100/auth/token/refresh
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyZjFiMGM4MS0xMjJjLTQ5YjMtOGVhYy1lNDk0OTczZGQ5ZjQiLCJpYXQiOjE3MzIxNTQ1MzgsImV4cCI6MTczMjE1ODEzOH0.dXtff1VB2ejJlvY7TJszD1Pdr_rgPtzxy5E9UgX3s8g
-Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyZjFiMGM4MS0xMjJjLTQ5YjMtOGVhYy1lNDk0OTczZGQ5ZjQiLCJpYXQiOjE3MzIxNTQ1MzgsImV4cCI6MTczMzM2NDEzOH0.Pyul96QLYAZUDUdv3ZV_jgWbMPQCl0w6s7R3Phj6Xtw; Max-Age=1209600; Path=/token/refresh; Expires=Thu, 05 Dec 2024 02:02:18 GMT; HttpOnly; Secure; SameSite=None
+Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmZiMzlkNi0wZmNjLTRiMjMtOTg3YS0xZTAzYjIzYzJkOWYiLCJpYXQiOjE3MzIxNjMyNjksImV4cCI6MTczMzM3Mjg2OX0.mO1T4n6YtmszbBmNYmZEWMKikiwFBB2YcAKYqpXRpmU; Max-Age=1209600; Path=/token/refresh; Expires=Thu, 05 Dec 2024 04:27:49 GMT; HttpOnly; Secure; SameSite=None

@@ -28,7 +28,7 @@ app.use('/shop', shopRouter);
 function errorHandler(err: { message: string; code: string }, req: Request, res: Response, next: NextFunction) {
 	console.error(err);
 	if (err instanceof Prisma.PrismaClientValidationError || err instanceof TypeError || err instanceof ValidationError) {
-		res.status(400).send({ message: err.message });
+		res.status(400).json({ message: err.message });
 	} else if (
 		err instanceof StructError ||
 		(err instanceof Prisma.PrismaClientKnownRequestError && err.code === 'P2025') ||
@@ -37,11 +37,11 @@ function errorHandler(err: { message: string; code: string }, req: Request, res:
 		res.sendStatus(404);
 	} else if (err instanceof CustomAuthorizationError) {
 		// 사용자 정의 에러에 대한 응답
-		res.status(403).send({ message: 'Access denied: You do not have permission to perform this action.' });
+		res.status(403).json({ message: 'Access denied: You do not have permission to perform this action.' });
 	} else if (err instanceof DatabaseConnectionError) {
-		res.status(503).send({ message: 'Service unavailable: Could not connect to the database.' });
+		res.status(503).json({ message: 'Service unavailable: Could not connect to the database.' });
 	} else {
-		res.status(500).send({ message: err.message });
+		res.status(500).json({ message: err.message });
 	}
 }
 

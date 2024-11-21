@@ -25,7 +25,8 @@ export class ShopController {
 
 	createShop = async (req, res) => {
 		try {
-			const newShop = await this.service.createShop(req.body);
+			const { userId } = req.auth;
+			const newShop = await this.service.createShop({ ...req.body, sellerId: userId });
 			if (!newShop) {
 				throw new Error('판매 등록에 실패했습니다');
 			}
@@ -53,7 +54,8 @@ export class ShopController {
 		const { shopId } = req.params;
 
 		try {
-			const shop = await this.service.updateShop(shopId, req.body);
+			const { userId } = req.auth;
+			const shop = await this.service.updateShop(shopId, { ...req.body, sellerId: userId });
 			if (!shop) {
 				return res.status(HttpStatus.NOT_FOUND).json({ error: '해당 판매 정보를 찾을 수 없습니다' });
 			}

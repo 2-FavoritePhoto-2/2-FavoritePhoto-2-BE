@@ -103,9 +103,21 @@ export class ShopRepository {
 	};
 
 	// POST purchase by shopId
-	createPurchase = async id => {
-		const newShop = await this.data.create({ where: { id } });
+	createPurchase = async ({ id, data }) => {
+		const purchase = await this.data.update({
+			where: { id },
+			data: {
+				purchases: {
+					create: {
+						...data,
+					},
+				},
+			},
+			include: {
+				purchases: true,
+			},
+		});
 
-		return newShop;
+		return purchase;
 	};
 }
