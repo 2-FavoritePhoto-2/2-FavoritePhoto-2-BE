@@ -320,6 +320,8 @@ export const CARDS = [
 	},
 	{
 		id: '850f2153-971a-49f3-8c3b-6d2a82b3f012',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '딱충이',
 		price: 5,
 		grade: Grades['COMMON'],
@@ -331,6 +333,8 @@ export const CARDS = [
 	},
 	{
 		id: 'e21ffcdb-31f4-4639-9c74-6b01c2558a79',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '날썡마',
 		price: 8,
 		grade: Grades['RARE'],
@@ -342,6 +346,8 @@ export const CARDS = [
 	},
 	{
 		id: 'a29e47b8-dd50-4102-a31f-6c6dab6b1997',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '찌리리공',
 		price: 1,
 		grade: Grades['COMMON'],
@@ -353,6 +359,8 @@ export const CARDS = [
 	},
 	{
 		id: 'f73d0f90-9f45-40af-8c34-0da4fa65c1d8',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '루주라',
 		price: 5,
 		grade: Grades['RARE'],
@@ -364,6 +372,8 @@ export const CARDS = [
 	},
 	{
 		id: 'b5c3e5ec-4a2e-49fd-afc8-34de4d8aaa78',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '메가헬가',
 		price: 10,
 		grade: Grades['SUPER_RARE'],
@@ -375,6 +385,8 @@ export const CARDS = [
 	},
 	{
 		id: 'dfb798a3-c811-4af5-ab41-8724ce17db5e',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '메가번치코',
 		price: 12,
 		grade: Grades['LEGENDARY'],
@@ -386,6 +398,8 @@ export const CARDS = [
 	},
 	{
 		id: '6df8a7b9-5957-4188-90b1-50b376b58a34',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '버섯모',
 		price: 7,
 		grade: Grades['RARE'],
@@ -397,6 +411,8 @@ export const CARDS = [
 	},
 	{
 		id: 'a3ca6862-e4a4-484d-bf86-693cb4cea0d7',
+		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '폭음룡',
 		price: 2,
 		grade: Grades['RARE'],
@@ -408,6 +424,8 @@ export const CARDS = [
 	},
 	{
 		id: '367bc891-c67e-4b2d-9186-7afc3d6b2c99',
+		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '그라에나',
 		price: 4,
 		grade: Grades['RARE'],
@@ -419,6 +437,8 @@ export const CARDS = [
 	},
 	{
 		id: '1f0b3539-eaa0-4a75-a399-b7ca7e40efef',
+		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '메가한카리아스',
 		price: 11,
 		grade: Grades['LEGENDARY'],
@@ -430,6 +450,8 @@ export const CARDS = [
 	},
 	{
 		id: 'e8b7f931-28d5-4d0f-b2a3-156401df2d80',
+		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '고라파덕',
 		price: 5,
 		grade: Grades['COMMON'],
@@ -441,6 +463,8 @@ export const CARDS = [
 	},
 	{
 		id: 'b4c7a2f6-4b4f-4f43-92ad-f8d8e408d980',
+		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '우츠동',
 		price: 8,
 		grade: Grades['RARE'],
@@ -452,6 +476,8 @@ export const CARDS = [
 	},
 	{
 		id: 'f6d3e2c9-a5a4-4e8f-b53e-3a29fefc1234',
+		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		ownerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		name: '내루미',
 		price: 6,
 		grade: Grades['COMMON'],
@@ -463,6 +489,8 @@ export const CARDS = [
 	},
 	{
 		id: 'c8f7b24f-2cd6-4708-bd52-18ed402b2f2a',
+		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		ownerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		name: '꼬지지',
 		price: 7,
 		grade: Grades['COMMON'],
@@ -474,6 +502,8 @@ export const CARDS = [
 	},
 	{
 		id: 'a41d71fe-5f47-40bb-b99f-c7e9334623f0',
+		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		ownerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		name: '잠만보',
 		price: 15,
 		grade: Grades['COMMON'],
@@ -485,6 +515,8 @@ export const CARDS = [
 	},
 	{
 		id: '8bc1e688-11b9-46f2-bbe0-12a04a8032e3',
+		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		ownerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		name: '마자용',
 		price: 12,
 		grade: Grades['RARE'],
@@ -496,6 +528,8 @@ export const CARDS = [
 	},
 	{
 		id: 'b22fd081-f9e7-4a66-b3fa-738b71ef7a8c',
+		uploaderId: 'df3085cd-1dd4-474d-8972-e65d716af906',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '돈크로우',
 		price: 14,
 		grade: Grades['COMMON'],
@@ -507,6 +541,8 @@ export const CARDS = [
 	},
 	{
 		id: 'c7ff82b1-229b-49fc-bd0a-fc2c930cd207',
+		uploaderId: 'df3085cd-1dd4-474d-8972-e65d716af906',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '파치리스',
 		price: 9,
 		grade: Grades['COMMON'],
@@ -518,6 +554,8 @@ export const CARDS = [
 	},
 	{
 		id: 'ee8b9980-0be9-4d59-9d2a-378d7f8f3bfe',
+		uploaderId: 'df3085cd-1dd4-474d-8972-e65d716af906',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '해골몽',
 		price: 11,
 		grade: Grades['RARE'],
@@ -529,6 +567,8 @@ export const CARDS = [
 	},
 	{
 		id: '7d98d3c3-357d-4a6b-a65c-c55658f4a9c2',
+		uploaderId: 'df3085cd-1dd4-474d-8972-e65d716af906',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '에몽가',
 		price: 10,
 		grade: Grades['COMMON'],
@@ -540,6 +580,8 @@ export const CARDS = [
 	},
 	{
 		id: 'eadaaa0a-3eb6-4f57-b070-a468b70f42bd',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '라이코',
 		price: 8,
 		grade: Grades['LEGENDARY'],
@@ -552,6 +594,8 @@ export const CARDS = [
 	},
 	{
 		id: '21f4baf4-4c58-4271-b1ed-fcac391b92e0',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '스이쿤',
 		price: 8,
 		grade: Grades['LEGENDARY'],
@@ -564,6 +608,8 @@ export const CARDS = [
 	},
 	{
 		id: '8e451b9b-f367-489e-9d16-bb545d9bfa20',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '앤테이',
 		price: 8,
 		grade: Grades['LEGENDARY'],
@@ -577,6 +623,8 @@ export const CARDS = [
 	},
 	{
 		id: '7472aa4e-326f-45f1-a9ee-21bd6f14b60a',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '루리리',
 		price: 1,
 		grade: Grades['COMMON'],
@@ -590,6 +638,8 @@ export const CARDS = [
 	},
 	{
 		id: '6b727387-8425-4e11-95dd-ff86890811c0',
+		uploaderId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
+		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '마릴',
 		price: 2,
 		grade: Grades['RARE'],
@@ -603,6 +653,8 @@ export const CARDS = [
 	},
 	{
 		id: '32333c85-16e5-45cd-b311-c63afd9b301f',
+		uploaderId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
+		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '마릴리',
 		price: 3,
 		grade: Grades['SUPER_RARE'],
@@ -614,6 +666,8 @@ export const CARDS = [
 	},
 	{
 		id: '3d7bf9f6-1437-4a01-890b-0ff4d4dfd9b8',
+		uploaderId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
+		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '미뇽',
 		price: 2,
 		grade: Grades['COMMON'],
@@ -627,6 +681,8 @@ export const CARDS = [
 	},
 	{
 		id: '989c45c6-5591-4b99-9b72-d413d901a4e4',
+		uploaderId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
+		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '신뇽',
 		price: 4,
 		grade: Grades['RARE'],
@@ -639,6 +695,8 @@ export const CARDS = [
 	},
 	{
 		id: '8ef25c26-a391-4a1a-9862-021982c6186b',
+		uploaderId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
+		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '망나뇽',
 		price: 6,
 		grade: Grades['SUPER_RARE'],
@@ -652,6 +710,8 @@ export const CARDS = [
 	},
 	{
 		id: 'b305a7eb-6ade-478e-a9e3-ac81355a7501',
+		uploaderId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
+		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '파오리',
 		price: 4,
 		grade: Grades['RARE'],
@@ -803,6 +863,8 @@ export const CARDS = [
 
 	{
 		id: '02e34605-a1a1-4b5d-a8b9-c64341ca2e89',
+		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '고라파덕',
 		price: 8,
 		grade: Grades['COMMON'],
@@ -815,6 +877,8 @@ export const CARDS = [
 
 	{
 		id: 'ea19b5aa-fd22-48ca-a611-915daf08a904',
+		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '에나비',
 		price: 7,
 		grade: Grades['COMMON'],
@@ -828,6 +892,8 @@ export const CARDS = [
 
 	{
 		id: '343c2d6a-2acc-4a7b-b1af-491dca5a2b08',
+		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '데덴네',
 		price: 10,
 		grade: Grades['COMMON'],
@@ -840,6 +906,8 @@ export const CARDS = [
 
 	{
 		id: 'f30680c4-9c87-4cfb-9dff-0c2d57c61b6a',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '메타몽',
 		price: 4,
 		grade: Grades['COMMON'],
@@ -853,6 +921,8 @@ export const CARDS = [
 
 	{
 		id: 'a05ff074-02ff-4f25-a8ae-aacf532f4b25',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '치코리타',
 		price: 5,
 		grade: Grades['COMMON'],
@@ -866,6 +936,8 @@ export const CARDS = [
 
 	{
 		id: 'ce7663b2-45ab-4a28-8ddd-50415b31fb0b',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '치라미',
 		price: 10,
 		grade: Grades['COMMON'],
@@ -879,6 +951,8 @@ export const CARDS = [
 
 	{
 		id: '62f1fdf4-4ac8-4f0f-8e36-1e8d9cc001d6',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '물짱이',
 		price: 6,
 		grade: Grades['COMMON'],
@@ -892,6 +966,8 @@ export const CARDS = [
 
 	{
 		id: '01484d96-3608-4509-9cc2-cf92a2e41a77',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '깜지곰',
 		price: 10,
 		grade: Grades['COMMON'],
@@ -905,6 +981,8 @@ export const CARDS = [
 
 	{
 		id: 'c5b5dcf2-3a08-4c34-b0c9-23674364452d',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '야돈',
 		price: 2,
 		grade: Grades['COMMON'],
@@ -917,6 +995,8 @@ export const CARDS = [
 
 	{
 		id: 'fcade7a6-dc32-49ee-8954-d3a08952ee2e',
+		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '마릴',
 		price: 9,
 		grade: Grades['COMMON'],
