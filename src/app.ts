@@ -1,12 +1,14 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 import { exampleRouter } from './routes/example.route.js';
 import { pointRouter } from './routes/points.route.js';
 import { Prisma } from '@prisma/client';
 import { CastError, CustomAuthorizationError, DatabaseConnectionError, ValidationError } from './utils/errors.js';
 import { StructError } from 'superstruct';
 import { userRouter } from './routes/user.route.js';
+import { authRouter } from './routes/auth.route.js';
 import { shopRouter } from './routes/shop.route.js';
 
 dotenv.config();
@@ -14,13 +16,14 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 // Routes: 각 엔드포인트는 라우터로 연결
 app.use('/examples', exampleRouter);
 app.use('/points', pointRouter);
 app.use('/user', userRouter);
+app.use('/auth', authRouter);
 app.use('/shop', shopRouter);
-// ****** 여기에 엔드포인트 추가하세요
 
 function errorHandler(err: { message: string; code: string }, req: Request, res: Response, next: NextFunction) {
 	console.error(err);
