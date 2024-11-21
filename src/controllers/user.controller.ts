@@ -19,4 +19,22 @@ export class UserController {
 			res.status(HttpStatus.NOT_FOUND).json({ error: error.message });
 		}
 	};
+
+	// GET /user/cards
+	getUserPhotoCards = async (req, res) => {
+		const { userId, page = 1, pageSize = 10, orderBy = 'priceLowest', filter } = req.query;
+
+		try {
+			const cards = await this.service.getUserPhotoCards({
+				userId,
+				page,
+				pageSize,
+				orderBy,
+				filter,
+			});
+			res.status(HttpStatus.SUCCESS).json(cards);
+		} catch (error) {
+			res.status(HttpStatus.SERVER_ERROR).json({ error: error.message });
+		}
+	};
 }
