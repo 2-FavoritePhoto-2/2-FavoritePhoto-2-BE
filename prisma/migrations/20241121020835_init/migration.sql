@@ -7,7 +7,8 @@ CREATE TABLE "User" (
     "email" VARCHAR(254) NOT NULL,
     "nickname" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "point" INTEGER NOT NULL,
+    "point" INTEGER NOT NULL DEFAULT 100,
+    "refreshToken" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
