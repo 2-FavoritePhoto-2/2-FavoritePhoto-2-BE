@@ -10,6 +10,7 @@ import { StructError } from 'superstruct';
 import { userRouter } from './routes/user.route.js';
 import { authRouter } from './routes/auth.route.js';
 import { shopRouter } from './routes/shop.route.js';
+import { exchangeRouter } from './routes/exchange.route.js';
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use('/points', pointRouter);
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
 app.use('/shop', shopRouter);
+app.use('/cards', exchangeRouter);
 
 function errorHandler(err: { message: string; code: string }, req: Request, res: Response, next: NextFunction) {
 	console.error(err);

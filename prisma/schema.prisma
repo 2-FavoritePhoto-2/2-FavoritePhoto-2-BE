@@ -74,6 +74,7 @@ model Shop {
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
   purchases       Purchase[]
+  Exchange        Exchange[]
 }
 
 model Purchase {
@@ -100,6 +101,8 @@ model Exchange {
   sellerCardId String?
   buyerCard    Card?    @relation("BuyerRelation", fields: [buyerCardId], references: [id], onDelete: SetNull)
   buyerCardId  String?
+  shop         Shop?    @relation(fields: [shopId], references: [id], onDelete: SetNull)
+  shopId       String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
