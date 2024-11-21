@@ -1,0 +1,21 @@
+POST http://localhost:3100/auth/signup
+Content-Type: application/json
+
+{
+	"nickname": "test",
+	"email": "test@test.com",
+	"password": "password"
+}
+
+###
+GET http://localhost:3100/auth/login
+Content-Type: application/json
+
+{
+	"email": "test@test.com",
+	"password": "password"
+}
+
+###
+POST http://localhost:3100/auth/token/refresh
+Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmZiMzlkNi0wZmNjLTRiMjMtOTg3YS0xZTAzYjIzYzJkOWYiLCJpYXQiOjE3MzIxNjMyNjksImV4cCI6MTczMzM3Mjg2OX0.mO1T4n6YtmszbBmNYmZEWMKikiwFBB2YcAKYqpXRpmU; Max-Age=1209600; Path=/token/refresh; Expires=Thu, 05 Dec 2024 04:27:49 GMT; HttpOnly; Secure; SameSite=None
