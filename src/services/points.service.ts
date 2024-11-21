@@ -22,7 +22,7 @@ export class PointsService {
 		}
 
 		// 랜덤 포인트 (예: 10 ~ 100)
-		const randomPoints = Math.floor(Math.random() * 100) + 1;
+		const randomPoints = Math.floor(Math.random() * 20) + 1;
 
 		// 포인트 적립
 		await this.repository.addPoints(userId, randomPoints);
