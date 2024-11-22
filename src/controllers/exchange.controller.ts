@@ -24,4 +24,15 @@ export class ExchangeController {
 			res.status(HttpStatus.SERVER_ERROR).json({ message: '교환 제안 생성에 실패했습니다.', error: error.message });
 		}
 	};
+
+	acceptExchange = async (req, res) => {
+		const { exchangeId } = req.params;
+
+		try {
+			const approvedExchange = await this.service.acceptExchange(exchangeId);
+			return res.status(HttpStatus.SUCCESS).json(approvedExchange);
+		} catch (error) {
+			res.status(HttpStatus.SERVER_ERROR).json({ message: error.message || '서버 오류가 발생했습니다.', details: error.stack });
+		}
+	};
 }

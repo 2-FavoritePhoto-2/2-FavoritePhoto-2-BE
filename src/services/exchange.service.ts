@@ -9,4 +9,9 @@ export class ExchangeService {
 
 		return newExchange;
 	};
+
+	acceptExchange = async exchangeId => {
+		const approvedExchange = await this.data.acceptExchange(exchangeId);
+		return approvedExchange;
+	};
 }
