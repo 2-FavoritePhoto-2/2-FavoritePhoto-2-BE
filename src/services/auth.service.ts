@@ -56,7 +56,7 @@ export class AuthService {
 
 	createToken = async (user, type?) => {
 		const payload = { userId: user.id };
-		const options = { expiresIn: type === 'refresh' ? '2w' : '1h' };
+		const options = { expiresIn: type === 'refresh' ? '2w' : '24h' }; // FIXME 개발 중 편의를 위해 액세스토큰 만료시간 1시간->24시간으로 연장
 
 		return jwt.sign(payload, process.env.JWT_SECRET, options);
 	};
