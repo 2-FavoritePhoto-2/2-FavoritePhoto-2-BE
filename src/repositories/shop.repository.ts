@@ -83,6 +83,7 @@ export class ShopRepository {
 	getShopById = async id => {
 		const shop = await this.data.findUnique({
 			where: { id },
+			include: { seller: true, card: true },
 		});
 
 		return shop;
