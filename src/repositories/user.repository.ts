@@ -1,7 +1,7 @@
 import { Grades } from '@prisma/client';
 
 interface Filter {
-	type: 'grade' | 'type';
+	type: 'grade' | 'type' | 'keyword';
 	value: string | string[];
 }
 
