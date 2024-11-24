@@ -6,7 +6,9 @@ export class ExchangeRepository {
 		this.prisma = client;
 	}
 	createExchange = async data => {
-		const { shopId, sellerId, buyerId, sellerCardId, buyerCardId, description } = data;
+		const { shopId, buyerId, buyerCardId, description } = data;
+		const sellerCardInfo = await this.prisma.Shop.findUnique({ where: { id: shopId } });
+		const { sellerId, cardId: sellerCardId } = sellerCardInfo;
 		try {
 			const newExchange = await this.data.create({
 				data: {
@@ -98,6 +100,44 @@ export class ExchangeRepository {
 		} catch (error) {
 			console.error('트랜잭션 에러:', error.message);
 			throw new Error('교환 작업 중 문제가 발생했습니다.');
+		}
+	};
+
+	// 교환 제안 거절
+	refuseExchange = async (exchangeId, sellerId) => {
+		try {
+			const exchange = await this.data.findUnique({ where: { id: exchangeId } });
+			if (!exchange) {
+				throw new Error('교환 제안이 존재하지 않습니다.');
+			}
+
+			if (exchange.sellerId !== sellerId) {
+				throw new Error('교환 제안을 거절할 권한이 없습니다.');
+			}
+
+			const deletedExchange = await this.data.delete({ where: { id: exchangeId } });
+			return deletedExchange;
+		} catch (error) {
+			throw new Error(`교환 제안 거절 실패: ${error.message}`);
+		}
+	};
+
+	// 교환 제안 취소
+	cancelExchange = async (exchangeId, buyerId) => {
+		try {
+			const exchange = await this.data.findUnique({ where: { id: exchangeId } });
+			if (!exchange) {
+				throw new Error('교환 제안이 존재하지 않습니다.');
+			}
+
+			if (exchange.buyerId !== buyerId) {
+				throw new Error('교환 제안을 취소할 권한이 없습니다.');
+			}
+
+			const deletedExchange = await this.data.delete({ where: { id: exchangeId } });
+			return deletedExchange;
+		} catch (error) {
+			throw new Error(`교환 제안 취소 실패: ${error.message}`);
 		}
 	};
 }

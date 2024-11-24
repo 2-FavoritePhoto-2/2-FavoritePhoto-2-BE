@@ -1,13 +1,24 @@
-POST http://localhost:3100/cards/14e6fa2b-e28c-414a-ba24-fd4029011096/exchange
+POST http://localhost:3100/cards/d221bce5-b583-43b3-919c-8ce9c082193f/exchange
 Content-Type: application/json
 
 {
-  "shopId": "c3febc1f-43c0-4b19-a039-bae3b3969ee5",
-  "sellerId": "efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335" ,
   "buyerId": "e6cd05c6-34d5-4871-82c1-f882988d0ece" ,
-  "sellerCardId": "32e9359c-fd10-44d8-bab4-e4c9cf28a87c" ,
   "buyerCardId": "62f1fdf4-4ac8-4f0f-8e36-1e8d9cc001d6",
-  "description": "교환을 신청합니다"
+  "description": "교환을 신청합니다1"
 }
 ###
-POST http://localhost:3100/cards/bbe7282a-556f-453c-99c1-3ca3f50883cf/exchange/accept
+POST http://localhost:3100/cards/exchange/bbe7282a-556f-453c-99c1-3ca3f50883cf/accept
+###
+DELETE http://localhost:3100/cards/exchange/db69e893-8b41-47cb-bd12-6f5202327626/refuse
+Content-Type: application/json
+
+{
+  "sellerId": "364a024f-eeb5-4341-88c2-2259aa0bf0ce"
+}
+###
+DELETE http://localhost:3100/cards/exchange/3bbbf1fb-3b63-41b9-8f75-f7fedc7593fc/cancel
+Content-Type: application/json
+
+{
+  "buyerId": "e6cd05c6-34d5-4871-82c1-f882988d0ece"
+}

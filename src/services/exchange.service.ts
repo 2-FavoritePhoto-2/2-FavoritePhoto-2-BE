@@ -14,4 +14,12 @@ export class ExchangeService {
 		const approvedExchange = await this.data.acceptExchange(exchangeId);
 		return approvedExchange;
 	};
+
+	refuseExchange = async (exchangeId, buyerId) => {
+		return await this.data.refuseExchange(exchangeId, buyerId);
+	};
+
+	cancelExchange = async (exchangeId, sellerId) => {
+		return await this.data.cancelExchange(exchangeId, sellerId);
+	};
 }
