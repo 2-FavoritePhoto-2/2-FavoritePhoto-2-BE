@@ -7,7 +7,7 @@ export class ShopController {
 	}
 
 	getShopList = async (req, res) => {
-		const { page = 1, pageSize = 10, orderBy = 'priceLowest', keyword = '', filter } = req.query;
+		const { page = 1, pageSize = 10, orderBy = 'priceLowest', keyword = '', filter, exclude = '' } = req.query;
 
 		try {
 			const shops = await this.service.getShopList({
@@ -16,6 +16,7 @@ export class ShopController {
 				orderBy,
 				keyword: decodeURIComponent(keyword).trim(),
 				filter,
+				exclude,
 			});
 			res.status(HttpStatus.SUCCESS).json(shops);
 		} catch (error) {

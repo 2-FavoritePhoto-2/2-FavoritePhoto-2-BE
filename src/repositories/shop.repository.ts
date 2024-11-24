@@ -12,7 +12,7 @@ export class ShopRepository {
 	}
 
 	// GET all
-	getShopList = async (page, pageSize, orderBy, keyword, filter?: Filter) => {
+	getShopList = async (page, pageSize, orderBy, keyword?, filter?: Filter, exclude?) => {
 		let sortOption;
 		switch (orderBy) {
 			case 'oldest':
@@ -36,6 +36,7 @@ export class ShopRepository {
 				type?: { has: string[] };
 			};
 			available?: boolean;
+			id?: { not: string };
 		} = {};
 
 		if (keyword) {
@@ -50,6 +51,10 @@ export class ShopRepository {
 			} else if (filter.type === 'available') {
 				where.available = filter.value as boolean;
 			}
+		}
+
+		if (exclude) {
+			where.id = { not: exclude };
 		}
 
 		const list = await this.data.findMany({
@@ -83,6 +88,7 @@ export class ShopRepository {
 	getShopById = async id => {
 		const shop = await this.data.findUnique({
 			where: { id },
+			include: { seller: true, card: true },
 		});
 
 		return shop;

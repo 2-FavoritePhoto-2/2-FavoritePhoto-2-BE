@@ -4,8 +4,8 @@ export class ShopService {
 		this.data = shopRepository;
 	}
 
-	getShopList = async ({ page, pageSize, orderBy, keyword, filter }) => {
-		const shops = await this.data.getShopList(page, pageSize, orderBy, keyword, filter);
+	getShopList = async ({ page, pageSize, orderBy, keyword, filter, exclude }) => {
+		const shops = await this.data.getShopList(page, pageSize, orderBy, keyword, filter, exclude);
 
 		return shops;
 	};
