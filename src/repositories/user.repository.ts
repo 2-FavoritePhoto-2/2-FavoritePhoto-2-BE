@@ -7,16 +7,14 @@ interface Filter {
 
 export class UserRepository {
 	data: any;
-	cardData: any;
 	constructor(client) {
 		this.data = client.User;
-		this.cardData = client.Card;
 	}
 
 	// GET Id
-	getUserId = async (id: string) => {
+	getUserId = async (userId: string) => {
 		const profile = await this.data.findUnique({
-			where: { id },
+			where: { id: userId },
 		});
 
 		return profile;
@@ -27,45 +25,50 @@ export class UserRepository {
 		let sortOption;
 		switch (orderBy) {
 			case 'oldest':
-				sortOption = { orderBy: { createdAt: 'asc' } };
+				sortOption = { createdAt: 'asc' };
 				break;
 			case 'newest':
-				sortOption = { orderBy: { createdAt: 'desc' } };
+				sortOption = { createdAt: 'desc' };
 				break;
 			case 'priceHighest':
-				sortOption = { orderBy: { price: 'desc' } };
+				sortOption = { price: 'desc' };
 				break;
 			case 'priceLowest':
 			default:
-				sortOption = { orderBy: { price: 'asc' } };
+				sortOption = { price: 'asc' };
 		}
 
-		let where: {
-			ownerId?: string;
-			grade?: Grades;
-			type?: { has: string[] };
-			name?: { contains: string; mode: 'insensitive' };
-		} = { ownerId: userId };
-
-		if (filter) {
-			if (filter.type === 'grade') {
-				where.grade = filter.value as Grades;
-			} else if (filter.type === 'type') {
-				where.type = { has: filter.value as string[] };
-			} else if (filter.type === 'keyword') {
-				where.name = { contains: filter.value as string, mode: 'insensitive' };
-			}
-		}
-
-		const cards = await this.cardData.findMany({
-			where,
-			...sortOption,
-			skip: (page - 1) * pageSize,
-			take: Number(pageSize),
+		// 관계 필드 myCards를 활용하여 데이터 조회
+		const userWithCards = await this.data.findUnique({
+			where: { id: userId },
+			select: {
+				myCards: {
+					where: filter
+						? {
+								...(filter.type === 'grade' && { grade: filter.value as Grades }),
+								...(filter.type === 'type' && { type: { has: filter.value as string[] } }),
+								...(filter.type === 'keyword' && { name: { contains: filter.value as string, mode: 'insensitive' } }),
+							}
+						: undefined,
+					orderBy: sortOption,
+					skip: (page - 1) * pageSize,
+					take: Number(pageSize),
+				},
+				_count: {
+					select: {
+						myCards: true,
+					},
+				},
+			},
 		});
 
-		const totalCount = await this.cardData.count({ where });
+		if (!userWithCards) {
+			throw new Error('User not found');
+		}
 
-		return { totalCount, cards };
+		// 전체 개수는 _count 필드에서 가져옴
+		const totalCount = userWithCards._count.myCards;
+
+		return { totalCount, cards: userWithCards.myCards };
 	};
 }

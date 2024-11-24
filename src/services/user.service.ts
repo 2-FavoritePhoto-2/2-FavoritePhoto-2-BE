@@ -4,8 +4,8 @@ export class UserService {
 		this.data = userRepository;
 	}
 
-	getUserProfile = async id => {
-		const profile = await this.data.getUserId(id);
+	getUserProfile = async userId => {
+		const profile = await this.data.getUserId(userId);
 
 		return { nickname: profile.nickname, point: profile.point };
 	};
