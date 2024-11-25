@@ -1,22 +1,37 @@
+// 교환 제안
 POST http://localhost:3100/cards/d221bce5-b583-43b3-919c-8ce9c082193f/exchange
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlZmJlYTcyZS0wZmQwLTQ5YjAtOGVjNS1iY2YzZWFmNWUzMzUiLCJpYXQiOjE3MzI1MjQ4MTgsImV4cCI6MTczMjYxMTIxOH0.eJu1v-_n3hk_P8Jrmj8m1uh69b6mtt2Kryooazt_ya8
 Content-Type: application/json
 
 {
-  "buyerId": "e6cd05c6-34d5-4871-82c1-f882988d0ece" ,
-  "buyerCardId": "62f1fdf4-4ac8-4f0f-8e36-1e8d9cc001d6",
+  "buyerCardId": "a41d71fe-5f47-40bb-b99f-c7e9334623f0",
   "description": "교환을 신청합니다1"
 }
+
 ###
-POST http://localhost:3100/cards/exchange/bbe7282a-556f-453c-99c1-3ca3f50883cf/accept
-###
-DELETE http://localhost:3100/cards/exchange/db69e893-8b41-47cb-bd12-6f5202327626/refuse
+// 교환 승인
+POST http://localhost:3100/cards/exchange/a3198cee-2105-4a06-8ca9-8f8e8ec6a4f7/accept
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNjRhMDI0Zi1lZWI1LTQzNDEtODhjMi0yMjU5YWEwYmYwY2UiLCJpYXQiOjE3MzI1MjUzODgsImV4cCI6MTczMzczNDk4OH0.dimEyuKWJsLe2g5oLR_y-J5gZCzoak5tH2ZHDF3bNjU
 Content-Type: application/json
 
 {
   "sellerId": "364a024f-eeb5-4341-88c2-2259aa0bf0ce"
 }
+
 ###
-DELETE http://localhost:3100/cards/exchange/3bbbf1fb-3b63-41b9-8f75-f7fedc7593fc/cancel
+// 교환 거절
+DELETE http://localhost:3100/cards/exchange/a3198cee-2105-4a06-8ca9-8f8e8ec6a4f7/refuse
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNjRhMDI0Zi1lZWI1LTQzNDEtODhjMi0yMjU5YWEwYmYwY2UiLCJpYXQiOjE3MzI1MjUzODgsImV4cCI6MTczMzczNDk4OH0.dimEyuKWJsLe2g5oLR_y-J5gZCzoak5tH2ZHDF3bNjU
+Content-Type: application/json
+
+{
+  "sellerId": "364a024f-eeb5-4341-88c2-2259aa0bf0ce"
+}
+
+###
+// 교환 취소
+DELETE http://localhost:3100/cards/exchange/b6101c49-9d6d-429f-bcc4-13a979fa8673/cancel
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlZmJlYTcyZS0wZmQwLTQ5YjAtOGVjNS1iY2YzZWFmNWUzMzUiLCJpYXQiOjE3MzI1MjQ4MTgsImV4cCI6MTczMjYxMTIxOH0.eJu1v-_n3hk_P8Jrmj8m1uh69b6mtt2Kryooazt_ya8
 Content-Type: application/json
 
 {

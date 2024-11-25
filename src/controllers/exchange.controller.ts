@@ -8,12 +8,13 @@ export class ExchangeController {
 
 	createExchange = async (req, res) => {
 		const { shopId } = req.params;
-		const { buyerId, buyerCardId, description } = req.body;
+		const { buyerCardId, description } = req.body;
+		const { userId } = req.auth;
 
 		try {
 			const newExchange = await this.service.createExchange({
 				shopId,
-				buyerId,
+				buyerId: userId,
 				buyerCardId,
 				description,
 			});
@@ -25,9 +26,10 @@ export class ExchangeController {
 
 	acceptExchange = async (req, res) => {
 		const { exchangeId } = req.params;
+		const { userId: sellerId } = req.auth;
 
 		try {
-			const approvedExchange = await this.service.acceptExchange(exchangeId);
+			const approvedExchange = await this.service.acceptExchange(exchangeId, sellerId);
 			return res.status(HttpStatus.SUCCESS).json(approvedExchange);
 		} catch (error) {
 			res.status(HttpStatus.SERVER_ERROR).json({ message: error.message || '서버 오류가 발생했습니다.', details: error.stack });
@@ -36,7 +38,7 @@ export class ExchangeController {
 
 	refuseExchange = async (req, res) => {
 		const { exchangeId } = req.params;
-		const { sellerId } = req.body; // 교환을 거절하는 사람의 ID
+		const { userId: sellerId } = req.auth;
 
 		try {
 			const deletedExchange = await this.service.refuseExchange(exchangeId, sellerId);
@@ -48,10 +50,11 @@ export class ExchangeController {
 
 	cancelExchange = async (req, res) => {
 		const { exchangeId } = req.params;
-		const { buyerId } = req.body; // 교환을 취소하는 사람의 ID
+		const { userId: buyerId } = req.auth;
 
 		try {
 			const deletedExchange = await this.service.cancelExchange(exchangeId, buyerId);
+
 			return res.status(HttpStatus.NO_CONTENT).json({ message: '교환 제안을 취소했습니다.', data: deletedExchange });
 		} catch (error) {
 			res.status(HttpStatus.SERVER_ERROR).json({ message: '교환 제안을 취소할 수 없습니다.', error: error.message });

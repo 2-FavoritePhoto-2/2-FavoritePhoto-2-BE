@@ -39,42 +39,42 @@ model Notification {
 }
 
 model Card {
-  id                String     @id @default(uuid())
-  uploadedBy        User?      @relation("UploadedCardRelation", fields: [uploaderId], references: [id], onDelete: SetNull)
-  uploaderId        String?
-  owner             User?      @relation("MyCardRelation", fields: [ownerId], references: [id], onDelete: SetNull)
-  ownerId           String?
-  name              String
-  price             Int
-  grade             Grades
-  type              String[]
-  description       String
-  totalQuantity     Int
-  remainingQuantity Int
-  image             String
-  createdAt         DateTime   @default(now())
-  updatedAt         DateTime   @updatedAt
-  shops             Shop[]
-  sellerExchanges   Exchange[] @relation("SellerRelation")
-  buyerExchanges    Exchange[] @relation("BuyerRelation")
+  id              String     @id @default(uuid())
+  uploadedBy      User?      @relation("UploadedCardRelation", fields: [uploaderId], references: [id], onDelete: SetNull)
+  uploaderId      String?
+  owner           User?      @relation("MyCardRelation", fields: [ownerId], references: [id], onDelete: SetNull)
+  ownerId         String?
+  name            String
+  price           Int
+  grade           Grades
+  type            String[]
+  description     String
+  quantity        Int
+  image           String
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  shops           Shop[]
+  sellerExchanges Exchange[] @relation("SellerRelation")
+  buyerExchanges  Exchange[] @relation("BuyerRelation")
 }
 
 model Shop {
-  id              String     @id @default(uuid())
-  price           Int
-  quantity        Int
-  exchangeGrade   Grades
-  exchangeType    String
-  exchangeDetails String
-  available       Boolean    @default(true) // NOTE quantity=0 이면 available=false
-  seller          User?      @relation(fields: [sellerId], references: [id], onDelete: SetNull)
-  sellerId        String?
-  card            Card?      @relation(fields: [cardId], references: [id], onDelete: SetNull)
-  cardId          String?
-  createdAt       DateTime   @default(now())
-  updatedAt       DateTime   @updatedAt
-  purchases       Purchase[]
-  Exchange        Exchange[]
+  id                String     @id @default(uuid())
+  price             Int
+  totalQuantity     Int
+  remainingQuantity Int
+  exchangeGrade     Grades
+  exchangeType      String
+  exchangeDetails   String
+  available         Boolean    @default(true) // NOTE quantity=0 이면 available=false
+  seller            User?      @relation(fields: [sellerId], references: [id], onDelete: SetNull)
+  sellerId          String?
+  card              Card?      @relation(fields: [cardId], references: [id], onDelete: SetNull)
+  cardId            String?
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  purchases         Purchase[]
+  Exchange          Exchange[]
 }
 
 model Purchase {
