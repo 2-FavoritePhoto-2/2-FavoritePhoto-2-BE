@@ -11,8 +11,8 @@ export class UserService {
 	};
 
 	getUserPhotoCards = async ({ userId, page, pageSize, orderBy, filter }) => {
-		const cards = await this.data.getUserPhotoCards(userId, page, pageSize, orderBy, filter);
+		const card = await this.data.getUserPhotoCards(userId, page, pageSize, orderBy, filter);
 
-		return cards;
+		return card;
 	};
 }

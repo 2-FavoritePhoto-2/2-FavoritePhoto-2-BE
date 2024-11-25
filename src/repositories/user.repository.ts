@@ -69,6 +69,6 @@ export class UserRepository {
 		// 전체 개수는 _count 필드에서 가져옴
 		const totalCount = userWithCards._count.myCards;
 
-		return { totalCount, cards: userWithCards.myCards };
+		return { totalCount, card: userWithCards.myCards };
 	};
 }

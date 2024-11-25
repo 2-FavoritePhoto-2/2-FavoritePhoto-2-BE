@@ -26,14 +26,14 @@ export class UserController {
 		const userId = req.auth.userId;
 
 		try {
-			const cards = await this.service.getUserPhotoCards({
+			const card = await this.service.getUserPhotoCards({
 				userId,
 				page,
 				pageSize,
 				orderBy,
 				filter,
 			});
-			res.status(HttpStatus.SUCCESS).json(cards);
+			res.status(HttpStatus.SUCCESS).json(card);
 		} catch (error) {
 			res.status(HttpStatus.SERVER_ERROR).json({ error: error.message });
 		}
