@@ -1,4 +1,4 @@
-GET http://localhost:3100/shop?filter[type]=type&filter[value]=독
+GET http://localhost:3100/shop?keyword=카드&grade=RARE&type=땅&available=true
 
 ###
 GET http://localhost:3100/shop/cards/cards/5b48ef91-4238-484e-a91f-8f889859bbdb

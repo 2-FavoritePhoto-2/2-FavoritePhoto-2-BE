@@ -1,3 +1,4 @@
+import { boolean } from 'superstruct';
 import HttpStatus from '../utils/httpStatus.js';
 
 export class ShopController {
@@ -7,14 +8,16 @@ export class ShopController {
 	}
 
 	getShopList = async (req, res) => {
-		const { page = 1, pageSize = 10, orderBy = 'priceLowest', keyword = '', filter, exclude = '' } = req.query;
+		const { page = 1, pageSize = 10, orderBy = 'priceLowest', keyword = '', grade, type, available, exclude = '' } = req.query;
 
 		const shops = await this.service.getShopList({
 			page,
 			pageSize,
 			orderBy,
 			keyword: decodeURIComponent(keyword).trim(),
-			filter,
+			grade,
+			type,
+			available: available === 'true' ? true : available === 'false' ? false : undefined,
 			exclude,
 		});
 		res.status(HttpStatus.SUCCESS).json(shops);
