@@ -548,8 +548,7 @@ export const CARDS = [
 		type: ['전기'],
 		description: '앤테이, 스이쿤과 함께 포켓몬스터 금/은부터 나온 전설의 포켓몬 3마리 중 하나',
 		quantity: 10,
-		image:
-			'https://i.namu.wiki/i/XbTtFsPSq3GNYH3twobGBHBbUShPlksYPcUnKJRhT9Q8jNWA2tc4EUROWqQBj-xvNNtw8bKnLDyuGaYE2quuOmFuqDQgPEwTKUqGU6w2tPdOjFqtFFIdhK1QO0wStEnzEhyQ1WejakN6axvscPe-4g.webp',
+		image: 'https://i.imgur.com/nM2cpYI.png',
 	},
 	{
 		id: '21f4baf4-4c58-4271-b1ed-fcac391b92e0',
@@ -561,8 +560,7 @@ export const CARDS = [
 		type: ['물'],
 		description: '이름의 뜻은 물의왕이다.라이코,앤테이와 같은 전설의 포켓몬이다',
 		quantity: 10,
-		image:
-			'https://i.namu.wiki/i/ygOKBdRapxL4CIeLAjS24asK83oY9DZvsUplti-QloaXubLTVG64Tb1vzvEjDyk1ccUfyC1NZ2k8Os247ksXWvUyXy8me8E4In3yjWk_EETFYpCVqQN5CXXRnzvX0e07V61-T8DZIiIvKT3cHZWNdQ.webp',
+		image: 'https://i.imgur.com/vxBgLGg.png',
 	},
 	{
 		id: '8e451b9b-f367-489e-9d16-bb545d9bfa20',
@@ -575,8 +573,7 @@ export const CARDS = [
 		description:
 			'라이코,스이쿤과 함께 2세대에 나온 전설의 포켓몬 중 한 마리다. 칠색조에 의해 되살려지면서 탑의 화재의 불의 힘을 얻었다고 하는데 그 덕분인지 화산과 자주 엮인다',
 		quantity: 10,
-		image:
-			'https://i.namu.wiki/i/nZm6PpWk80UEUDHo97lPTUquFeJzQ5TPn16_SfuY3IpyMgM-cfZyM3D0Vzn0yay-lqkHKhskpnr_IB918gKxvTsjDsRQiKqGhKky2DWlHRjTNbtu2nBtdXeJFx0i40HnxPaU_p0coKjwteZQrK8DNQ.webp',
+		image: 'https://i.imgur.com/LTLlwCB.png',
 	},
 	{
 		id: '7472aa4e-326f-45f1-a9ee-21bd6f14b60a',
@@ -589,8 +586,7 @@ export const CARDS = [
 		description:
 			'마릴의 진화전 모습으로,꼬리 끝의 구슬이 몸과 거의 동급의 크기이다. 이 구슬은 마릴 때와 마찬가지로 물에 뜨게 해주는 역할을 해주며, 탄력성이 있어서 이걸로 뿅뿅 튀어다닐 수 있고, 전투시엔 무기로서도 쓸 수 있다. 여담으로 손이 없다.',
 		quantity: 10,
-		image:
-			'https://i.namu.wiki/i/vsZ-W3Aw4tnySdCB8FcafxNSkjm228dzXclg-QAwC6VO-gm9szxtbHRNqd1fwBVLbPM8LyWwCyP0HBQ35fKpxb6mM4bJRkaTjl94PjJZl-dVEbdQBpT7D4vslgV9UWvMtkZNl22VHR1hD5_G_oYNKw.webp',
+		image: 'https://i.imgur.com/qt0ijjJ.png',
 	},
 	{
 		id: '6b727387-8425-4e11-95dd-ff86890811c0',
@@ -603,8 +599,7 @@ export const CARDS = [
 		description:
 			'기름이 가득 찬 꼬리는 부레 역할. 수면에 꼬리만 떠 있는 때는 물풀을 먹고 있다는 뜻이다.둥근 꼬리는 튜브 대용이다. 그 안에는 영양으로 가득 찬 기름이 들어 있다.',
 		quantity: 10,
-		image:
-			'https://static.wikia.nocookie.net/pokemon/images/4/4e/%EA%B4%80%EC%B2%A0%EC%9D%98_%EB%A7%88%EB%A6%B4_%28W%29.png/revision/latest?cb=20230603023511&path-prefix=ko',
+		image: 'https://i.imgur.com/2PjOGe8.png',
 	},
 	{
 		id: '32333c85-16e5-45cd-b311-c63afd9b301f',
@@ -616,7 +611,7 @@ export const CARDS = [
 		type: ['물', '페어리'],
 		description: '모티브는 체형과 특유의 몸무늬로 보아 부활절달걀, 그리고 그것과 자주 엮이는 부활절토끼를 더한 것으로 보인다.',
 		quantity: 10,
-		image: 'https://lh3.google.com/u/0/d/1NFJhHNsoMIXuPlJazOtMpxKi5GY6mulw=w1641-h944-iv1',
+		image: 'https://i.imgur.com/FiOzfss.png',
 	},
 	{
 		id: '3d7bf9f6-1437-4a01-890b-0ff4d4dfd9b8',
@@ -629,8 +624,7 @@ export const CARDS = [
 		description:
 			'오랫동안 환상이라고 불렸다. 이마에 있는 작은 돌기는 성장하고 있는 뿔이다. 얘~ 미뇽아~ 라고 불리기도 하였다.(거침없이 하이킥 참조)',
 		quantity: 10,
-		image:
-			'https://drive.google.com/u/0/drive-viewer/AKGpihYEb1otkaORMr-owwHrY2-CRPLELN_aYJdGvM5O8k7QStH25iGZv4KIXADXW50HPWr3sSoGckvzJYFVrHGfPR0XR60yiixNqg=s2560',
+		image: 'https://i.imgur.com/2awlKFg.png',
 	},
 	{
 		id: '989c45c6-5591-4b99-9b72-d413d901a4e4',
@@ -669,8 +663,7 @@ export const CARDS = [
 		type: ['격투'],
 		description: '파 줄기가 없으면 살 수 없다. 그래서 파 줄기를 노리는 상대와는 목숨을 걸고 싸운다.',
 		quantity: 10,
-		image:
-			' https://i.namu.wiki/i/cavRQkgu8FNbABHKyFHSlWCAaHDHRLCbymIqotwJH7yqPWHMZmCEaLDUgiKiMGViddosdmJOeNJh3zfpO1qJwOxsDic4qvho22a2FcxPU6kvvAjnMjl1z9eSppF48K326V1i5p_x4zLm1wV0uGV4Lw.webp',
+		image: 'https://i.imgur.com/Ag8TZgB.png',
 	},
 	{
 		id: 'f6d3e2c9-a5a4-4e8f-b53e-3a29fefc1234',
