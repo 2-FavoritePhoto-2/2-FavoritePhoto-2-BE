@@ -1,1 +1,15 @@
-GET http://localhost:3100/user/profile/53a10ad5-5c7a-4415-9683-a151b861b26d
+GET http://localhost:3100/user/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI0NzQ0MTgsImV4cCI6MTczMjQ3ODAxOH0.J0aVu4JAK61fRfv9QpJSpokEnB9CrtfZ4EwBYxo7Q-w
+
+###
+# GET http://localhost:3100/user/cards?userId=53a10ad5-5c7a-4415-9683-a151b861b26d&page=1&pageSize=10&orderBy=priceLowest&filter[type]=type&filter[value]=물
+GET http://localhost:3100/user/cards?&page=1&pageSize=10&orderBy=priceLowest
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI1MTI0NzMsImV4cCI6MTczMjUxNjA3M30.OuxgVeplA91BOmJ2Dnpd1WKt3O8TSo8qw-2hT2kDDYw
+###
+GET http://localhost:3100/auth/login
+Content-Type: application/json
+
+{
+	"email": "test1@naver.com",
+	"password": "password"
+}
