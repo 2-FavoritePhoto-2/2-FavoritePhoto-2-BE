@@ -7,7 +7,7 @@ CREATE TABLE "User" (
     "email" VARCHAR(254) NOT NULL,
     "nickname" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "point" INTEGER NOT NULL DEFAULT 100,
+    "point" INTEGER NOT NULL DEFAULT 50,
     "refreshToken" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -36,8 +36,7 @@ CREATE TABLE "Card" (
     "grade" "Grades" NOT NULL,
     "type" TEXT[],
     "description" TEXT NOT NULL,
-    "totalQuantity" INTEGER NOT NULL,
-    "remainingQuantity" INTEGER NOT NULL,
+    "quantity" INTEGER NOT NULL,
     "image" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -49,7 +48,8 @@ CREATE TABLE "Card" (
 CREATE TABLE "Shop" (
     "id" TEXT NOT NULL,
     "price" INTEGER NOT NULL,
-    "quantity" INTEGER NOT NULL,
+    "totalQuantity" INTEGER NOT NULL,
+    "remainingQuantity" INTEGER NOT NULL,
     "exchangeGrade" "Grades" NOT NULL,
     "exchangeType" TEXT NOT NULL,
     "exchangeDetails" TEXT NOT NULL,
@@ -84,6 +84,7 @@ CREATE TABLE "Exchange" (
     "buyerId" TEXT,
     "sellerCardId" TEXT,
     "buyerCardId" TEXT,
+    "shopId" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -125,3 +126,6 @@ ALTER TABLE "Exchange" ADD CONSTRAINT "Exchange_sellerCardId_fkey" FOREIGN KEY (
 
 -- AddForeignKey
 ALTER TABLE "Exchange" ADD CONSTRAINT "Exchange_buyerCardId_fkey" FOREIGN KEY ("buyerCardId") REFERENCES "Card"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Exchange" ADD CONSTRAINT "Exchange_shopId_fkey" FOREIGN KEY ("shopId") REFERENCES "Shop"("id") ON DELETE SET NULL ON UPDATE CASCADE;

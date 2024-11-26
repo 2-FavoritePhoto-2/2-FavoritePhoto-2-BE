@@ -2,9 +2,11 @@ import { prismaClient as prisma } from '../src/connection/connection';
 import { CARDS, SHOPS, USERS } from '../mock/mock';
 
 async function main() {
-	await Promise.all([prisma.user.deleteMany(), prisma.card.deleteMany(), prisma.shop.deleteMany()]);
+	await prisma.$transaction([
+		prisma.user.deleteMany(),
+		prisma.card.deleteMany(),
+		prisma.shop.deleteMany(),
 
-	await Promise.all([
 		prisma.user.createMany({
 			data: USERS,
 			skipDuplicates: true,
