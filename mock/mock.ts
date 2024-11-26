@@ -48,8 +48,7 @@ export const CARDS = [
 		grade: Grades['SUPER_RARE'],
 		type: ['고스트', '독'],
 		description: '그림자 속에 숨어서 목숨을 노리는 귀엽고 못된 포켓몬 데리고 가실 분 찾아요~',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image: 'https://i.imgur.com/W2LGoWD.png',
 	},
 	{
@@ -61,8 +60,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['물'],
 		description: '1만 마력의 슈퍼파워를 지닌 단단한 집게를 가진 킹크랩 카드 팝니다~!',
-		totalQuantity: 10,
-		remainingQuantity: 10,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/5nvbFTpogpa3HAcG3S2cWfq3WC2b53PIQv1W3qNHsr6ZBxJo0wvqE2ZLZbaAY8m9LvaqXTsWUdhQGjhb1g3SFl5qDsjGMaYQ3r3rg-CA4RjRWRGwJ40JYrPelkn9Yi7NgcONzdgmTA1FXT4VRMPeEA.webp',
 	},
@@ -75,8 +73,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['비행'],
 		description: '비슷한 급과 교환도 가능합니다.',
-		totalQuantity: 8,
-		remainingQuantity: 8,
+		quantity: 10,
 		image:
 			'https://static.wikia.nocookie.net/pokemon/images/6/6f/%ED%94%BC%EC%A3%A4%ED%88%AC_%EA%B3%B5%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8.png/revision/latest/scale-to-width-down/1000?cb=20161125131523&path-prefix=ko',
 	},
@@ -89,8 +86,7 @@ export const CARDS = [
 		grade: Grades['SUPER_RARE'],
 		type: ['땅', '독'],
 		description: '니드퀸 짱 셈.',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/RZbXMfhbqckYa7V__sGSzvh51tKkf8dDFMOa4BE2xB7XOgQ9QD5cq_BPXvlWcZVvoc2OP5eZUWKweH0prlgiiz8YZtz7tIeMUWy3JPs8-QTmVglygJme3LwTkAE_SMARePtBZY0LrqJO1cLXkOTsPQ.webp',
 	},
@@ -103,8 +99,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['독'],
 		description: '작지만 독바늘이 있는 깜찍한 니드런 1장 있어요 :)',
-		totalQuantity: 1,
-		remainingQuantity: 1,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/NH3WH2di9XwqW8RdG9OnQaHcgduyIwy3rLZRDCkwgM1zvp-zVpkEBWncbMM9R7bisBp5bpEIVLk3BCMBRIeyzWAvvESKoDR2A2cb1teTHb1ry0RMyYv8_kuwH8jTp7aEfYLLzb7M5sy84HC4rpUpkA.webp',
 	},
@@ -117,8 +112,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['페어리'],
 		description: '너무 귀여워서 나만 갖고 싶은 카드예요. 소중히 다뤄주세요.',
-		totalQuantity: 3,
-		remainingQuantity: 3,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/z_G1wKEeytjRsNXfuFeBTewVGinr0lBZa6Pa_jtQ00RmONbDLh-rRB7KOZ3QCbKkJq33FQ4ZY4cofha39P1BIYF1aklsIka-2v-_zSwQbujgstQxE6IKUKKn9BjIYPSaOq3-3ufcRWxFHDzO-GKhAg.webp',
 	},
@@ -131,8 +125,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['풀', '독'],
 		description: '뚜벅쵸 카드 너무 많아서 판매합니다.',
-		totalQuantity: 10,
-		remainingQuantity: 10,
+		quantity: 10,
 		image:
 			'https://static.wikia.nocookie.net/pokemon/images/0/0a/%EB%9A%9C%EB%B2%85%EC%B5%B8_%EA%B3%B5%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8.png/revision/latest?cb=20170405002423&path-prefix=ko',
 	},
@@ -145,8 +138,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['땅', '강철'],
 		description: '희귀한 닥트리오 알로라 모습 카드입니다!!!',
-		totalQuantity: 2,
-		remainingQuantity: 2,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/jTqPdh8UmsYyW_5aeNuscSzpRCrSkPWCfGXwuZu9ESXbnTKpAHuA4ccBOUR0ORlpippFsmy5YOVXNRMz3ZgGRrPDTT3nKnCMDcxCCJAKTIb8K07VyfAtIRSWe8ozjI-V7JJ7sjgnwQ6-zWOPgcnFiw.webp',
 	},
@@ -159,8 +151,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['격투'],
 		description: '분노조절장애 원숭이 망키 입양해 가세요~',
-		totalQuantity: 3,
-		remainingQuantity: 3,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/OPCGgQ_9xAfT6_U1In46kKSM7qOqI6f9vJBnBJEfh9yuEy8o77H4Fktkm0_z0k8WlmfdY4UCX0C3q_Ewl27SDOKTpltD4QWzT4EGksOkLspCRGEeeMh9tKJSs1NxtSu4-y31y4_J6ejFnmq0pN07SA.webp',
 	},
@@ -173,8 +164,7 @@ export const CARDS = [
 		grade: Grades['SUPER_RARE'],
 		type: ['풀', '독'],
 		description: '저의 최애 포켓몬입니다. 저랑 같은 취향이신 분 연락주세요.',
-		totalQuantity: 4,
-		remainingQuantity: 4,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/PhZEANJrmDnWKc-Iz4rIDrNn3suhzmdubDdcWIrI0PTNUlZMpthq7ZZa59CNV9EeOCZQMtjdR6R7RZX39IqfGEMoKN09aU33PSchSZa0f_-VZ3H2SsCjOn7C_1u1VLELGIvUMo3GMKl7mYbedgSdzA.webp',
 	},
@@ -187,8 +177,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['에스퍼', '비행'],
 		description: '심해에서 자연을 지키며 균형을 유지하는 포켓몬. 압도적인 존재감!',
-		totalQuantity: 3,
-		remainingQuantity: 3,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/u52Trh0CMKXKhJfo8oQZbsWcolx7VPxkrjcLTJcnNQZNCG0ZN4puVPG6Mx07D_9r9rPH_tDDSmlE5JiJ-4w2mriGWvrI2_IJrWXsDJkJ57SuA49NcKbWR5cO3QptLe_2Y_OXTRVhT_JlK_wuQSJYXA.webp',
 	},
@@ -201,8 +190,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['드래곤', '비행'],
 		description: '하늘을 나는 전설의 드래곤. 평화를 위해 갈등을 중재하는 수호자!',
-		totalQuantity: 2,
-		remainingQuantity: 2,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/BBNYmYFHHmT_LdfI-dVqRYOz7sXy75i4u5KQQIfGvlr9kZJ_op903E1-axaqmfBqfAhg71VhAIj9OKtgDV7tL6PWVlXT1WeCGnLM2Si8CGhkB68pklHFtDvo_7_vQPA7VUOQ6AS2kfmZP94ANy6LSQ.webp',
 	},
@@ -215,8 +203,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['땅', '불꽃'],
 		description: '대지를 다스리는 전설의 포켓몬. 엄청난 파괴력을 자랑합니다!',
-		totalQuantity: 4,
-		remainingQuantity: 4,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/1NyEIvRS3GYjGOXcgep6OxB5gwua0gzchY4Q_bNL4knIFdPZKKmzuBwp2jhiw4bmwxPBPHTysmuQ95_qTvAtyqHQfTut_X79zh0HaIcm2vDIprPmuxeW9fPmSAOuFTWOHphSS8md3ZXs7RRSKZNjuw.webp',
 	},
@@ -229,8 +216,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['물'],
 		description: '심해의 전설. 바다를 다스리며 기후를 조정하는 포켓몬!',
-		totalQuantity: 3,
-		remainingQuantity: 3,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/f3f9wrZIBeL2qLk7R5FoUOrnbrsh-wxZBeh8vWxLDMyiwNlGz_2H06Jl97nOfWFNtiHSe-fw6WNPw416Tr05tr_eeBWNc3QkJ8rbemwClop6c_gkAolZi-xQwg_0OSKdcA5SzP_sa3vf9e1crJ-vGw.webp',
 	},
@@ -243,8 +229,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['강철', '드래곤'],
 		description: '시간을 다루는 전설의 존재. 세계의 균형을 유지합니다!',
-		totalQuantity: 3,
-		remainingQuantity: 3,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/eaFbJd81sj79m5GZ93nKFFsXMWUqY2OProLoqb5UFaPqSbBW8Hte3YIATPGUAPEvYrzVBbIFCrHjcqdAHEwoE_Wkx19rv4_rOd0JpphODVJTjbnnGx6PO5T45hlia94DjTnwhClxMK-18AEn3yk_qw.webp',
 	},
@@ -257,8 +242,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['물', '드래곤'],
 		description: '공간을 조작하는 전설의 존재. 신비로운 힘을 지니고 있습니다!',
-		totalQuantity: 2,
-		remainingQuantity: 2,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/vPHL_VEUhVcXsJWCR-zNWkJXikS3BalDsa4fgbHzWE9d92AehIJwIiqprpzL-mA4RVJkMgdmz50PBNZjBNw3ZoZ0_xI8juVyRhCtmWf7sj3qb5g5ik3Rq7koLqciApEcCmiZf_lCSoQKfL4VV7UEmg.webp',
 	},
@@ -271,8 +255,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['불꽃', '드래곤'],
 		description: '진실을 추구하는 포켓몬. 강렬한 불꽃을 내뿜습니다!',
-		totalQuantity: 1,
-		remainingQuantity: 1,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/mcSM4seXVLHaOhbdofW_RVLPyO1W8VZtZZGvUOOTiI3tIy4olJwbOJ1SIPKC-bCeZHs_kQPhMAo8u2NLPt3n2u2jm0QLaI-nSBel4ETGBGzjUkQlEEGMOxMw6GGWXBdjO42SKApfRL4wpzWpVuwdVQ.webp',
 	},
@@ -285,8 +268,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['전기', '드래곤'],
 		description: '이상을 추구하는 포켓몬. 강력한 번개를 소환합니다!',
-		totalQuantity: 2,
-		remainingQuantity: 2,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/DL9ma2BHdx1A1oN_XBI-GgNBpkL1eYsYli8IuwoPeNDjWIaBJMoOqPnToi-V2yvz88prbWyWxrvLRk3R3pJn_UzOBFy4hYKAl92cYNvkf7NNOs9ihfPKOviGy1t7omA6C00TdfgtoAK58nYHCyJB1w.webp',
 	},
@@ -299,8 +281,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['에스퍼'],
 		description: '포켓몬의 기원을 나타내는 신비한 존재. 모든 기술을 사용할 수 있습니다!',
-		totalQuantity: 1,
-		remainingQuantity: 1,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/Pj_KZlssU6hrjqb9hzPr8OrvKQ1ZWRcjFKJcqT3SysBNR3LSFe3fZmrEZE3qtbOR1Ktgy-qtMNmYWWXRGAFjDPrnzvagoMFfTQKnetRltX6gmNjKFl-iudckSgpdMkD6Cfb9OBX91z560koH5ss-Vg.webp',
 	},
@@ -313,8 +294,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['페어리'],
 		description: '전설의 영웅이라고 불리는 포켓몬. 금속을 흡수한 뒤 무기로 변화시켜서 싸운다.',
-		totalQuantity: 8,
-		remainingQuantity: 8,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/1u_Jj_e1F13rLsriradY0fHKRga-mxhSWdm5wRMSTCA6ahGZOvNX9ewzP0R26dELuzgaj4dnbg6d9XjEmOViTMcE2PFiKU03bKe_CnneIB3xYhZFN43Est3DpuP4xqjSapPFthTkF5Q3rWoDslCxjQ.webp',
 	},
@@ -327,8 +307,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['노말', '독'],
 		description: '천적에게 발견되지 않도록 잎사귀 뒷면이나 가지의 틈새에 숨어서 진화할 때를 기다린다.',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image: 'https://data1.pokemonkorea.co.kr/newdata/pokedex/full/001401.png',
 	},
 	{
@@ -340,8 +319,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['불꽃'],
 		description: '달리는 속도는 시속 240km. 갈기의 불꽃이 세차게 타오르고 화살처럼 달려 나간다.',
-		totalQuantity: 3,
-		remainingQuantity: 3,
+		quantity: 10,
 		image: 'https://data1.pokemonkorea.co.kr/newdata/pokedex/full/007801.png',
 	},
 	{
@@ -353,8 +331,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['전기'],
 		description: '굴러서 이동하기 때문에 땅이 울퉁불퉁하면 충격으로 폭발해 버린다.',
-		totalQuantity: 10,
-		remainingQuantity: 10,
+		quantity: 10,
 		image: 'https://data1.pokemonkorea.co.kr/newdata/pokedex/full/010001.png',
 	},
 	{
@@ -366,8 +343,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['얼음', '에스퍼'],
 		description: '울음소리는 마치 인간의 말처럼 들리지만 의미는 전혀 이해할 수 없다.',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image: 'https://data1.pokemonkorea.co.kr/newdata/pokedex/full/012401.png',
 	},
 	{
@@ -379,8 +355,7 @@ export const CARDS = [
 		grade: Grades['SUPER_RARE'],
 		type: ['악', '불꽃'],
 		description: '헬가가 으스스하게 멀리서 짖으면 지옥에서 사신이 부르는 소리라고 옛날 사람들은 상상하고 있었다.',
-		totalQuantity: 2,
-		remainingQuantity: 2,
+		quantity: 10,
 		image: 'https://data1.pokemonkorea.co.kr/newdata/pokedex/full/022902.png',
 	},
 	{
@@ -392,8 +367,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['불꽃', '격투'],
 		description: '30층 빌딩을 점프로 넘는 점프력을 가졌다. 불꽃펀치가 상대를 태운다.',
-		totalQuantity: 7,
-		remainingQuantity: 7,
+		quantity: 10,
 		image: 'https://data1.pokemonkorea.co.kr/newdata/pokedex/full/025702.png',
 	},
 	{
@@ -405,8 +379,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['풀', '격투'],
 		description: '독 포자를 뿌려 들이마시고 괴로워하는 상대에게 강렬한 펀치를 날린다.',
-		totalQuantity: 3,
-		remainingQuantity: 3,
+		quantity: 10,
 		image: 'https://data1.pokemonkorea.co.kr/newdata/pokedex/full/028601.png',
 	},
 	{
@@ -418,8 +391,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['노말'],
 		description: '폭음룡이 울부짖는 소리는 10km 전방까지 닿는다. 몸 곳곳의 구멍에서 갖가지 소리를 낸다.',
-		totalQuantity: 9,
-		remainingQuantity: 9,
+		quantity: 10,
 		image: 'https://data1.pokemonkorea.co.kr/newdata/pokedex/full/029501.png',
 	},
 	{
@@ -431,8 +403,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['악'],
 		description: '리더의 명령을 충실히 따른다. 뛰어난 팀워크로 노린 먹잇감을 절대 놓치지 않는다.',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image: 'https://data1.pokemonkorea.co.kr/newdata/pokedex/full/026201.png',
 	},
 	{
@@ -444,8 +415,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['드래곤', '땅'],
 		description: '과한 에너지로 양손과 날개가 녹아버려 거대한 낫 모양으로 변화했다.',
-		totalQuantity: 3,
-		remainingQuantity: 3,
+		quantity: 10,
 		image: 'https://data1.pokemonkorea.co.kr/newdata/pokedex/full/044502.png',
 	},
 	{
@@ -457,8 +427,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['물'],
 		description: '물에 떠다니는 물고기처럼 느껴지지만 사실 생각하는 고라파덕을 데리고 가실 분~',
-		totalQuantity: 10,
-		remainingQuantity: 10,
+		quantity: 10,
 		image: 'https://i.imgur.com/JgDJJqK.jpeg',
 	},
 	{
@@ -470,8 +439,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['풀', '독'],
 		description: '풀과 독을 사용하는 우츠동, 마법 같은 능력을 자랑하는 포켓몬!',
-		totalQuantity: 8,
-		remainingQuantity: 8,
+		quantity: 10,
 		image: 'https://i.imgur.com/ZYi49n3.png',
 	},
 	{
@@ -483,8 +451,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['노말'],
 		description: '단순하지만 귀여운 내루미, 소소한 기쁨을 선사할 친구입니다~',
-		totalQuantity: 12,
-		remainingQuantity: 12,
+		quantity: 10,
 		image: 'https://i.imgur.com/YUU2Ucv.png',
 	},
 	{
@@ -496,8 +463,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['바위'],
 		description: '강한 바위 속성의 꼬지지, 땅속에서 힘을 모아 세상을 지켜요!',
-		totalQuantity: 6,
-		remainingQuantity: 6,
+		quantity: 10,
 		image: 'https://i.imgur.com/2imrvke.png',
 	},
 	{
@@ -509,8 +475,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['노말'],
 		description: '잠을 자고 있어도 강력한 잠만보, 잠에서 깨어날 때 얼마나 강할까요?',
-		totalQuantity: 3,
-		remainingQuantity: 3,
+		quantity: 10,
 		image: 'https://i.imgur.com/0588Ln4.jpeg',
 	},
 	{
@@ -522,8 +487,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['에스퍼'],
 		description: '에스퍼 능력으로 상대를 압도하는 마자용을 데려가 보세요!',
-		totalQuantity: 7,
-		remainingQuantity: 7,
+		quantity: 10,
 		image: 'https://i.imgur.com/Th19AWr.jpeg',
 	},
 	{
@@ -535,8 +499,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['악', '비행'],
 		description: '어둠 속에서 날아다니는 돈크로우, 악의 미학을 가진 포켓몬!',
-		totalQuantity: 4,
-		remainingQuantity: 4,
+		quantity: 10,
 		image: 'https://i.imgur.com/i2QYmUo.png',
 	},
 	{
@@ -548,8 +511,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['전기'],
 		description: '귀여운 전기 포켓몬, 파치리스의 충전된 에너지를 느껴보세요!',
-		totalQuantity: 9,
-		remainingQuantity: 9,
+		quantity: 10,
 		image: 'https://i.imgur.com/hdHF9TS.png',
 	},
 	{
@@ -561,8 +523,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['고스트'],
 		description: '어두운 밤에 나타나는 해골몽, 고스트의 세계에서 온 포켓몬!',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image: 'https://i.imgur.com/glfBCvA.png',
 	},
 	{
@@ -574,8 +535,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['전기', '비행'],
 		description: '하늘을 나는 전기 포켓몬, 에몽가와 함께라면 언제든지 즐거운 여행!',
-		totalQuantity: 6,
-		remainingQuantity: 6,
+		quantity: 10,
 		image: 'https://i.imgur.com/yofOTDz.jpeg',
 	},
 	{
@@ -587,8 +547,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['전기'],
 		description: '앤테이, 스이쿤과 함께 포켓몬스터 금/은부터 나온 전설의 포켓몬 3마리 중 하나',
-		totalQuantity: 1,
-		remainingQuantity: 1,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/XbTtFsPSq3GNYH3twobGBHBbUShPlksYPcUnKJRhT9Q8jNWA2tc4EUROWqQBj-xvNNtw8bKnLDyuGaYE2quuOmFuqDQgPEwTKUqGU6w2tPdOjFqtFFIdhK1QO0wStEnzEhyQ1WejakN6axvscPe-4g.webp',
 	},
@@ -601,8 +560,7 @@ export const CARDS = [
 		grade: Grades['LEGENDARY'],
 		type: ['물'],
 		description: '이름의 뜻은 물의왕이다.라이코,앤테이와 같은 전설의 포켓몬이다',
-		totalQuantity: 1,
-		remainingQuantity: 1,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/ygOKBdRapxL4CIeLAjS24asK83oY9DZvsUplti-QloaXubLTVG64Tb1vzvEjDyk1ccUfyC1NZ2k8Os247ksXWvUyXy8me8E4In3yjWk_EETFYpCVqQN5CXXRnzvX0e07V61-T8DZIiIvKT3cHZWNdQ.webp',
 	},
@@ -616,8 +574,7 @@ export const CARDS = [
 		type: ['불꽃'],
 		description:
 			'라이코,스이쿤과 함께 2세대에 나온 전설의 포켓몬 중 한 마리다. 칠색조에 의해 되살려지면서 탑의 화재의 불의 힘을 얻었다고 하는데 그 덕분인지 화산과 자주 엮인다',
-		totalQuantity: 2,
-		remainingQuantity: 2,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/nZm6PpWk80UEUDHo97lPTUquFeJzQ5TPn16_SfuY3IpyMgM-cfZyM3D0Vzn0yay-lqkHKhskpnr_IB918gKxvTsjDsRQiKqGhKky2DWlHRjTNbtu2nBtdXeJFx0i40HnxPaU_p0coKjwteZQrK8DNQ.webp',
 	},
@@ -631,8 +588,7 @@ export const CARDS = [
 		type: ['노말', '페어리'],
 		description:
 			'마릴의 진화전 모습으로,꼬리 끝의 구슬이 몸과 거의 동급의 크기이다. 이 구슬은 마릴 때와 마찬가지로 물에 뜨게 해주는 역할을 해주며, 탄력성이 있어서 이걸로 뿅뿅 튀어다닐 수 있고, 전투시엔 무기로서도 쓸 수 있다. 여담으로 손이 없다.',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/vsZ-W3Aw4tnySdCB8FcafxNSkjm228dzXclg-QAwC6VO-gm9szxtbHRNqd1fwBVLbPM8LyWwCyP0HBQ35fKpxb6mM4bJRkaTjl94PjJZl-dVEbdQBpT7D4vslgV9UWvMtkZNl22VHR1hD5_G_oYNKw.webp',
 	},
@@ -646,8 +602,7 @@ export const CARDS = [
 		type: ['물', '페어리'],
 		description:
 			'기름이 가득 찬 꼬리는 부레 역할. 수면에 꼬리만 떠 있는 때는 물풀을 먹고 있다는 뜻이다.둥근 꼬리는 튜브 대용이다. 그 안에는 영양으로 가득 찬 기름이 들어 있다.',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image:
 			'https://static.wikia.nocookie.net/pokemon/images/4/4e/%EA%B4%80%EC%B2%A0%EC%9D%98_%EB%A7%88%EB%A6%B4_%28W%29.png/revision/latest?cb=20230603023511&path-prefix=ko',
 	},
@@ -660,8 +615,7 @@ export const CARDS = [
 		grade: Grades['SUPER_RARE'],
 		type: ['물', '페어리'],
 		description: '모티브는 체형과 특유의 몸무늬로 보아 부활절달걀, 그리고 그것과 자주 엮이는 부활절토끼를 더한 것으로 보인다.',
-		totalQuantity: 3,
-		remainingQuantity: 3,
+		quantity: 10,
 		image: 'https://lh3.google.com/u/0/d/1NFJhHNsoMIXuPlJazOtMpxKi5GY6mulw=w1641-h944-iv1',
 	},
 	{
@@ -674,8 +628,7 @@ export const CARDS = [
 		type: ['드래곤'],
 		description:
 			'오랫동안 환상이라고 불렸다. 이마에 있는 작은 돌기는 성장하고 있는 뿔이다. 얘~ 미뇽아~ 라고 불리기도 하였다.(거침없이 하이킥 참조)',
-		totalQuantity: 3,
-		remainingQuantity: 3,
+		quantity: 10,
 		image:
 			'https://drive.google.com/u/0/drive-viewer/AKGpihYEb1otkaORMr-owwHrY2-CRPLELN_aYJdGvM5O8k7QStH25iGZv4KIXADXW50HPWr3sSoGckvzJYFVrHGfPR0XR60yiixNqg=s2560',
 	},
@@ -688,8 +641,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['드래곤'],
 		description: '깨끗한 바다나 호수에 산다. 날씨를 조종하는 힘으로 바람을 타고 하늘로 오른다.',
-		totalQuantity: 3,
-		remainingQuantity: 3,
+		quantity: 10,
 		image:
 			'https://mblogthumb-phinf.pstatic.net/MjAyMDAxMjZfMTIw/MDAxNTgwMDM1Njc3MzEx.Dv60f_7baLqQ4bAPsU2u-WHGCgFcYTmaQ-00kEPzHVQg.BbSxVxoP8lOvVceZ3Urg4H5aYFK_TTQCJv2I8VRWBsgg.JPEG.hanee218/1580035676908.jpg?type=w800',
 	},
@@ -703,8 +655,7 @@ export const CARDS = [
 		type: ['드래곤', '비행'],
 		description:
 			'망나뇽은 팔다리가 있는 서양 요괴 드래곤의 형태이다.  미뇽과 신뇽은 귀의 디자인이 지느러미에서 날개로 변화하였는데, 망나뇽은 그런 변화의 모습을 볼 수 없다. 한편 신뇽은 여의주를 모티브로 한 구슬을 얻은 모습이나, 망나뇽은 진화를 하였는데도 여의주를 가지고 있지 않다',
-		totalQuantity: 3,
-		remainingQuantity: 3,
+		quantity: 10,
 		image:
 			'https://mblogthumb-phinf.pstatic.net/MjAyMDAxMjZfMTMz/MDAxNTgwMDM1NjczNDky.LHewjFDKIMxayH1iHcn6X1-BolA_jKxozLon5E_VBXkg.gNeyX7oXu91m7DTuLtSIQP0Vv9tHJIItfSQocloDmmsg.JPEG.hanee218/1580035673276.jpg?type=w800',
 	},
@@ -717,8 +668,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['격투'],
 		description: '파 줄기가 없으면 살 수 없다. 그래서 파 줄기를 노리는 상대와는 목숨을 걸고 싸운다.',
-		totalQuantity: 2,
-		remainingQuantity: 2,
+		quantity: 10,
 		image:
 			' https://i.namu.wiki/i/cavRQkgu8FNbABHKyFHSlWCAaHDHRLCbymIqotwJH7yqPWHMZmCEaLDUgiKiMGViddosdmJOeNJh3zfpO1qJwOxsDic4qvho22a2FcxPU6kvvAjnMjl1z9eSppF48K326V1i5p_x4zLm1wV0uGV4Lw.webp',
 	},
@@ -731,8 +681,7 @@ export const CARDS = [
 		grade: Grades['SUPER_RARE'],
 		type: ['고스트', '독'],
 		description: '그림자 속에 숨어서 목숨을 노리는 귀엽고 못된 포켓몬 데리고 가실 분 찾아요~',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image:
 			'https://static.wikia.nocookie.net/pokemon/images/6/67/%ED%8C%AC%ED%85%80_%EA%B3%B5%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8.png/revision/latest?cb=20170405023114&path-prefix=ko',
 	},
@@ -745,8 +694,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['전기'],
 		description: '작고 귀여운 전기 포켓몬, 함께 놀아줄 친구를 찾습니다!',
-		totalQuantity: 10,
-		remainingQuantity: 8,
+		quantity: 10,
 		image:
 			'https://postfiles.pstatic.net/MjAxODA2MTdfMjU2/MDAxNTI5MjMxMjc3ODQz.ORbDuCz7gbXCWErQtvxd7s1S_5pi-3pay75sZU0IIWQg.8K33DYQuCtqiKUrsmuS6NUPfcwljUmJ9uy9BnWHbopUg.PNG.ghkdwlstlf1/%ED%94%BC%EC%B9%B41.PNG?type=w966',
 	},
@@ -759,8 +707,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['풀', '독'],
 		description: '자연을 사랑하는 포켓몬, 정원에 잘 어울려요!',
-		totalQuantity: 7,
-		remainingQuantity: 7,
+		quantity: 10,
 		image: 'https://s3.orbi.kr/data/file/united/6c8824842456fafc23c7989bf0e5cc20.png',
 	},
 	{
@@ -772,8 +719,7 @@ export const CARDS = [
 		grade: Grades['SUPER_RARE'],
 		type: ['불꽃', '비행'],
 		description: '하늘을 나는 드래곤 포켓몬, 진정한 파트너가 되어줄 분을 찾습니다!',
-		totalQuantity: 3,
-		remainingQuantity: 2,
+		quantity: 10,
 		image: 'https://i2.ruliweb.com/img/22/11/13/184706e8184520722.jpg',
 	},
 	{
@@ -785,8 +731,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['물'],
 		description: '귀여운 물 포켓몬, 함께 수영하실 분 찾습니다!',
-		totalQuantity: 6,
-		remainingQuantity: 6,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/-VuNYOXPNNzGzhgqeRlXQqTcTWYz7foHmWu7l0o3Qy01-yG3ZuTpTyhCqGMCZBA2Y_Jkv8TafH8z5K-PdtL-xtajiVW9oHUF389HiWjTIeQ0JV3b7NoL53Emfs0wKlZ_zm5E6rQrqFTKPqqq44hX1w.webp',
 	},
@@ -799,8 +744,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['벌레', '비행'],
 		description: '아름다운 날개를 가진 포켓몬, 수집해 보세요!',
-		totalQuantity: 4,
-		remainingQuantity: 3,
+		quantity: 10,
 		image:
 			'https://static.wikia.nocookie.net/pokemon/images/5/51/%EB%B2%84%ED%84%B0%ED%94%8C_%EA%B3%B5%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8.png/revision/latest/scale-to-width-down/1200?cb=20170404233745&path-prefix=ko',
 	},
@@ -813,8 +757,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['물', '에스퍼'],
 		description: '느긋한 성격의 물 포켓몬, 친구가 되어줄 분을 찾습니다!',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/Rn3th6fZuFOPsKQ8qCby8axWEn4rmxtchd_j1fwcObhqgnHUqQu8dyEsTz7q9z7m2AFn2difjjea-n0t1sMrTWD4iKZZQWf0iO0lBNARuSi45oQux7E6wTsQIMXPwot-q2xohlw3wJU3D_4zCV0N7Q.webp',
 	},
@@ -827,8 +770,7 @@ export const CARDS = [
 		grade: Grades['RARE'],
 		type: ['독', '비행'],
 		description: '밤하늘을 나는 포켓몬, 함께 모험 떠나실 분을 찾습니다!',
-		totalQuantity: 8,
-		remainingQuantity: 6,
+		quantity: 10,
 		image:
 			'https://static.wikia.nocookie.net/pokemon/images/f/f3/%EA%B3%A8%EB%B1%83_%EA%B3%B5%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8.png/revision/latest?cb=20170405002331&path-prefix=ko',
 	},
@@ -841,8 +783,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['노말'],
 		description: '다양한 진화가 가능한 포켓몬, 특별한 친구가 되어줄 분을 찾습니다!',
-		totalQuantity: 4,
-		remainingQuantity: 4,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/Y6mrEFxymh1LUlP5Jr5m0eNBgGtXJwHB5buvjLpQuk8nyC_j0vzwlAY7t3oe0GfSa97cP5HZSSpW2S3q_QdXvHYYx-ttJk5JIAfLkPYaISa8KVvPsTJ3c_CPdklzwXmVMB9v1EcYPKAzxmyRtNo4hw.webp',
 	},
@@ -855,8 +796,7 @@ export const CARDS = [
 		grade: Grades['SUPER_RARE'],
 		type: ['드래곤', '비행'],
 		description: '강력한 드래곤 포켓몬, 진정한 파트너를 찾습니다!',
-		totalQuantity: 2,
-		remainingQuantity: 1,
+		quantity: 10,
 		image:
 			'https://i.namu.wiki/i/HpSQp39YatEw5WhksNePK87gi6Q5X3IWaSNb-N_3_60rxfdt6PB8aURsNCPTrd3lVUwj3RTWOOpOxzLgX9NR3-30uXOtXUunD4yVqkbBsVi8971FJQRZynPjKWFq2XsxXSAcyQlyBeFXt0TR267p2Q.webp',
 	},
@@ -870,8 +810,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['물'],
 		description: '이상한 힘을 지니고 있지만 사용할 때의 기억이 없으므로 항상 고개를 갸웃거리고 있다.',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image: 'https://i.ytimg.com/vi/2ytNqD3bqP0/maxresdefault.jpg',
 	},
 
@@ -884,8 +823,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['노말'],
 		description: '자신의 꼬리를 쫓아서 놀고 있으면 눈이 핑 돌고 마는 귀여운 일면을 보인다.',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image:
 			'https://static.wikia.nocookie.net/pokemon/images/f/f1/%EB%B4%84%EC%9D%B4%EC%9D%98_%EC%97%90%EB%82%98%EB%B9%84.png/revision/latest?cb=20230305065427&path-prefix=ko',
 	},
@@ -899,8 +837,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['전기', '페어리'],
 		description: '볼에 난 수염에서 전파를 내보내어 동료와 연락을 취한다. 전기가 줄어들면 몸을 둥글게 말고 잔다.',
-		totalQuantity: 5,
-		remainingQuantity: 3,
+		quantity: 10,
 		image: 'https://i.pinimg.com/550x/ca/9a/d6/ca9ad6d06d6847d0881da396e5dfe6cd.jpg',
 	},
 
@@ -913,8 +850,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['노말'],
 		description: '전신의 세포를 재구성해서 본 것의 모양과 똑같이 변신하는 능력을 가지고 있다.',
-		totalQuantity: 5,
-		remainingQuantity: 2,
+		quantity: 10,
 		image:
 			'https://postfiles.pstatic.net/MjAxNzAyMDlfMTU2/MDAxNDg2NTY5MjY1NDQ1.hqoh7tz9WJ62NoRRMyVlYEA-KfUSW14zaz9P-s5Nfksg.KRIvdWU3RKrxeJm9qawHLqJfpMgJ_dCZEdaiRCxOir0g.JPEG.doghter4our/IMG_3244.jpg?type=w773',
 	},
@@ -928,8 +864,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['풀'],
 		description: '머리의 잎사귀에서 살짝 달콤한 향기가 감돈다. 얌전하며 햇볕을 쬐는 것을 매우 좋아한다.',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image:
 			'https://static.wikia.nocookie.net/pokemon/images/0/08/%EA%B8%88%EC%84%A0%EC%9D%98_%EC%B9%98%EC%BD%94%EB%A6%AC%ED%83%80.jpg/revision/latest/scale-to-width-down/1200?cb=20240218083437&path-prefix=ko',
 	},
@@ -943,8 +878,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['노말'],
 		description: '깨끗한 것을 좋아하는 포켓몬이다. 꼬리를 빗자루 대신 써서 항상 거처의 먼지를 쓸어 낸다.',
-		totalQuantity: 3,
-		remainingQuantity: 1,
+		quantity: 10,
 		image:
 			'https://static.wikia.nocookie.net/pokemon/images/d/d1/%EB%B2%A8%EC%9D%98_%EC%B9%98%EB%9D%BC%EB%AF%B8.png/revision/latest?cb=20230503124325&path-prefix=ko',
 	},
@@ -958,8 +892,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['물'],
 		description: '커다란 꼬리지느러미로 물을 헤치면 스피드가 쑥쑥 오른다. 작은 몸이지만 힘이 장사다.',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image:
 			'https://mblogthumb-phinf.pstatic.net/MjAyMDAzMjhfNzMg/MDAxNTg1MzcyNDM5ODA3.n1WaRLXWQ6mPu1kzpJ5KtcxyPgY7yerf8tSqvUHIBe0g.WCjUQO7Xjhho1iOi4lWVXQicYCZran7SSS6MZ3mmsLEg.JPEG.ultrainsup/%EB%AC%BC%ED%8F%AC%EC%BC%93%EB%AA%AC_%EB%AC%BC%EC%A7%B1%EC%9D%B42.jpg?type=w800',
 	},
@@ -973,8 +906,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['노말'],
 		description: '달콤한 꿀을 손바닥에 배어들게 해서 항상 핥고 있다. 깜지곰에 따라 맛이 다르다.',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image:
 			'https://static.wikia.nocookie.net/pokemon/images/2/27/%EB%8B%A8%ED%92%8D%EC%9D%98_%EA%B9%9C%EC%A7%80%EA%B3%B0.png/revision/latest?cb=20240430085541&path-prefix=ko',
 	},
@@ -988,8 +920,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['물', '에스퍼'],
 		description: '움직임은 느리지만 꼬리를 사용하는 낚시가 특기다. 둔감하므로 꼬리를 물려도 아프지 않다.',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image: 'https://i.ytimg.com/vi/ILegHrE25fg/maxresdefault.jpg',
 	},
 
@@ -1002,8 +933,7 @@ export const CARDS = [
 		grade: Grades['COMMON'],
 		type: ['물', '페어리'],
 		description: '둥근 꼬리는 튜브 대용이다. 그 안에는 영양으로 가득 찬 기름이 들어 있다.',
-		totalQuantity: 5,
-		remainingQuantity: 5,
+		quantity: 10,
 		image:
 			'https://mblogthumb-phinf.pstatic.net/MjAyMzA4MTZfOTYg/MDAxNjkyMTYwMzczMzg5.4oMFWTH-KI0YZru54YZm8r_zJkjkJpTI8HiqQi1Ywewg.bjDB0LdFMh5EIhievuUYurutp2ecQGy26oGp-7SLzLwg.JPEG.dydtmd4/%EB%A7%88%EB%A6%B41.jpg?type=w400',
 	},
@@ -1013,7 +943,8 @@ export const SHOPS = [
 	{
 		id: 'c3febc1f-43c0-4b19-a039-bae3b3969ee5',
 		price: 7,
-		quantity: 5,
+		totalQuantity: 5,
+		remainingQuantity: 4,
 		exchangeGrade: Grades['RARE'],
 		exchangeType: 'Card',
 		exchangeDetails: '교환 원합니다',
@@ -1024,7 +955,8 @@ export const SHOPS = [
 	{
 		id: '3dcf8d43-945a-471b-b6a1-fc064516aa14',
 		price: 5,
-		quantity: 3,
+		totalQuantity: 3,
+		remainingQuantity: 3,
 		exchangeGrade: Grades['LEGENDARY'],
 		exchangeType: 'Card',
 		exchangeDetails: '교환 원합니다',
@@ -1035,7 +967,8 @@ export const SHOPS = [
 	{
 		id: '14e6fa2b-e28c-414a-ba24-fd4029011096',
 		price: 15,
-		quantity: 4,
+		totalQuantity: 4,
+		remainingQuantity: 3,
 		exchangeGrade: Grades['RARE'],
 		exchangeType: 'Card',
 		exchangeDetails: '교환 원합니다',
@@ -1046,7 +979,8 @@ export const SHOPS = [
 	{
 		id: '3e97f934-e034-49ec-b4c6-9dd5c9e4680b',
 		price: 12,
-		quantity: 5,
+		totalQuantity: 5,
+		remainingQuantity: 3,
 		exchangeGrade: Grades['SUPER_RARE'],
 		exchangeType: 'Card',
 		exchangeDetails: '교환 원합니다',
@@ -1057,7 +991,8 @@ export const SHOPS = [
 	{
 		id: 'd221bce5-b583-43b3-919c-8ce9c082193f',
 		price: 6,
-		quantity: 5,
+		totalQuantity: 5,
+		remainingQuantity: 5,
 		exchangeGrade: Grades['LEGENDARY'],
 		exchangeType: 'Card',
 		exchangeDetails: '교환 원합니다',
@@ -1068,7 +1003,8 @@ export const SHOPS = [
 	{
 		id: '9b5a14eb-7f0b-4ad8-ae54-c3a9e97f2d1b',
 		price: 12,
-		quantity: 2,
+		totalQuantity: 2,
+		remainingQuantity: 2,
 		exchangeGrade: Grades['RARE'],
 		exchangeType: 'Card',
 		exchangeDetails: '교환 원합니다',
