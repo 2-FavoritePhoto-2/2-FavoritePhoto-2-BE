@@ -15,4 +15,9 @@ export class UserService {
 
 		return card;
 	};
+
+	getPhotoCardDetails = async (userId, cardId) => {
+		const cardDetails = await this.data.getPhotoCardDetails(userId, cardId);
+		return cardDetails;
+	};
 }

@@ -71,4 +71,30 @@ export class UserRepository {
 
 		return { totalCount, card: userWithCards.myCards };
 	};
+
+	getPhotoCardDetails = async (userId: string, cardId: string) => {
+		const cardDetails = await this.data.findUnique({
+			where: { id: userId },
+			select: {
+				myCards: {
+					where: { id: cardId },
+					select: {
+						name: true,
+						price: true,
+						grade: true,
+						type: true,
+						description: true,
+						image: true,
+						quantity: true,
+					},
+				},
+			},
+		});
+
+		if (!cardDetails || cardDetails.myCards.length === 0) {
+			throw new Error('해당 포토 카드를 찾을 수 없습니다.');
+		}
+
+		return cardDetails.myCards[0];
+	};
 }
