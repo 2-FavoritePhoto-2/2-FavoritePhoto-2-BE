@@ -6,7 +6,7 @@ export class UserController {
 		this.service = userService;
 	}
 
-	// GET /user/profile/:id
+	// GET /user/profile
 	getUserProfile = async (req, res) => {
 		try {
 			const userId = req.auth.userId;
@@ -36,6 +36,19 @@ export class UserController {
 			res.status(HttpStatus.SUCCESS).json(card);
 		} catch (error) {
 			res.status(HttpStatus.SERVER_ERROR).json({ error: error.message });
+		}
+	};
+
+	// GET /user/cards/:cardId
+	getPhotoCardDetails = async (req, res) => {
+		const userId = req.auth.userId;
+		const { cardId } = req.params;
+
+		try {
+			const cardDetails = await this.service.getPhotoCardDetails(userId, cardId);
+			res.status(HttpStatus.SUCCESS).json(cardDetails);
+		} catch (error) {
+			res.status(HttpStatus.NOT_FOUND).json({ error: error.message });
 		}
 	};
 }
