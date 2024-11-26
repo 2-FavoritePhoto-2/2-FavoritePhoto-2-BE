@@ -8,12 +8,12 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3100/auth/login
+POST http://localhost:3100/auth/login
 Content-Type: application/json
 
 {
-	"email": "test@test.com",
-	"password": "password"
+	"email": "test1@naver.com",
+	"password": "1234"
 }
 
 ###
