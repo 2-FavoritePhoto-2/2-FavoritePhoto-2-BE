@@ -23,6 +23,9 @@ export class AuthService {
 			...user,
 			password: hashedPassword,
 		});
+
+		await this.data.createPointLog(newUser.id, 50, 'INITIAL_POINT');
+
 		return;
 	};
 

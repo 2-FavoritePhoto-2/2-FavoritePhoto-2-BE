@@ -1,7 +1,9 @@
 export class AuthRepository {
 	data: any;
+	prisma: any;
 	constructor(client) {
 		this.data = client.User;
+		this.prisma = client;
 	}
 
 	findByEmail = async email => {
@@ -36,6 +38,17 @@ export class AuthRepository {
 				id,
 			},
 			data,
+		});
+	};
+
+	createPointLog = async (userId, amount, action, metaData = null) => {
+		return this.prisma.pointLog.create({
+			data: {
+				userId,
+				amount,
+				action,
+				metaData,
+			},
 		});
 	};
 }

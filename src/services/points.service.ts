@@ -24,7 +24,7 @@ export class PointsService {
 		// 포인트 적립
 		await this.repository.handleRandomPointDraw(userId, randomPoints);
 
-		return { randomPoints };
+		return { canDraw: true, randomPoints };
 	};
 
 	// 마지막 뽑기 시간 조회
