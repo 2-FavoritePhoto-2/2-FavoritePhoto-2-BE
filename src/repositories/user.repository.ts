@@ -1,14 +1,9 @@
-import { Grades } from '@prisma/client';
-
-interface Filter {
-	type: 'grade' | 'type' | 'keyword';
-	value: string | string[];
-}
-
 export class UserRepository {
 	data: any;
+	prisma: any;
 	constructor(client) {
 		this.data = client.User;
+		this.prisma = client;
 	}
 
 	// GET Id
@@ -21,45 +16,13 @@ export class UserRepository {
 	};
 
 	// GET 유저 포토카드 전체 조회
-	getUserPhotoCards = async (userId: string, page, pageSize, orderBy, filter?: Filter) => {
-		let sortOption;
-		switch (orderBy) {
-			case 'oldest':
-				sortOption = { createdAt: 'asc' };
-				break;
-			case 'newest':
-				sortOption = { createdAt: 'desc' };
-				break;
-			case 'priceHighest':
-				sortOption = { price: 'desc' };
-				break;
-			case 'priceLowest':
-			default:
-				sortOption = { price: 'asc' };
-		}
-
+	getUserPhotoCards = async (skip, take, sortOption, where) => {
 		// 관계 필드 myCards를 활용하여 데이터 조회
-		const userWithCards = await this.data.findUnique({
-			where: { id: userId },
-			select: {
-				myCards: {
-					where: filter
-						? {
-								...(filter.type === 'grade' && { grade: filter.value as Grades }),
-								...(filter.type === 'type' && { type: { has: filter.value as string[] } }),
-								...(filter.type === 'keyword' && { name: { contains: filter.value as string, mode: 'insensitive' } }),
-							}
-						: undefined,
-					orderBy: sortOption,
-					skip: (page - 1) * pageSize,
-					take: Number(pageSize),
-				},
-				_count: {
-					select: {
-						myCards: true,
-					},
-				},
-			},
+		const userWithCards = await this.prisma.card.findMany({
+			where,
+			orderBy: sortOption,
+			skip,
+			take,
 		});
 
 		if (!userWithCards) {
@@ -67,9 +30,9 @@ export class UserRepository {
 		}
 
 		// 전체 개수는 _count 필드에서 가져옴
-		const totalCount = userWithCards._count.myCards;
+		const totalCount = await this.prisma.card.count({ where });
 
-		return { totalCount, card: userWithCards.myCards };
+		return { totalCount, card: userWithCards };
 	};
 
 	getPhotoCardDetails = async (userId: string, cardId: string) => {

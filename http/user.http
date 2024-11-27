@@ -3,8 +3,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExM
 
 ###
 # GET http://localhost:3100/user/cards?userId=53a10ad5-5c7a-4415-9683-a151b861b26d&page=1&pageSize=10&orderBy=priceLowest&filter[type]=type&filter[value]=물
-GET http://localhost:3100/user/cards?&page=1&pageSize=10&orderBy=priceLowest
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI1OTg1NDgsImV4cCI6MTczMjY4NDk0OH0.QuXHiTuyCs7ya8B42M1-cdVncQAaE_1A1RT6t-38N3g
+GET http://localhost:3100/user/cards?page=1&orderBy=priceHighest&keyword=데
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI2NzM2NzYsImV4cCI6MTczMjc2MDA3Nn0.0GSrUBos5n_0WjDFMX6_5vTElCwKnM4ZSTzh1MzHPIM
 ###
 GET http://localhost:3100/user/cards/7d98d3c3-357d-4a6b-a65c-c55658f4a9c2
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI1OTg1NDgsImV4cCI6MTczMjY4NDk0OH0.QuXHiTuyCs7ya8B42M1-cdVncQAaE_1A1RT6t-38N3g
