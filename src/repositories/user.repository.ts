@@ -7,8 +7,10 @@ interface Filter {
 
 export class UserRepository {
 	data: any;
+	shopId: any;
 	constructor(client) {
 		this.data = client.User;
+		this.shopId = client.Shop;
 	}
 
 	// GET Id
@@ -96,5 +98,67 @@ export class UserRepository {
 		}
 
 		return cardDetails.myCards[0];
+	};
+
+	getExchangesByShopId = async (shopId: string, userId: string) => {
+		const shopDetails = await this.shopId.findUnique({
+			where: { id: shopId },
+			include: {
+				Exchange: {
+					include: {
+						buyer: true,
+						buyerCard: {
+							include: {
+								owner: true, // 카드 소유자 정보 포함
+							},
+						},
+					},
+				},
+			},
+		});
+
+		if (!shopDetails) {
+			throw new Error('Shop not found');
+		}
+
+		const exchanges = shopDetails.Exchange;
+
+		if (shopDetails.sellerId === userId) {
+			// 판매자 관점
+			return exchanges.map(exchange => ({
+				buyerId: exchange.buyerId,
+				buyerNickname: exchange.buyer?.nickname,
+				buyerCard: {
+					name: exchange.buyerCard?.name,
+					grade: exchange.buyerCard?.grade,
+					type: exchange.buyerCard?.type,
+					description: exchange.buyerCard?.description,
+					image: exchange.buyerCard?.image,
+					price: exchange.buyerCard?.price, // 카드 가격
+					ownerNickname: exchange.buyerCard?.owner?.nickname, // 카드 소유자 닉네임
+				},
+			}));
+		} else {
+			// 구매자 관점
+			const userExchanges = exchanges.filter(exchange => exchange.buyerId === userId);
+
+			if (userExchanges.length === 0) {
+				throw new Error('Exchange request not found for the user');
+			}
+
+			// 요청한 모든 교환을 배열로 반환
+			return userExchanges.map(exchange => ({
+				buyerId: exchange.buyerId,
+				buyerCard: {
+					name: exchange.buyerCard?.name,
+					grade: exchange.buyerCard?.grade,
+					type: exchange.buyerCard?.type,
+					description: exchange.buyerCard?.description,
+					image: exchange.buyerCard?.image,
+					price: exchange.buyerCard?.price, // 카드 가격
+					ownerNickname: exchange.buyerCard?.owner?.nickname, // 카드 소유자 닉네임
+				},
+			}));
+		}
 	};
 }

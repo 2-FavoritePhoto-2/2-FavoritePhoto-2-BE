@@ -1,5 +1,5 @@
 import { prismaClient as prisma } from '../src/connection/connection';
-import { CARDS, SHOPS, USERS } from '../mock/mock';
+import { CARDS, SHOPS, USERS, EXCHANGES } from '../mock/mock';
 
 async function main() {
 	await prisma.$transaction([
@@ -17,6 +17,10 @@ async function main() {
 		}),
 		prisma.shop.createMany({
 			data: SHOPS,
+			skipDuplicates: true,
+		}),
+		prisma.exchange.createMany({
+			data: EXCHANGES,
 			skipDuplicates: true,
 		}),
 	]);
