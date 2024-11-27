@@ -26,7 +26,7 @@ app.use('/user', userRouter);
 app.use('/auth', authRouter);
 app.use('/shop', shopRouter);
 app.use('/cards', exchangeRouter);
-app.use('/notification', notificationRouter);
+app.use('/notifications', notificationRouter);
 
 app.use((err, req, res, next) => {
 	ErrorHandler.handle(err, req, res, next);

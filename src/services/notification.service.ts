@@ -10,7 +10,7 @@ export class NotificationService {
 
 	getNotification = async userId => {
 		const where = { recipientId: userId };
-		const orderBy = { createdAt: 'asc' };
+		const orderBy = { createdAt: 'desc' };
 
 		return await this.data.get(where, orderBy);
 	};

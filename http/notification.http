@@ -1,6 +1,6 @@
-GET http://localhost:3100/notification
+GET http://localhost:3100/notifications
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI2OTUzNTgsImV4cCI6MTczMjc4MTc1OH0.qFVhwDOuVG9oWu93bEK2lwpi2R_LTT9ehwIl1scQ2tc
 
 ###
-PATCH http://localhost:3100/notification/4f308527-d43f-4f7c-8f2c-5c19a7eabfef
+PATCH http://localhost:3100/notifications/4f308527-d43f-4f7c-8f2c-5c19a7eabfef
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI2OTUzNTgsImV4cCI6MTczMjc4MTc1OH0.qFVhwDOuVG9oWu93bEK2lwpi2R_LTT9ehwIl1scQ2tc

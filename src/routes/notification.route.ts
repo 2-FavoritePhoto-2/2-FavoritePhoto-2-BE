@@ -6,4 +6,4 @@ import asyncHandler from '../utils/asyncHandler.js';
 export const notificationRouter = express.Router();
 
 notificationRouter.get('/', verifyAccessToken, asyncHandler(notificationController.getNotification));
-notificationRouter.get('/:id', verifyAccessToken, asyncHandler(notificationController.updateNotification));
+notificationRouter.patch('/:id', verifyAccessToken, asyncHandler(notificationController.updateNotification));
