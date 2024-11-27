@@ -66,4 +66,13 @@ export class ShopController {
 		}
 		res.status(HttpStatus.NO_CONTENT).json(shop);
 	};
+
+	createPurchase = async (req, res) => {
+		const { userId: buyerId } = req.auth;
+		const { shopId } = req.params;
+		const { quantity, totalPrice } = req.body;
+
+		const purchase = await this.service.createPurchase(shopId, buyerId, quantity, totalPrice);
+		return res.status(HttpStatus.CREATED).json(purchase);
+	};
 }

@@ -10,3 +10,4 @@ shopRouter.post('/', verifyAccessToken, asyncHandler(shopController.createShop))
 shopRouter.get('/:shopId', asyncHandler(shopController.getShopById));
 shopRouter.patch('/:shopId', verifyAccessToken, verifySeller, asyncHandler(shopController.updateShop));
 shopRouter.delete('/:shopId', verifyAccessToken, verifySeller, asyncHandler(shopController.deleteShop));
+shopRouter.post('/:shopId/purchase', verifyAccessToken, asyncHandler(shopController.createPurchase));
