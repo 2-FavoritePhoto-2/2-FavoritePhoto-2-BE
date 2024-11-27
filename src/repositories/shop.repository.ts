@@ -119,15 +119,23 @@ export class ShopRepository {
 		return purchase;
 	};
 
-	updateUser = async (buyerId, totalPrice) => {
-		const shop = await this.prisma.user.update({
-			where: { id: buyerId },
-			data: {
-				point: {
-					decrement: totalPrice,
-				},
-			},
+	updateUser = async (userId: string, totalPrice: number, action: 'decrement' | 'increment') => {
+		const updateData: { point: { decrement?: number; increment?: number } } = { point: {} };
+
+		// 차감 혹은 적립
+		if (action === 'decrement') {
+			updateData.point = { decrement: totalPrice }; // 포인트 차감
+		} else if (action === 'increment') {
+			updateData.point = { increment: totalPrice }; // 포인트 적립
+		}
+
+		// 사용자 정보 업데이트
+		const user = await this.prisma.user.update({
+			where: { id: userId },
+			data: updateData,
 		});
+
+		return user;
 	};
 
 	createPurchasedCard = async cards => {
@@ -136,5 +144,17 @@ export class ShopRepository {
 		});
 
 		return newCard;
+	};
+
+	createPointLog = async ({ userId, amount, action, metaData }) => {
+		const pointLog = await this.prisma.pointLog.create({
+			data: {
+				userId,
+				amount,
+				action,
+				metaData,
+			},
+		});
+		return pointLog;
 	};
 }

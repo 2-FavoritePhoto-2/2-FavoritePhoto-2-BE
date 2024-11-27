@@ -44,13 +44,29 @@ export class ShopService {
 				throw new Error('구매 가능한 수량이 부족합니다!');
 			}
 
-			const usePoints = await this.data.updateUser(buyerId, totalPrice);
+			const usePoints = await this.data.updateUser(buyerId, totalPrice, 'decrement');
 
 			const purchase = await this.data.purchase({
 				quantity,
 				totalPrice,
 				buyerId,
 				shopId,
+			});
+
+			await this.data.createPointLog({
+				userId: buyerId,
+				amount: -totalPrice,
+				action: 'PURCHASE',
+				metaData: { purchaseId: purchase.id },
+			});
+
+			await this.data.updateUser(shop.sellerId, totalPrice, 'increment');
+
+			await this.data.createPointLog({
+				userId: shop.sellerId,
+				amount: totalPrice,
+				action: 'SALE',
+				metaData: { purchaseId: purchase.id },
 			});
 
 			const updatedQuantity = shop.remainingQuantity - quantity;
