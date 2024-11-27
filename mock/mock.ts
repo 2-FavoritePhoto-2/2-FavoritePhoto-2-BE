@@ -1,39 +1,39 @@
-import { Grades } from '@prisma/client';
+import { Grades, PointAction } from '@prisma/client';
 
 export const USERS = [
 	{
 		id: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		nickname: '테스트1',
 		email: 'test1@naver.com',
-		password: '1234',
+		password: '$2b$10$tmChMUZWFpfiGy4eb5dX7eXijQPhT.Du1ffKUuLzOhmLe.zCjjE.e',
 		point: 50,
 	},
 	{
 		id: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		nickname: '테스트2',
 		email: 'test2@hanmail.com',
-		password: '1234',
+		password: '$2b$10$tmChMUZWFpfiGy4eb5dX7eXijQPhT.Du1ffKUuLzOhmLe.zCjjE.e',
 		point: 50,
 	},
 	{
 		id: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		nickname: '테스트3',
 		email: 'test3@gmail.com',
-		password: '1234',
+		password: '$2b$10$tmChMUZWFpfiGy4eb5dX7eXijQPhT.Du1ffKUuLzOhmLe.zCjjE.e',
 		point: 50,
 	},
 	{
 		id: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		nickname: '테스트4',
 		email: 'test4@naver.com',
-		password: '1234',
+		password: '$2b$10$tmChMUZWFpfiGy4eb5dX7eXijQPhT.Du1ffKUuLzOhmLe.zCjjE.e',
 		point: 50,
 	},
 	{
 		id: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		nickname: '테스트5',
 		email: 'test5@naver.com',
-		password: '1234',
+		password: '$2b$10$tmChMUZWFpfiGy4eb5dX7eXijQPhT.Du1ffKUuLzOhmLe.zCjjE.e',
 		point: 50,
 	},
 ];
@@ -1004,6 +1004,39 @@ export const SHOPS = [
 		available: true,
 		sellerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		cardId: '2b7e8988-d6b5-4d4c-a0e1-414e9550515a',
+	},
+];
+
+export const POINT_LOGS = [
+	{
+		id: '1a2b3c4d-1111-2222-3333-444455556666', // 유니크한 UUID
+		amount: 50, // 초기 포인트
+		action: PointAction['INITIAL_POINT'],
+		userId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+	},
+	{
+		id: '2b3c4d5e-2222-3333-4444-555566667777',
+		amount: 50,
+		action: PointAction['INITIAL_POINT'],
+		userId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
+	},
+	{
+		id: '3c4d5e6f-3333-4444-5555-666677778888',
+		amount: 50,
+		action: PointAction['INITIAL_POINT'],
+		userId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+	},
+	{
+		id: '4d5e6f7g-4444-5555-6666-777788889999',
+		amount: 50,
+		action: PointAction['INITIAL_POINT'],
+		userId: 'df3085cd-1dd4-474d-8972-e65d716af906',
+	},
+	{
+		id: '5e6f7g8h-5555-6666-7777-888899990000',
+		amount: 50,
+		action: PointAction['INITIAL_POINT'],
+		userId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 	},
 ];
 
