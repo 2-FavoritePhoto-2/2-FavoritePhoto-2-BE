@@ -1,4 +1,5 @@
 import { prismaClient } from '../connection/connection.js';
+import { sendNotification } from '../containers/notification.container.js';
 
 export class ShopService {
 	data: any;
@@ -44,7 +45,7 @@ export class ShopService {
 				throw new Error('구매 가능한 수량이 부족합니다!');
 			}
 
-			const usePoints = await this.data.updateUser(buyerId, totalPrice);
+			await this.data.updateUser(buyerId, totalPrice);
 
 			const purchase = await this.data.purchase({
 				quantity,
@@ -68,6 +69,13 @@ export class ShopService {
 				quantity,
 			};
 			await this.data.createPurchasedCard(newCardData);
+
+			// 구매 완료 알림 to 구매자
+			await sendNotification({
+				type: 'BUY',
+				recipientId: buyerId,
+				content: `[${shop.card?.grade}|${shop.card?.name}] ${quantity}장을 성공적으로 구매했습니다.`,
+			});
 
 			return purchase;
 		});

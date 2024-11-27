@@ -14,28 +14,32 @@ datasource db {
 }
 
 model User {
-  id               String     @id @default(uuid())
-  email            String     @unique @db.VarChar(254)
-  nickname         String     @unique
+  id               String         @id @default(uuid())
+  email            String         @unique @db.VarChar(254)
+  nickname         String         @unique
   password         String
-  point            Int        @default(50)
+  point            Int            @default(50)
   refreshToken     String?
-  createdAt        DateTime   @default(now())
-  updatedAt        DateTime   @updatedAt
-  uploadedCards    Card[]     @relation("UploadedCardRelation")
-  myCards          Card[]     @relation("MyCardRelation")
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  uploadedCards    Card[]         @relation("UploadedCardRelation")
+  myCards          Card[]         @relation("MyCardRelation")
   shops            Shop[]
   purchases        Purchase[]
-  sellingExchanges Exchange[] @relation("SellerRelation")
-  buyingExchanges  Exchange[] @relation("BuyerRelation")
+  sellingExchanges Exchange[]     @relation("SellerRelation")
+  buyingExchanges  Exchange[]     @relation("BuyerRelation")
+  Notification     Notification[]
 }
 
 model Notification {
-  id        String   @id @default(uuid())
-  content   String
-  isRead    Boolean
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String   @id @default(uuid())
+  type        String
+  recipient   User     @relation(fields: [recipientId], references: [id], onDelete: Cascade)
+  recipientId String
+  content     String
+  isRead      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Card {

@@ -10,6 +10,7 @@ import { authRouter } from './routes/auth.route.js';
 import { shopRouter } from './routes/shop.route.js';
 import { exchangeRouter } from './routes/exchange.route.js';
 import ErrorHandler from './utils/errors.js';
+import { notificationRouter } from './routes/notification.route.js';
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use('/user', userRouter);
 app.use('/auth', authRouter);
 app.use('/shop', shopRouter);
 app.use('/cards', exchangeRouter);
+app.use('/notification', notificationRouter);
 
 app.use((err, req, res, next) => {
 	ErrorHandler.handle(err, req, res, next);
