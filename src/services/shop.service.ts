@@ -45,7 +45,12 @@ export class ShopService {
 				throw new Error('구매 가능한 수량이 부족합니다!');
 			}
 
-			await this.data.updateUser(buyerId, totalPrice);
+			const buyerPoints = await this.data.updateUser(buyerId, totalPrice);
+			const sellerPoints = await this.data.updateUser(shop.sellerId, -totalPrice);
+
+			if (!buyerPoints) {
+				throw new Error('구매 포인트가 부족합니다!');
+			}
 
 			const purchase = await this.data.purchase({
 				quantity,
