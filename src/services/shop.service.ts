@@ -1,3 +1,4 @@
+import { Grades } from '@prisma/client';
 import { prismaClient } from '../connection/connection.js';
 
 export class ShopService {
@@ -6,8 +7,46 @@ export class ShopService {
 		this.data = shopRepository;
 	}
 
-	getShopList = async ({ page, pageSize, orderBy, keyword, filter, exclude }) => {
-		const shops = await this.data.getShopList(page, pageSize, orderBy, keyword, filter, exclude);
+	getShopList = async ({ page, pageSize, orderBy, keyword, grade, type, available, exclude }) => {
+		const skip = (page - 1) * pageSize;
+		const take = Number(pageSize);
+
+		let sortOption;
+		switch (orderBy) {
+			case 'oldest':
+				sortOption = { orderBy: { createdAt: 'asc' } };
+				break;
+			case 'newest':
+				sortOption = { orderBy: { createdAt: 'desc' } };
+				break;
+			case 'priceHighest':
+				sortOption = { orderBy: { price: 'desc' } };
+				break;
+			case 'priceLowest':
+			default:
+				sortOption = { orderBy: { price: 'asc' } };
+		}
+
+		const where = {
+			AND: [
+				keyword
+					? {
+							card: {
+								OR: [
+									{ name: { contains: keyword, mode: 'insensitive' } },
+									{ description: { contains: keyword, mode: 'insensitive' } },
+								],
+							},
+						}
+					: {},
+				grade ? { card: { grade: Grades[grade] } } : {},
+				type ? { card: { type: { has: type } } } : {},
+				available !== undefined ? { available: available } : {},
+				exclude ? { id: { not: exclude } } : {},
+			],
+		};
+
+		const shops = await this.data.getShopList(skip, take, sortOption, where);
 
 		return shops;
 	};
