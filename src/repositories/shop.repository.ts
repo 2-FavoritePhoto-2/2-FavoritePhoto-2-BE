@@ -7,8 +7,10 @@ interface Filter {
 
 export class ShopRepository {
 	data: any;
+	prisma: any;
 	constructor(client) {
 		this.data = client.Shop;
+		this.prisma = client;
 	}
 
 	// GET all
@@ -109,21 +111,30 @@ export class ShopRepository {
 	};
 
 	// POST purchase by shopId
-	createPurchase = async ({ id, data }) => {
-		const purchase = await this.data.update({
-			where: { id },
-			data: {
-				purchases: {
-					create: {
-						...data,
-					},
-				},
-			},
-			include: {
-				purchases: true,
-			},
+	purchase = async data => {
+		const purchase = await this.prisma.purchase.create({
+			data,
 		});
 
 		return purchase;
+	};
+
+	updateUser = async (buyerId, totalPrice) => {
+		const shop = await this.prisma.user.update({
+			where: { id: buyerId },
+			data: {
+				point: {
+					decrement: totalPrice,
+				},
+			},
+		});
+	};
+
+	createPurchasedCard = async cards => {
+		const newCard = await this.prisma.card.createMany({
+			data: cards,
+		});
+
+		return newCard;
 	};
 }
