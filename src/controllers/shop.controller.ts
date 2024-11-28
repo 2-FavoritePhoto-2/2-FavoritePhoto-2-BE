@@ -8,7 +8,17 @@ export class ShopController {
 	}
 
 	getShopList = async (req, res) => {
-		const { page = 1, pageSize = 10, orderBy = 'priceLowest', keyword = '', grade, type, available, exclude = '' } = req.query;
+		const {
+			page = 1,
+			pageSize = 10,
+			orderBy = 'priceLowest',
+			keyword = '',
+			grade,
+			type,
+			available,
+			exclude = '',
+			by,
+		} = req.query;
 
 		const shops = await this.service.getShopList({
 			page,
@@ -19,6 +29,7 @@ export class ShopController {
 			type,
 			available: available === 'true' ? true : available === 'false' ? false : undefined,
 			exclude,
+			by,
 		});
 		res.status(HttpStatus.SUCCESS).json(shops);
 	};
