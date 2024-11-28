@@ -1,10 +1,10 @@
 export class UserRepository {
 	data: any;
-	shopId: any;
+	shopData: any;
 	prisma: any;
 	constructor(client) {
 		this.data = client.User;
-		this.shopId = client.Shop;
+		this.shopData = client.Shop;
 		this.prisma = client;
 	}
 
@@ -64,7 +64,7 @@ export class UserRepository {
 	};
 
 	getExchangesByShopId = async (shopId: string, userId: string) => {
-		const shopDetails = await this.shopId.findUnique({
+		const shopDetails = await this.shopData.findUnique({
 			where: { id: shopId },
 			include: {
 				Exchange: {
