@@ -1,0 +1,115 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String     @id @default(uuid())
+  email            String     @unique @db.VarChar(254)
+  nickname         String     @unique
+  password         String
+  point            Int        @default(50)
+  refreshToken     String?
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  uploadedCards    Card[]     @relation("UploadedCardRelation")
+  myCards          Card[]     @relation("MyCardRelation")
+  shops            Shop[]
+  purchases        Purchase[]
+  sellingExchanges Exchange[] @relation("SellerRelation")
+  buyingExchanges  Exchange[] @relation("BuyerRelation")
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  content   String
+  isRead    Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Card {
+  id              String     @id @default(uuid())
+  uploadedBy      User?      @relation("UploadedCardRelation", fields: [uploaderId], references: [id], onDelete: SetNull)
+  uploaderId      String?
+  owner           User?      @relation("MyCardRelation", fields: [ownerId], references: [id], onDelete: SetNull)
+  ownerId         String?
+  name            String
+  price           Int
+  grade           Grades
+  type            String[]
+  description     String
+  quantity        Int
+  image           String
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  shops           Shop[]
+  sellerExchanges Exchange[] @relation("SellerRelation")
+  buyerExchanges  Exchange[] @relation("BuyerRelation")
+}
+
+model Shop {
+  id                String     @id @default(uuid())
+  price             Int
+  totalQuantity     Int
+  remainingQuantity Int
+  exchangeGrade     Grades
+  exchangeType      String
+  exchangeDetails   String
+  available         Boolean    @default(true) // NOTE quantity=0 이면 available=false
+  seller            User?      @relation(fields: [sellerId], references: [id], onDelete: SetNull)
+  sellerId          String?
+  card              Card?      @relation(fields: [cardId], references: [id], onDelete: SetNull)
+  cardId            String?
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  purchases         Purchase[]
+  Exchange          Exchange[]
+}
+
+model Purchase {
+  id         String   @id @default(uuid())
+  quantity   Int
+  totalPrice Int
+  buyer      User?    @relation(fields: [buyerId], references: [id], onDelete: SetNull)
+  buyerId    String?
+  shop       Shop?    @relation(fields: [shopId], references: [id], onDelete: SetNull)
+  shopId     String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Exchange {
+  id           String   @id @default(uuid())
+  description  String
+  complete     Boolean  @default(false)
+  seller       User?    @relation("SellerRelation", fields: [sellerId], references: [id], onDelete: SetNull)
+  sellerId     String?
+  buyer        User?    @relation("BuyerRelation", fields: [buyerId], references: [id], onDelete: SetNull)
+  buyerId      String?
+  sellerCard   Card?    @relation("SellerRelation", fields: [sellerCardId], references: [id], onDelete: SetNull)
+  sellerCardId String?
+  buyerCard    Card?    @relation("BuyerRelation", fields: [buyerCardId], references: [id], onDelete: SetNull)
+  buyerCardId  String?
+  shop         Shop?    @relation(fields: [shopId], references: [id], onDelete: SetNull)
+  shopId       String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+enum Grades {
+  COMMON
+  RARE
+  SUPER_RARE
+  LEGENDARY
+}

@@ -1,0 +1,28 @@
+// 프로필 조회
+GET http://localhost:3100/user/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI3MDAwNjcsImV4cCI6MTczMjc4NjQ2N30.g81lqgalCJnJ7uun5ew-lFzBFkMdAPbnk3y19ESow1o
+
+// 마이카드 리스트
+###
+GET http://localhost:3100/user/cards?page=1&orderBy=priceHighest&keyword=데
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI2NzM2NzYsImV4cCI6MTczMjc2MDA3Nn0.0GSrUBos5n_0WjDFMX6_5vTElCwKnM4ZSTzh1MzHPIM
+
+// 카드 상세
+###
+GET http://localhost:3100/user/cards/3d7bf9f6-1437-4a01-890b-0ff4d4dfd9b8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI3MDAwNjcsImV4cCI6MTczMjc4NjQ2N30.g81lqgalCJnJ7uun5ew-lFzBFkMdAPbnk3y19ESow1o
+
+###
+// 교환 목록
+GET http://localhost:3100/user/exchanges/c3febc1f-43c0-4b19-a039-bae3b3969ee5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZjMwODVjZC0xZGQ0LTQ3NGQtODk3Mi1lNjVkNzE2YWY5MDYiLCJpYXQiOjE3MzI3NjIzOTcsImV4cCI6MTczMjg0ODc5N30.aAakwncs9Jr-K4yqWsdRWCnrWXrPy4d04utta4n3Py4
+
+###
+// 임시 로그인
+POST http://localhost:3100/auth/login
+Content-Type: application/json
+
+{
+	"email": "test4@naver.com",
+	"password": "1234"
+}
