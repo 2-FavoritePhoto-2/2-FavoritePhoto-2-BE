@@ -14,7 +14,12 @@ export class ShopService {
 	};
 
 	createShop = async data => {
-		const newShop = await this.data.createShop(data);
+		const { quantity, ...rest } = data;
+		const newShop = await this.data.createShop({
+			totalQuantity: quantity,
+			remainingQuantity: quantity,
+			...rest,
+		});
 
 		return newShop;
 	};
