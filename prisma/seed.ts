@@ -6,6 +6,7 @@ async function main() {
 		prisma.user.deleteMany(),
 		prisma.card.deleteMany(),
 		prisma.shop.deleteMany(),
+		prisma.exchange.deleteMany(),
 
 		prisma.user.createMany({
 			data: USERS,
