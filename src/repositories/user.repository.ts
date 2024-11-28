@@ -1,11 +1,11 @@
 export class UserRepository {
 	data: any;
 	shopId: any;
-  prisma: any;
+	prisma: any;
 	constructor(client) {
 		this.data = client.User;
 		this.shopId = client.Shop;
-    this.prisma = client;
+		this.prisma = client;
 	}
 
 	// GET Id
@@ -97,8 +97,8 @@ export class UserRepository {
 					type: exchange.buyerCard?.type,
 					description: exchange.buyerCard?.description,
 					image: exchange.buyerCard?.image,
-					price: exchange.buyerCard?.price, // 카드 가격
-					ownerNickname: exchange.buyerCard?.owner?.nickname, // 카드 소유자 닉네임
+					price: exchange.buyerCard?.price,
+					ownerNickname: exchange.buyerCard?.owner?.nickname,
 				},
 			}));
 		} else {
@@ -118,8 +118,8 @@ export class UserRepository {
 					type: exchange.buyerCard?.type,
 					description: exchange.buyerCard?.description,
 					image: exchange.buyerCard?.image,
-					price: exchange.buyerCard?.price, // 카드 가격
-					ownerNickname: exchange.buyerCard?.owner?.nickname, // 카드 소유자 닉네임
+					price: exchange.buyerCard?.price,
+					ownerNickname: exchange.buyerCard?.owner?.nickname,
 				},
 			}));
 		}

@@ -56,7 +56,7 @@ export class UserController {
 
 	// GET /user/exchanges/:shopId
 	getExchangesByShopId = async (req, res) => {
-		const userId = req.auth.userId; // Authenticated user's ID
+		const userId = req.auth.userId;
 		const { shopId } = req.params;
 
 		try {

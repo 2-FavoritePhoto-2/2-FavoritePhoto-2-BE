@@ -13,5 +13,5 @@ userRouter.get('/cards', verifyAccessToken, userController.getUserPhotoCards);
 // 유저 포토 카드 상세 조회
 userRouter.get('/cards/:cardId', verifyAccessToken, userController.getPhotoCardDetails);
 
-// GET /user/shop/:shopId/exchange-requests
+// 거래 제안 목록 조회
 userRouter.get('/exchanges/:shopId', verifyAccessToken, userController.getExchangesByShopId);
