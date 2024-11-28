@@ -15,7 +15,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExM
 ###
 // 교환 목록
 GET http://localhost:3100/user/exchanges/c3febc1f-43c0-4b19-a039-bae3b3969ee5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlNmNkMDVjNi0zNGQ1LTQ4NzEtODJjMS1mODgyOTg4ZDBlY2UiLCJpYXQiOjE3MzI3NTU2MDUsImV4cCI6MTczMjg0MjAwNX0.q_JjxPkdh_TP33fc6uke9Nk4xueMpv1NEQgvsjxllew
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI3NTYxNjAsImV4cCI6MTczMjg0MjU2MH0.YcTyYFrLQBzDGKkU9cWp0SFUw908GJyJNVtTHdUtUhM
 
 ###
 // 임시 로그인
@@ -23,6 +23,6 @@ POST http://localhost:3100/auth/login
 Content-Type: application/json
 
 {
-	"email": "test2@hanmail.com",
+	"email": "test1@naver.com",
 	"password": "1234"
 }
