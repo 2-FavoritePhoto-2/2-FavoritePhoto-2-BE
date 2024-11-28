@@ -10,16 +10,15 @@ export class PointsController {
 	drawRandomBox = async (req, res) => {
 		try {
 			const { userId } = req.auth;
-			const { canDraw, randomPoints } = await this.service.drawRandomPoints(userId);
-
-			if (!canDraw) {
-				// 1시간 이내라면 뽑을 수 없음을 응답
-				return res.status(400).json({ message: '1시간 이내에 이미 뽑았습니다.' });
-			}
+			const { randomPoints } = await this.service.drawRandomPoints(userId);
 
 			// 랜덤 포인트 뽑기 성공
 			res.status(HttpStatus.SUCCESS).json({ randomPoints });
 		} catch (error) {
+			if (error.message === '1시간 이내에 이미 뽑았습니다.') {
+				return res.status(HttpStatus.BAD_REQUEST).json({ message: error.message });
+			}
+
 			res.status(HttpStatus.SERVER_ERROR).json({ error: error.message });
 		}
 	};

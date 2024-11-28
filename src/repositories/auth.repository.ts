@@ -40,15 +40,4 @@ export class AuthRepository {
 			data,
 		});
 	};
-
-	createPointLog = async (userId, amount, action, metaData = null) => {
-		return this.prisma.pointLog.create({
-			data: {
-				userId,
-				amount,
-				action,
-				metaData,
-			},
-		});
-	};
 }

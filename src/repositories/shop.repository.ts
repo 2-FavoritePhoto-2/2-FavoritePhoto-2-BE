@@ -90,16 +90,4 @@ export class ShopRepository {
 
 		return newCard;
 	};
-
-	createPointLog = async ({ userId, amount, action, metaData }) => {
-		const pointLog = await this.prisma.pointLog.create({
-			data: {
-				userId,
-				amount,
-				action,
-				metaData,
-			},
-		});
-		return pointLog;
-	};
 }

@@ -1,6 +1,7 @@
 import { Grades } from '@prisma/client';
 import { prismaClient } from '../connection/connection.js';
 import { sendNotification } from '../containers/notification.container.js';
+import { createPointLog } from '../containers/points.container.js';
 
 export class ShopService {
 	data: any;
@@ -104,19 +105,9 @@ export class ShopService {
 				shopId,
 			});
 
-			await this.data.createPointLog({
-				userId: buyerId,
-				amount: -totalPrice,
-				action: 'PURCHASE',
-				metaData: { purchaseId: purchase.id },
-			});
+			await createPointLog(buyerId, -totalPrice, 'PURCHASE', { purchaseId: purchase.id });
 
-			await this.data.createPointLog({
-				userId: shop.sellerId,
-				amount: totalPrice,
-				action: 'SALE',
-				metaData: { purchaseId: purchase.id },
-			});
+			await createPointLog(shop.sellerId, totalPrice, 'SALE', { purchaseId: purchase.id });
 
 			const updatedQuantity = shop.remainingQuantity - quantity;
 			await this.data.updateShop(shopId, { remainingQuantity: updatedQuantity, available: updatedQuantity > 0 });

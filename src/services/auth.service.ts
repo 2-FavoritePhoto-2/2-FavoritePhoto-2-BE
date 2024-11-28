@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { createPointLog } from '../containers/points.container.js';
 
 export class AuthService {
 	data: any;
@@ -24,7 +25,7 @@ export class AuthService {
 			password: hashedPassword,
 		});
 
-		await this.data.createPointLog(newUser.id, 50, 'INITIAL_POINT');
+		await createPointLog(newUser.id, 50, 'INITIAL_POINT');
 
 		return;
 	};
