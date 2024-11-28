@@ -1,3 +1,4 @@
+import { boolean } from 'superstruct';
 import HttpStatus from '../utils/httpStatus.js';
 
 export class ShopController {
@@ -7,14 +8,16 @@ export class ShopController {
 	}
 
 	getShopList = async (req, res) => {
-		const { page = 1, pageSize = 10, orderBy = 'priceLowest', keyword = '', filter, exclude = '' } = req.query;
+		const { page = 1, pageSize = 10, orderBy = 'priceLowest', keyword = '', grade, type, available, exclude = '' } = req.query;
 
 		const shops = await this.service.getShopList({
 			page,
 			pageSize,
 			orderBy,
 			keyword: decodeURIComponent(keyword).trim(),
-			filter,
+			grade,
+			type,
+			available: available === 'true' ? true : available === 'false' ? false : undefined,
 			exclude,
 		});
 		res.status(HttpStatus.SUCCESS).json(shops);
@@ -62,5 +65,14 @@ export class ShopController {
 			return res.status(HttpStatus.NOT_FOUND).json({ message: '해당 판매 정보를 찾을 수 없습니다' });
 		}
 		res.status(HttpStatus.NO_CONTENT).json(shop);
+	};
+
+	createPurchase = async (req, res) => {
+		const { userId: buyerId } = req.auth;
+		const { shopId } = req.params;
+		const { quantity, totalPrice } = req.body;
+
+		const purchase = await this.service.createPurchase(shopId, buyerId, quantity, totalPrice);
+		return res.status(HttpStatus.CREATED).json(purchase);
 	};
 }

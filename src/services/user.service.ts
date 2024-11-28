@@ -1,3 +1,5 @@
+import { Grades } from '@prisma/client';
+
 export class UserService {
 	data: any;
 	constructor(userRepository) {
@@ -10,8 +12,36 @@ export class UserService {
 		return { nickname: profile.nickname, point: profile.point };
 	};
 
-	getUserPhotoCards = async ({ userId, page, pageSize, orderBy, filter }) => {
-		const card = await this.data.getUserPhotoCards(userId, page, pageSize, orderBy, filter);
+	getUserPhotoCards = async ({ userId, page, pageSize, orderBy, keyword, grade, type }) => {
+		const skip = (page - 1) * pageSize;
+		const take = Number(pageSize);
+
+		let sortOption;
+		switch (orderBy) {
+			case 'oldest':
+				sortOption = { createdAt: 'asc' };
+				break;
+			case 'newest':
+				sortOption = { createdAt: 'desc' };
+				break;
+			case 'priceHighest':
+				sortOption = { price: 'desc' };
+				break;
+			case 'priceLowest':
+			default:
+				sortOption = { price: 'asc' };
+		}
+
+		const where = {
+			ownerId: userId,
+			...(keyword && {
+				OR: [{ name: { contains: keyword, mode: 'insensitive' } }, { description: { contains: keyword, mode: 'insensitive' } }],
+			}),
+			...(grade && { grade: Grades[grade] }),
+			...(type && { type: { has: type } }),
+		};
+
+		const card = await this.data.getUserPhotoCards(skip, take, sortOption, where);
 
 		return card;
 	};

@@ -1,67 +1,20 @@
 import { Grades } from '@prisma/client';
 
-interface Filter {
-	type: 'grade' | 'type' | 'available';
-	value: string | string[] | boolean;
-}
-
 export class ShopRepository {
 	data: any;
+	prisma: any;
 	constructor(client) {
 		this.data = client.Shop;
+		this.prisma = client;
 	}
 
 	// GET all
-	getShopList = async (page, pageSize, orderBy, keyword?, filter?: Filter, exclude?) => {
-		let sortOption;
-		switch (orderBy) {
-			case 'oldest':
-				sortOption = { orderBy: { createdAt: 'asc' } };
-				break;
-			case 'newest':
-				sortOption = { orderBy: { createdAt: 'desc' } };
-				break;
-			case 'priceHighest':
-				sortOption = { orderBy: { price: 'desc' } };
-				break;
-			case 'priceLowest':
-			default:
-				sortOption = { orderBy: { price: 'asc' } };
-		}
-
-		let where: {
-			card?: {
-				name?: { contains: string; mode: 'insensitive' };
-				grade?: string;
-				type?: { has: string[] };
-			};
-			available?: boolean;
-			id?: { not: string };
-		} = {};
-
-		if (keyword) {
-			where.card = { ...where.card, name: { contains: keyword, mode: 'insensitive' } };
-		}
-
-		if (filter) {
-			if (filter.type === 'grade') {
-				where.card = { ...where.card, grade: filter.value as Grades };
-			} else if (filter.type === 'type') {
-				where.card = { ...where.card, type: { has: filter.value as string[] } };
-			} else if (filter.type === 'available') {
-				where.available = filter.value as boolean;
-			}
-		}
-
-		if (exclude) {
-			where.id = { not: exclude };
-		}
-
+	getShopList = async (skip, take, sortOption, where) => {
 		const list = await this.data.findMany({
 			where,
 			...sortOption,
-			skip: (page - 1) * pageSize,
-			take: Number(pageSize),
+			skip,
+			take,
 			include: { seller: true, card: true },
 		});
 
@@ -109,21 +62,30 @@ export class ShopRepository {
 	};
 
 	// POST purchase by shopId
-	createPurchase = async ({ id, data }) => {
-		const purchase = await this.data.update({
-			where: { id },
-			data: {
-				purchases: {
-					create: {
-						...data,
-					},
-				},
-			},
-			include: {
-				purchases: true,
-			},
+	purchase = async data => {
+		const purchase = await this.prisma.purchase.create({
+			data,
 		});
 
 		return purchase;
+	};
+
+	updateUser = async (buyerId, totalPrice) => {
+		const shop = await this.prisma.user.update({
+			where: { id: buyerId },
+			data: {
+				point: {
+					decrement: totalPrice,
+				},
+			},
+		});
+	};
+
+	createPurchasedCard = async cards => {
+		const newCard = await this.prisma.card.createMany({
+			data: cards,
+		});
+
+		return newCard;
 	};
 }

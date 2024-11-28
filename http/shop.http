@@ -1,7 +1,7 @@
-GET http://localhost:3100/shop?filter[type]=type&filter[value]=독
+GET http://localhost:3100/shop?keyword=카드&grade=RARE&type=땅&available=true
 
 ###
-GET http://localhost:3100/shop/cards/cards/5b48ef91-4238-484e-a91f-8f889859bbdb
+GET http://localhost:3100/shop/c3febc1f-43c0-4b19-a039-bae3b3969ee5
 
 ###
 POST http://localhost:3100/shop/cards
@@ -31,4 +31,11 @@ DELETE http://localhost:3100/shop/cards/6e99849c-bd9d-4d23-a8e9-2f269c81132d
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmZiMzlkNi0wZmNjLTRiMjMtOTg3YS0xZTAzYjIzYzJkOWYiLCJpYXQiOjE3MzIxNjc3OTUsImV4cCI6MTczMjE3MTM5NX0.r4PrKaKTj3jLyMARAtK-e7PBD7NJSUjY8cjfrPzp6m0
 
 ###
-POST http://localhost:3100/shop/cards/9b5a14eb-7f0b-4ad8-ae54-c3a9e97f2d1b/purchase
+POST http://localhost:3100/shop/c3febc1f-43c0-4b19-a039-bae3b3969ee5/purchase
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI2MDc1MDEsImV4cCI6MTczMjY5MzkwMX0.V46JBb9ALhgIbMpW9B-UsNfuBBRj-LaSGca-wnMOZdw
+Content-Type: application/json
+
+{
+	"quantity": 1,
+	"totalPrice": 7
+}
