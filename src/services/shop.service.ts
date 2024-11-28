@@ -7,7 +7,7 @@ export class ShopService {
 		this.data = shopRepository;
 	}
 
-	getShopList = async ({ page, pageSize, orderBy, keyword, grade, type, available, exclude }) => {
+	getShopList = async ({ page, pageSize, orderBy, keyword, grade, type, available, exclude, by }) => {
 		const skip = (page - 1) * pageSize;
 		const take = Number(pageSize);
 
@@ -43,6 +43,7 @@ export class ShopService {
 				type ? { card: { type: { has: type } } } : {},
 				available !== undefined ? { available: available } : {},
 				exclude ? { id: { not: exclude } } : {},
+				by ? { sellerId: { equals: by } } : {},
 			],
 		};
 
