@@ -121,4 +121,22 @@ export class UserRepository {
 			}));
 		}
 	};
+
+	createPhotoCard = async ({ ownerId, name, grade, type, price, quantity, image, description }) => {
+		const parsedType = Array.isArray(type) ? type : type.split(',');
+		const newCard = await this.prisma.card.create({
+			data: {
+				ownerId,
+				name,
+				price,
+				grade,
+				quantity,
+				type: parsedType,
+				description,
+				image,
+			},
+		});
+
+		return newCard;
+	};
 }

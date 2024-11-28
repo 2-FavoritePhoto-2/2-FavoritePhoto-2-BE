@@ -55,4 +55,19 @@ export class UserService {
 		const exchanges = await this.data.getExchangesByShopId(shopId, userId);
 		return exchanges;
 	};
+
+	createPhotoCard = async ({ ownerId, name, grade, type, price, quantity, image, description }) => {
+		const newCard = await this.data.createPhotoCard({
+			ownerId,
+			name,
+			price,
+			grade,
+			quantity,
+			type,
+			description,
+			image,
+		});
+
+		return newCard;
+	};
 }

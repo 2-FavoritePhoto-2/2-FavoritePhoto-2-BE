@@ -41,7 +41,6 @@ export const USERS = [
 export const CARDS = [
 	{
 		id: 'f6d3e2c9-a5a4-4e8f-b53e-3a29fefc1234',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '팬텀',
 		price: 10,
@@ -53,7 +52,6 @@ export const CARDS = [
 	},
 	{
 		id: '32e9359c-fd10-44d8-bab4-e4c9cf28a87c',
-		uploaderId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		ownerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		name: '킹크랩',
 		price: 7,
@@ -66,7 +64,6 @@ export const CARDS = [
 	},
 	{
 		id: 'd1d19a78-0050-40ee-8d2d-6244f8f11abd',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '구구',
 		price: 2,
@@ -79,7 +76,6 @@ export const CARDS = [
 	},
 	{
 		id: 'ffdb0be6-2185-4296-a038-03a70076ab9f',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '니드퀸',
 		price: 10,
@@ -92,7 +88,6 @@ export const CARDS = [
 	},
 	{
 		id: '22c89c77-f72f-432c-8036-bff78e690c21',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '니드런',
 		price: 3,
@@ -105,7 +100,6 @@ export const CARDS = [
 	},
 	{
 		id: '70f98e81-1668-4dd0-b186-c7ca56d0101a',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '삐삐',
 		price: 8,
@@ -118,7 +112,6 @@ export const CARDS = [
 	},
 	{
 		id: '3968e124-a614-4519-9944-e00d9ea11c87',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '뚜벅쵸',
 		price: 6,
@@ -131,7 +124,6 @@ export const CARDS = [
 	},
 	{
 		id: '2b7e8988-d6b5-4d4c-a0e1-414e9550515a',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '닥트리오',
 		price: 12,
@@ -144,7 +136,6 @@ export const CARDS = [
 	},
 	{
 		id: '523b755f-af48-4726-83a2-0a9ec7400776',
-		uploaderId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '망키',
 		price: 5,
@@ -157,7 +148,6 @@ export const CARDS = [
 	},
 	{
 		id: '9ba09f53-869b-49cc-93b6-0515310fcf54',
-		uploaderId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '우츠보트',
 		price: 15,
@@ -170,7 +160,6 @@ export const CARDS = [
 	},
 	{
 		id: 'd6e7e2c9-b3a4-4b8f-b53e-4a39fefc2345',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '루기아',
 		price: 50,
@@ -183,7 +172,6 @@ export const CARDS = [
 	},
 	{
 		id: 'b1e7e3c8-b2c4-4e9e-c53f-3b48gfhc3456',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '메가레쿠쟈',
 		price: 100,
@@ -196,7 +184,6 @@ export const CARDS = [
 	},
 	{
 		id: 'c9e3e4c9-d3b4-4d8f-b43f-4b59fefc4567',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '원시그란돈',
 		price: 80,
@@ -209,7 +196,6 @@ export const CARDS = [
 	},
 	{
 		id: 'd2e7e3c9-c3c4-4f9f-a53e-2b69fgfc5678',
-		uploaderId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '원시가이오가',
 		price: 90,
@@ -222,7 +208,6 @@ export const CARDS = [
 	},
 	{
 		id: 'e3e7f5c9-e3c4-5d8e-b43f-5c59hihc6789',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		name: '디아루가',
 		price: 110,
@@ -235,7 +220,6 @@ export const CARDS = [
 	},
 	{
 		id: 'f4e8f5d9-f3c4-6d8e-c54f-6d69jijc7890',
-		uploaderId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '펄기아',
 		price: 115,
@@ -248,7 +232,6 @@ export const CARDS = [
 	},
 	{
 		id: 'g5f9f6e9-g4c5-7d9f-c65f-7e79kklc8901',
-		uploaderId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '레시라무',
 		price: 120,
@@ -261,7 +244,6 @@ export const CARDS = [
 	},
 	{
 		id: 'h6g0f7e9-h5d5-8d9f-d76g-8f89lllc9012',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '제크로무',
 		price: 125,
@@ -274,7 +256,6 @@ export const CARDS = [
 	},
 	{
 		id: 'i7h1f8g9-i6e6-9d0f-e87h-9g90mmmd0123',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		name: '뮤',
 		price: 150,
@@ -287,7 +268,6 @@ export const CARDS = [
 	},
 	{
 		id: 'b2d3e3c9-b2b4-4c2f-c23e-2b29cfec2345',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '자이안',
 		price: 7,
@@ -300,7 +280,6 @@ export const CARDS = [
 	},
 	{
 		id: '850f2153-971a-49f3-8c3b-6d2a82b3f012',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '딱충이',
 		price: 5,
@@ -312,7 +291,6 @@ export const CARDS = [
 	},
 	{
 		id: 'e21ffcdb-31f4-4639-9c74-6b01c2558a79',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '날썡마',
 		price: 8,
@@ -324,7 +302,6 @@ export const CARDS = [
 	},
 	{
 		id: 'a29e47b8-dd50-4102-a31f-6c6dab6b1997',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '찌리리공',
 		price: 1,
@@ -336,7 +313,6 @@ export const CARDS = [
 	},
 	{
 		id: 'f73d0f90-9f45-40af-8c34-0da4fa65c1d8',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '루주라',
 		price: 5,
@@ -348,7 +324,6 @@ export const CARDS = [
 	},
 	{
 		id: 'b5c3e5ec-4a2e-49fd-afc8-34de4d8aaa78',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '메가헬가',
 		price: 10,
@@ -360,7 +335,6 @@ export const CARDS = [
 	},
 	{
 		id: 'dfb798a3-c811-4af5-ab41-8724ce17db5e',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '메가번치코',
 		price: 12,
@@ -372,7 +346,6 @@ export const CARDS = [
 	},
 	{
 		id: '6df8a7b9-5957-4188-90b1-50b376b58a34',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '버섯모',
 		price: 7,
@@ -384,7 +357,6 @@ export const CARDS = [
 	},
 	{
 		id: 'a3ca6862-e4a4-484d-bf86-693cb4cea0d7',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '폭음룡',
 		price: 2,
@@ -396,7 +368,6 @@ export const CARDS = [
 	},
 	{
 		id: '367bc891-c67e-4b2d-9186-7afc3d6b2c99',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '그라에나',
 		price: 4,
@@ -408,7 +379,6 @@ export const CARDS = [
 	},
 	{
 		id: '1f0b3539-eaa0-4a75-a399-b7ca7e40efef',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '메가한카리아스',
 		price: 11,
@@ -420,7 +390,6 @@ export const CARDS = [
 	},
 	{
 		id: 'e8b7f931-28d5-4d0f-b2a3-156401df2d80',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '고라파덕',
 		price: 5,
@@ -432,7 +401,6 @@ export const CARDS = [
 	},
 	{
 		id: 'b4c7a2f6-4b4f-4f43-92ad-f8d8e408d980',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '우츠동',
 		price: 8,
@@ -444,7 +412,6 @@ export const CARDS = [
 	},
 	{
 		id: 'f6d3e2c9-a5a4-4e8f-b53e-3a29fefc1234',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		name: '내루미',
 		price: 6,
@@ -456,7 +423,6 @@ export const CARDS = [
 	},
 	{
 		id: 'c8f7b24f-2cd6-4708-bd52-18ed402b2f2a',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		name: '꼬지지',
 		price: 7,
@@ -468,7 +434,6 @@ export const CARDS = [
 	},
 	{
 		id: 'a41d71fe-5f47-40bb-b99f-c7e9334623f0',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		name: '잠만보',
 		price: 15,
@@ -480,7 +445,6 @@ export const CARDS = [
 	},
 	{
 		id: '8bc1e688-11b9-46f2-bbe0-12a04a8032e3',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		name: '마자용',
 		price: 12,
@@ -492,7 +456,6 @@ export const CARDS = [
 	},
 	{
 		id: 'b22fd081-f9e7-4a66-b3fa-738b71ef7a8c',
-		uploaderId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '돈크로우',
 		price: 14,
@@ -504,7 +467,6 @@ export const CARDS = [
 	},
 	{
 		id: 'c7ff82b1-229b-49fc-bd0a-fc2c930cd207',
-		uploaderId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '파치리스',
 		price: 9,
@@ -516,7 +478,6 @@ export const CARDS = [
 	},
 	{
 		id: 'ee8b9980-0be9-4d59-9d2a-378d7f8f3bfe',
-		uploaderId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '해골몽',
 		price: 11,
@@ -528,7 +489,6 @@ export const CARDS = [
 	},
 	{
 		id: '7d98d3c3-357d-4a6b-a65c-c55658f4a9c2',
-		uploaderId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '에몽가',
 		price: 10,
@@ -540,7 +500,6 @@ export const CARDS = [
 	},
 	{
 		id: 'eadaaa0a-3eb6-4f57-b070-a468b70f42bd',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '라이코',
 		price: 8,
@@ -552,7 +511,6 @@ export const CARDS = [
 	},
 	{
 		id: '21f4baf4-4c58-4271-b1ed-fcac391b92e0',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '스이쿤',
 		price: 8,
@@ -564,7 +522,6 @@ export const CARDS = [
 	},
 	{
 		id: '8e451b9b-f367-489e-9d16-bb545d9bfa20',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '앤테이',
 		price: 8,
@@ -577,7 +534,6 @@ export const CARDS = [
 	},
 	{
 		id: '7472aa4e-326f-45f1-a9ee-21bd6f14b60a',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'df3085cd-1dd4-474d-8972-e65d716af906',
 		name: '루리리',
 		price: 1,
@@ -590,7 +546,6 @@ export const CARDS = [
 	},
 	{
 		id: '6b727387-8425-4e11-95dd-ff86890811c0',
-		uploaderId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '마릴',
 		price: 2,
@@ -603,7 +558,6 @@ export const CARDS = [
 	},
 	{
 		id: '32333c85-16e5-45cd-b311-c63afd9b301f',
-		uploaderId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '마릴리',
 		price: 3,
@@ -615,7 +569,6 @@ export const CARDS = [
 	},
 	{
 		id: '3d7bf9f6-1437-4a01-890b-0ff4d4dfd9b8',
-		uploaderId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '미뇽',
 		price: 2,
@@ -628,7 +581,6 @@ export const CARDS = [
 	},
 	{
 		id: '989c45c6-5591-4b99-9b72-d413d901a4e4',
-		uploaderId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '신뇽',
 		price: 4,
@@ -641,7 +593,6 @@ export const CARDS = [
 	},
 	{
 		id: '8ef25c26-a391-4a1a-9862-021982c6186b',
-		uploaderId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '망나뇽',
 		price: 6,
@@ -655,7 +606,6 @@ export const CARDS = [
 	},
 	{
 		id: 'b305a7eb-6ade-478e-a9e3-ac81355a7501',
-		uploaderId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		ownerId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		name: '파오리',
 		price: 4,
@@ -667,7 +617,6 @@ export const CARDS = [
 	},
 	{
 		id: 'f6d3e2c9-a5a4-4e8f-b53e-3a29fefc1234',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '팬텀',
 		price: 10,
@@ -680,7 +629,6 @@ export const CARDS = [
 	},
 	{
 		id: 'f2e1c8d4-e4c9-4c8b-bc71-8a3d5e9e2b23',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '피카츄',
 		price: 15,
@@ -693,7 +641,6 @@ export const CARDS = [
 	},
 	{
 		id: 'a3f2d1c4-b5f9-4e0b-b3f2-8f5e6d3e6f34',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '이상해씨',
 		price: 12,
@@ -705,7 +652,6 @@ export const CARDS = [
 	},
 	{
 		id: 'b5c2f1d3-a4e8-4b8d-84f5-9c7b2e8c3a14',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '리자몽',
 		price: 20,
@@ -717,7 +663,6 @@ export const CARDS = [
 	},
 	{
 		id: 'c1d2e3f4-a5b6-4c7d-b8e9-0c1d2e3f4a56',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '꼬부기',
 		price: 8,
@@ -730,7 +675,6 @@ export const CARDS = [
 	},
 	{
 		id: 'd1e2f3c4-b5a6-4b8d-b3f2-1c2d3e4f5a67',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '버터플',
 		price: 14,
@@ -743,7 +687,6 @@ export const CARDS = [
 	},
 	{
 		id: 'e2f3g4h5-a6b7-4c8e-b9f0-2c3d4e5f6g78',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '야도란',
 		price: 11,
@@ -756,7 +699,6 @@ export const CARDS = [
 	},
 	{
 		id: 'f3g4h5i6-a7b8-4c9f-b0e1-3d4e5f6g7h89',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '골뱃',
 		price: 9,
@@ -769,7 +711,6 @@ export const CARDS = [
 	},
 	{
 		id: 'g4h5i6j7-a8b9-4d0e-b1f2-4c5d6e7f8g90',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '이브이',
 		price: 13,
@@ -782,7 +723,6 @@ export const CARDS = [
 	},
 	{
 		id: 'h5i6j7k8-a9b0-4d1e-b2f3-5c6d7e8f9g01',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '망나뇽',
 		price: 25,
@@ -796,7 +736,6 @@ export const CARDS = [
 
 	{
 		id: '02e34605-a1a1-4b5d-a8b9-c64341ca2e89',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '고라파덕',
 		price: 8,
@@ -809,7 +748,6 @@ export const CARDS = [
 
 	{
 		id: 'ea19b5aa-fd22-48ca-a611-915daf08a904',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '에나비',
 		price: 7,
@@ -823,7 +761,6 @@ export const CARDS = [
 
 	{
 		id: '343c2d6a-2acc-4a7b-b1af-491dca5a2b08',
-		uploaderId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		ownerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
 		name: '데덴네',
 		price: 10,
@@ -836,7 +773,6 @@ export const CARDS = [
 
 	{
 		id: 'f30680c4-9c87-4cfb-9dff-0c2d57c61b6a',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '메타몽',
 		price: 4,
@@ -850,7 +786,6 @@ export const CARDS = [
 
 	{
 		id: 'a05ff074-02ff-4f25-a8ae-aacf532f4b25',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '치코리타',
 		price: 5,
@@ -864,7 +799,6 @@ export const CARDS = [
 
 	{
 		id: 'ce7663b2-45ab-4a28-8ddd-50415b31fb0b',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '치라미',
 		price: 10,
@@ -878,7 +812,6 @@ export const CARDS = [
 
 	{
 		id: '62f1fdf4-4ac8-4f0f-8e36-1e8d9cc001d6',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '물짱이',
 		price: 6,
@@ -892,7 +825,6 @@ export const CARDS = [
 
 	{
 		id: '01484d96-3608-4509-9cc2-cf92a2e41a77',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '깜지곰',
 		price: 10,
@@ -906,7 +838,6 @@ export const CARDS = [
 
 	{
 		id: 'c5b5dcf2-3a08-4c34-b0c9-23674364452d',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '야돈',
 		price: 2,
@@ -919,7 +850,6 @@ export const CARDS = [
 
 	{
 		id: 'fcade7a6-dc32-49ee-8954-d3a08952ee2e',
-		uploaderId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
 		ownerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
 		name: '마릴',
 		price: 9,

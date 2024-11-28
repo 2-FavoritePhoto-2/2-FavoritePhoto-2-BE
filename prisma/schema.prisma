@@ -22,7 +22,6 @@ model User {
   refreshToken     String?
   createdAt        DateTime   @default(now())
   updatedAt        DateTime   @updatedAt
-  uploadedCards    Card[]     @relation("UploadedCardRelation")
   myCards          Card[]     @relation("MyCardRelation")
   shops            Shop[]
   purchases        Purchase[]
@@ -40,8 +39,6 @@ model Notification {
 
 model Card {
   id              String     @id @default(uuid())
-  uploadedBy      User?      @relation("UploadedCardRelation", fields: [uploaderId], references: [id], onDelete: SetNull)
-  uploaderId      String?
   owner           User?      @relation("MyCardRelation", fields: [ownerId], references: [id], onDelete: SetNull)
   ownerId         String?
   name            String

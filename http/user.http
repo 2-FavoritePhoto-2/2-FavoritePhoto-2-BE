@@ -4,8 +4,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExM
 
 // 마이카드 리스트
 ###
-GET http://localhost:3100/user/cards?page=1&orderBy=priceHighest&keyword=데
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI2NzM2NzYsImV4cCI6MTczMjc2MDA3Nn0.0GSrUBos5n_0WjDFMX6_5vTElCwKnM4ZSTzh1MzHPIM
+GET http://localhost:3100/user/cards?page=1&orderBy=priceHighest&keyword=팬텀
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI3NjcwMDIsImV4cCI6MTczMjg1MzQwMn0.SRpdM_hsm7xPPBOz1_iOb7Ff8-srddemdl-kY3y9QWE
 
 // 카드 상세
 ###
@@ -18,11 +18,25 @@ GET http://localhost:3100/user/exchanges/c3febc1f-43c0-4b19-a039-bae3b3969ee5
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZjMwODVjZC0xZGQ0LTQ3NGQtODk3Mi1lNjVkNzE2YWY5MDYiLCJpYXQiOjE3MzI3NjIzOTcsImV4cCI6MTczMjg0ODc5N30.aAakwncs9Jr-K4yqWsdRWCnrWXrPy4d04utta4n3Py4
 
 ###
+POST http://localhost:3100/user/cards
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI3NzkzMjYsImV4cCI6MTczMjg2NTcyNn0.2ozZ-yJRAh2qyRXJUJcgtfMBwLVgtsNEoPGz322f-D8
+Content-Type: multipart/form-data
+
+name=루카리오
+price=100
+grade=SUPER_RARE
+type=격투
+type=강철
+description=This+is+a+test+card
+quantity=3
+image=@../mock/images/루카리오.jpg
+
+###
 // 임시 로그인
 POST http://localhost:3100/auth/login
 Content-Type: application/json
 
 {
-	"email": "test4@naver.com",
+	"email": "test1@naver.com",
 	"password": "1234"
 }
