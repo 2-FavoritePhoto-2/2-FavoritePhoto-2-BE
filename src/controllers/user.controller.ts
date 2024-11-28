@@ -53,4 +53,17 @@ export class UserController {
 			res.status(HttpStatus.NOT_FOUND).json({ error: error.message });
 		}
 	};
+
+	// GET /user/exchanges/:shopId
+	getExchangesByShopId = async (req, res) => {
+		const userId = req.auth.userId;
+		const { shopId } = req.params;
+
+		try {
+			const exchanges = await this.service.getExchangesByShopId(shopId, userId);
+			res.status(HttpStatus.SUCCESS).json(exchanges);
+		} catch (error) {
+			res.status(HttpStatus.SERVER_ERROR).json({ error: error.message });
+		}
+	};
 }

@@ -50,4 +50,9 @@ export class UserService {
 		const cardDetails = await this.data.getPhotoCardDetails(userId, cardId);
 		return cardDetails;
 	};
+
+	getExchangesByShopId = async (shopId: string, userId: string) => {
+		const exchanges = await this.data.getExchangesByShopId(shopId, userId);
+		return exchanges;
+	};
 }

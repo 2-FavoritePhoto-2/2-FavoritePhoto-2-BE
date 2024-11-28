@@ -1007,4 +1007,43 @@ export const SHOPS = [
 	},
 ];
 
+export const EXCHANGES = [
+	{
+		id: '3eb0325c-d17e-4f1a-b88b-d56942d631e3',
+		description: '교환을 신청합니다!',
+		complete: false,
+		sellerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
+		buyerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		sellerCardId: '32e9359c-fd10-44d8-bab4-e4c9cf28a87c',
+		buyerCardId: 'd6e7e2c9-b3a4-4b8f-b53e-4a39fefc2345',
+		shopId: 'c3febc1f-43c0-4b19-a039-bae3b3969ee5',
+		createdAt: '2024-11-27T02:27:08.941Z',
+		updatedAt: '2024-11-27T02:27:08.941Z',
+	},
+	{
+		id: '3eb0325c-d17e-4f1a-b88b-d56942d631e4',
+		description: '교환을 신청합니다!',
+		complete: false,
+		sellerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
+		buyerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+		sellerCardId: '32e9359c-fd10-44d8-bab4-e4c9cf28a87c',
+		buyerCardId: 'b1e7e3c8-b2c4-4e9e-c53f-3b48gfhc3456',
+		shopId: 'c3febc1f-43c0-4b19-a039-bae3b3969ee5',
+		createdAt: '2024-11-27T02:27:08.941Z',
+		updatedAt: '2024-11-27T02:27:08.941Z',
+	},
+	{
+		id: '3eb0325c-d17e-4f1a-b88b-d56942d631e5',
+		description: '교환을 신청합니다!',
+		complete: false,
+		sellerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
+		buyerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
+		sellerCardId: '32e9359c-fd10-44d8-bab4-e4c9cf28a87c',
+		buyerCardId: 'b2d3e3c9-b2b4-4c2f-c23e-2b29cfec2345',
+		shopId: 'c3febc1f-43c0-4b19-a039-bae3b3969ee5',
+		createdAt: '2024-11-27T02:27:08.941Z',
+		updatedAt: '2024-11-27T02:27:08.941Z',
+	},
+];
+
 export const PURCHASE = [];
