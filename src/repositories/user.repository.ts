@@ -1,10 +1,10 @@
 export class UserRepository {
 	data: any;
-	shopData: any;
+	exchangeData: any;
 	prisma: any;
 	constructor(client) {
 		this.data = client.User;
-		this.shopData = client.Shop;
+		this.exchangeData = client.Exchange;
 		this.prisma = client;
 	}
 
@@ -64,29 +64,26 @@ export class UserRepository {
 	};
 
 	getExchangesByShopId = async (shopId: string, userId: string) => {
-		const shopDetails = await this.shopData.findUnique({
-			where: { id: shopId },
+		const exchanges = await this.exchangeData.findMany({
+			where: { shopId },
 			include: {
-				Exchange: {
+				buyer: true,
+				buyerCard: {
 					include: {
-						buyer: true,
-						buyerCard: {
-							include: {
-								owner: true, // 카드 소유자 정보 포함
-							},
-						},
+						owner: true, // 카드 소유자 정보 포함
 					},
 				},
 			},
 		});
 
-		if (!shopDetails) {
-			throw new Error('Shop not found');
+		if (!exchanges || exchanges.length === 0) {
+			throw new Error('No exchanges found for this shop');
 		}
 
-		const exchanges = shopDetails.Exchange;
+		// 판매자 ID를 따로 확인하기 위해 첫 번째 교환에서 참조
+		const sellerId = exchanges[0]?.sellerId;
 
-		if (shopDetails.sellerId === userId) {
+		if (sellerId === userId) {
 			// 판매자 관점
 			return exchanges.map(exchange => ({
 				buyerId: exchange.buyerId,
@@ -97,8 +94,8 @@ export class UserRepository {
 					type: exchange.buyerCard?.type,
 					description: exchange.buyerCard?.description,
 					image: exchange.buyerCard?.image,
-					price: exchange.buyerCard?.price,
-					ownerNickname: exchange.buyerCard?.owner?.nickname,
+					price: exchange.buyerCard?.price, // 카드 가격
+					ownerNickname: exchange.buyerCard?.owner?.nickname, // 카드 소유자 닉네임
 				},
 			}));
 		} else {
@@ -106,7 +103,7 @@ export class UserRepository {
 			const userExchanges = exchanges.filter(exchange => exchange.buyerId === userId);
 
 			if (userExchanges.length === 0) {
-				return [];
+				throw new Error('Exchange request not found for the user');
 			}
 
 			// 요청한 모든 교환을 배열로 반환
@@ -118,8 +115,8 @@ export class UserRepository {
 					type: exchange.buyerCard?.type,
 					description: exchange.buyerCard?.description,
 					image: exchange.buyerCard?.image,
-					price: exchange.buyerCard?.price,
-					ownerNickname: exchange.buyerCard?.owner?.nickname,
+					price: exchange.buyerCard?.price, // 카드 가격
+					ownerNickname: exchange.buyerCard?.owner?.nickname, // 카드 소유자 닉네임
 				},
 			}));
 		}
