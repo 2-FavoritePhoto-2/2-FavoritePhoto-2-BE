@@ -66,4 +66,22 @@ export class UserController {
 			res.status(HttpStatus.SERVER_ERROR).json({ error: error.message });
 		}
 	};
+
+	// GET /user/my-cards/sales
+	getMyCardsOnSale = async (req, res) => {
+		const userId = req.auth.userId;
+		const { page = 1, pageSize = 12, keyword = '', grade, type, available, mode } = req.query;
+
+		const myCards = await this.service.getMyCardsOnSale({
+			userId: userId,
+			page,
+			pageSize,
+			keyword: decodeURIComponent(keyword).trim(),
+			grade,
+			type,
+			available: available === 'true' ? true : available === 'false' ? false : undefined,
+			mode,
+		});
+		res.status(HttpStatus.SUCCESS).json(myCards);
+	};
 }
