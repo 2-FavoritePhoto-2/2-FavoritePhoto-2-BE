@@ -10,7 +10,7 @@ export class ShopController {
 	getShopList = async (req, res) => {
 		const {
 			page = 1,
-			pageSize = 10,
+			pageSize = 12,
 			orderBy = 'priceLowest',
 			keyword = '',
 			grade,
