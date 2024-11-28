@@ -1,10 +1,10 @@
 // 교환 제안
-POST http://localhost:3100/cards/d221bce5-b583-43b3-919c-8ce9c082193f/exchange
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlZmJlYTcyZS0wZmQwLTQ5YjAtOGVjNS1iY2YzZWFmNWUzMzUiLCJpYXQiOjE3MzI1MjQ4MTgsImV4cCI6MTczMjYxMTIxOH0.eJu1v-_n3hk_P8Jrmj8m1uh69b6mtt2Kryooazt_ya8
+POST http://localhost:3100/cards/c3febc1f-43c0-4b19-a039-bae3b3969ee5/exchange
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlNmNkMDVjNi0zNGQ1LTQ4NzEtODJjMS1mODgyOTg4ZDBlY2UiLCJpYXQiOjE3MzI2NzQ0OTIsImV4cCI6MTczMjc2MDg5Mn0.xyQFV-ru9Magk1y7x_IoYlpjJjMk8u8XHG6VFe4jXoc
 Content-Type: application/json
 
 {
-  "buyerCardId": "a41d71fe-5f47-40bb-b99f-c7e9334623f0",
+  "buyerCardId": "b2d3e3c9-b2b4-4c2f-c23e-2b29cfec2345",
   "description": "교환을 신청합니다1"
 }
 

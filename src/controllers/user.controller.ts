@@ -22,7 +22,7 @@ export class UserController {
 
 	// GET /user/cards
 	getUserPhotoCards = async (req, res) => {
-		const { page = 1, pageSize = 10, orderBy = 'priceLowest', filter } = req.query;
+		const { page = 1, pageSize = 10, orderBy = 'priceLowest', keyword = '', grade, type } = req.query;
 		const userId = req.auth.userId;
 
 		try {
@@ -31,7 +31,9 @@ export class UserController {
 				page,
 				pageSize,
 				orderBy,
-				filter,
+				keyword: decodeURIComponent(keyword).trim(),
+				grade,
+				type,
 			});
 			res.status(HttpStatus.SUCCESS).json(card);
 		} catch (error) {
@@ -49,6 +51,19 @@ export class UserController {
 			res.status(HttpStatus.SUCCESS).json(cardDetails);
 		} catch (error) {
 			res.status(HttpStatus.NOT_FOUND).json({ error: error.message });
+		}
+	};
+
+	// GET /user/exchanges/:shopId
+	getExchangesByShopId = async (req, res) => {
+		const userId = req.auth.userId;
+		const { shopId } = req.params;
+
+		try {
+			const exchanges = await this.service.getExchangesByShopId(shopId, userId);
+			res.status(HttpStatus.SUCCESS).json(exchanges);
+		} catch (error) {
+			res.status(HttpStatus.SERVER_ERROR).json({ error: error.message });
 		}
 	};
 }

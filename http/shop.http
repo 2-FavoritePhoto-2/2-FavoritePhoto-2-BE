@@ -1,4 +1,4 @@
-GET http://localhost:3100/shop
+GET http://localhost:3100/shop?keyword=카드&grade=RARE&type=땅&available=true
 
 ###
 GET http://localhost:3100/shop/c3febc1f-43c0-4b19-a039-bae3b3969ee5

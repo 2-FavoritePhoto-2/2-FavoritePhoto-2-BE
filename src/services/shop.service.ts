@@ -1,4 +1,6 @@
+import { Grades } from '@prisma/client';
 import { prismaClient } from '../connection/connection.js';
+import { sendNotification } from '../containers/notification.container.js';
 
 export class ShopService {
 	data: any;
@@ -6,14 +8,58 @@ export class ShopService {
 		this.data = shopRepository;
 	}
 
-	getShopList = async ({ page, pageSize, orderBy, keyword, filter, exclude }) => {
-		const shops = await this.data.getShopList(page, pageSize, orderBy, keyword, filter, exclude);
+	getShopList = async ({ page, pageSize, orderBy, keyword, grade, type, available, exclude, by }) => {
+		const skip = (page - 1) * pageSize;
+		const take = Number(pageSize);
+
+		let sortOption;
+		switch (orderBy) {
+			case 'oldest':
+				sortOption = { orderBy: { createdAt: 'asc' } };
+				break;
+			case 'newest':
+				sortOption = { orderBy: { createdAt: 'desc' } };
+				break;
+			case 'priceHighest':
+				sortOption = { orderBy: { price: 'desc' } };
+				break;
+			case 'priceLowest':
+			default:
+				sortOption = { orderBy: { price: 'asc' } };
+		}
+
+		const where = {
+			AND: [
+				keyword
+					? {
+							card: {
+								OR: [
+									{ name: { contains: keyword, mode: 'insensitive' } },
+									{ description: { contains: keyword, mode: 'insensitive' } },
+								],
+							},
+						}
+					: {},
+				grade ? { card: { grade: Grades[grade] } } : {},
+				type ? { card: { type: { has: type } } } : {},
+				available !== undefined ? { available: available } : {},
+				exclude ? { id: { not: exclude } } : {},
+				by ? { sellerId: { equals: by } } : {},
+			],
+		};
+
+		const shops = await this.data.getShopList(skip, take, sortOption, where);
 
 		return shops;
 	};
 
 	createShop = async data => {
-		const newShop = await this.data.createShop(data);
+		const { quantity, ...rest } = data;
+		const newShop = await this.data.createShop({
+			totalQuantity: quantity,
+			remainingQuantity: quantity,
+			...rest,
+		});
 
 		return newShop;
 	};
@@ -44,7 +90,12 @@ export class ShopService {
 				throw new Error('구매 가능한 수량이 부족합니다!');
 			}
 
-			const usePoints = await this.data.updateUser(buyerId, totalPrice, 'decrement');
+			const buyerPoints = await this.data.updateUser(buyerId, totalPrice);
+			const sellerPoints = await this.data.updateUser(shop.sellerId, -totalPrice);
+
+			if (!buyerPoints) {
+				throw new Error('구매 포인트가 부족합니다!');
+			}
 
 			const purchase = await this.data.purchase({
 				quantity,
@@ -59,8 +110,6 @@ export class ShopService {
 				action: 'PURCHASE',
 				metaData: { purchaseId: purchase.id },
 			});
-
-			await this.data.updateUser(shop.sellerId, totalPrice, 'increment');
 
 			await this.data.createPointLog({
 				userId: shop.sellerId,
@@ -84,6 +133,13 @@ export class ShopService {
 				quantity,
 			};
 			await this.data.createPurchasedCard(newCardData);
+
+			// 구매 완료 알림 to 구매자
+			await sendNotification({
+				type: 'BUY',
+				recipientId: buyerId,
+				content: `[${shop.card?.grade}|${shop.card?.name}] ${quantity}장을 성공적으로 구매했습니다.`,
+			});
 
 			return purchase;
 		});

@@ -1,5 +1,5 @@
 import { prismaClient as prisma } from '../src/connection/connection';
-import { CARDS, SHOPS, USERS, POINT_LOGS } from '../mock/mock';
+import { CARDS, SHOPS, USERS, POINT_LOGS, EXCHANGES } from '../mock/mock';
 
 async function main() {
 	await prisma.$transaction([
@@ -7,6 +7,7 @@ async function main() {
 		prisma.card.deleteMany(),
 		prisma.shop.deleteMany(),
 		prisma.pointLog.deleteMany(),
+		prisma.exchange.deleteMany(),
 
 		prisma.user.createMany({
 			data: USERS,
@@ -20,8 +21,14 @@ async function main() {
 			data: SHOPS,
 			skipDuplicates: true,
 		}),
+
 		prisma.pointLog.createMany({
 			data: POINT_LOGS,
+			skipDuplicates: true,
+		}),
+
+		prisma.exchange.createMany({
+			data: EXCHANGES,
 			skipDuplicates: true,
 		}),
 	]);
