@@ -103,7 +103,7 @@ export class UserRepository {
 			const userExchanges = exchanges.filter(exchange => exchange.buyerId === userId);
 
 			if (userExchanges.length === 0) {
-				throw new Error('Exchange request not found for the user');
+				return [];
 			}
 
 			// 요청한 모든 교환을 배열로 반환
