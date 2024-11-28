@@ -79,6 +79,8 @@ export class ShopRepository {
 				},
 			},
 		});
+
+		return shop;
 	};
 
 	createPurchasedCard = async cards => {
