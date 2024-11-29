@@ -29,7 +29,7 @@ export class ShopRepository {
 
     const newShop = await this.data.create({
       data: {
-        grade: grade as Grades,
+        grade: Grades[grade],
         ...rest,
       },
     });

@@ -42,7 +42,6 @@ export class ExchangeRepository {
     if (!alertSeller) {
       throw new Error('교환 알림이 전달되지 않았습니다.');
     }
-    console.log(alertSeller);
 
     return newExchange;
   };
@@ -61,7 +60,7 @@ export class ExchangeRepository {
         where: { id: shopId },
         data: {
           remainingQuantity: { decrement: 1 },
-          available: exchange.shop.remainingQuantity > 1, // 잔여수량 0일 경우 매진
+          available: exchange.shop.remainingQuantity > 1, // 잔여수량 0일 경우 품절
         },
       });
 
