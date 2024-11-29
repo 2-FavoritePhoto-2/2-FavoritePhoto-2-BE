@@ -14,6 +14,14 @@ export class AuthRepository {
 		});
 	};
 
+	findByNickname = async nickname => {
+		return await this.data.findUnique({
+			where: {
+				nickname,
+			},
+		});
+	};
+
 	findById = async id => {
 		return await this.data.findUnique({
 			where: {
