@@ -1,3 +1,5 @@
+import { Grades } from '@prisma/client';
+
 export class UserRepository {
 	data: any;
 	exchangeData: any;
@@ -120,5 +122,87 @@ export class UserRepository {
 				},
 			}));
 		}
+	};
+
+	getMyShopCards = async (userId, keyword, grade, type, available) => {
+		const where = {
+			AND: [
+				{ sellerId: userId },
+				keyword
+					? {
+							card: {
+								OR: [
+									{ name: { contains: keyword, mode: 'insensitive' } },
+									{ description: { contains: keyword, mode: 'insensitive' } },
+								],
+							},
+						}
+					: {},
+				grade ? { card: { grade: Grades[grade] } } : {},
+				type ? { card: { type: { has: type } } } : {},
+				available !== undefined ? { available: available } : {},
+			],
+		};
+
+		const list = await this.prisma.shop.findMany({
+			where,
+			include: { seller: true, card: true },
+		});
+
+		const listData = list.map(l => ({
+			mode: 'shop',
+			nickname: l.seller?.nickname,
+			cardName: l.card?.name,
+			grade: l.card?.grade,
+			type: l.card?.type,
+			description: l.card?.description,
+			image: l.card?.image,
+			price: l.price,
+			quantity: l.remainingQuantity,
+			createdAt: l.createdAt,
+		}));
+
+		return listData;
+	};
+
+	getMyExchangeCards = async (userId, keyword, grade, type, available) => {
+		const where = {
+			AND: [
+				{ buyerId: userId },
+				keyword
+					? {
+							buyerCard: {
+								OR: [
+									{ name: { contains: keyword, mode: 'insensitive' } },
+									{ description: { contains: keyword, mode: 'insensitive' } },
+								],
+							},
+						}
+					: {},
+				grade ? { buyerCard: { grade: Grades[grade] } } : {},
+				type ? { buyerCard: { type: { has: type } } } : {},
+				available !== undefined ? { complete: !available } : {},
+			],
+		};
+
+		const list = await this.prisma.exchange.findMany({
+			where,
+			include: { buyer: true, buyerCard: true },
+		});
+
+		const listData = list.map(l => ({
+			mode: 'exchange',
+			nickname: l.buyer?.nickname,
+			cardName: l.buyerCard?.name,
+			grade: l.buyerCard?.grade,
+			type: l.buyerCard?.type,
+			description: l.buyerCard?.description,
+			image: l.buyerCard?.image,
+			price: l.buyerCard?.price,
+			quantity: 1,
+			createdAt: l.createdAt,
+		}));
+
+		return listData;
 	};
 }

@@ -16,3 +16,6 @@ userRouter.get('/cards/:cardId', verifyAccessToken, asyncHandler(userController.
 
 // 거래 제안 목록 조회
 userRouter.get('/exchanges/:shopId', verifyAccessToken, asyncHandler(userController.getExchangesByShopId));
+
+// 상점에 등록한 유저 카드 전체 조회
+userRouter.get('/my-cards/sales', verifyAccessToken, asyncHandler(userController.getMyCardsOnSale));
