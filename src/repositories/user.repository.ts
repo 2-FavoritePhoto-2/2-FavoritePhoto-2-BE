@@ -84,7 +84,7 @@ export class UserRepository {
 		});
 
 		if (!exchanges || exchanges.length === 0) {
-			throw new Error('No exchanges found for this shop');
+			return [];
 		}
 
 		// 판매자 ID를 첫 번째 교환에서 확인
