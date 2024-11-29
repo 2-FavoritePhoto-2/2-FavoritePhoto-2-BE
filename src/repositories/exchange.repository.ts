@@ -50,6 +50,13 @@ export class ExchangeRepository {
     });
   };
 
+  incrementCardQuantity = async buyerCardId => {
+    return await this.prisma.Card.update({
+      where: { id: buyerCardId },
+      data: { quantity: { increment: 1 } },
+    });
+  };
+
   createUserCard = async (userId, cardInfo) => {
     return await this.prisma.Card.create({
       data: {
