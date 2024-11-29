@@ -1,4 +1,4 @@
-import { Grades } from '@prisma/client';
+import { Grades, PointAction } from '@prisma/client';
 
 export const USERS = [
 	{
@@ -1193,7 +1193,7 @@ export const SHOPS = [
 export const EXCHANGES = [
 	{
 		id: '3eb0325c-d17e-4f1a-b88b-d56942d631e3',
-		description: '교환을 신청합니다!',
+		description: '구교환을 신청합니다',
 		complete: false,
 		sellerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		buyerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
@@ -1205,7 +1205,7 @@ export const EXCHANGES = [
 	},
 	{
 		id: '3eb0325c-d17e-4f1a-b88b-d56942d631e4',
-		description: '교환을 신청합니다!',
+		description: '교환 신청해봐요 ㅎㅎ',
 		complete: false,
 		sellerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		buyerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
@@ -1217,7 +1217,7 @@ export const EXCHANGES = [
 	},
 	{
 		id: '3eb0325c-d17e-4f1a-b88b-d56942d631e5',
-		description: '교환을 신청합니다!',
+		description: '교환이요~~',
 		complete: false,
 		sellerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		buyerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
@@ -1226,6 +1226,39 @@ export const EXCHANGES = [
 		shopId: 'c3febc1f-43c0-4b19-a039-bae3b3969ee5',
 		createdAt: '2024-11-27T02:27:08.941Z',
 		updatedAt: '2024-11-27T02:27:08.941Z',
+	},
+];
+
+export const POINT_LOGS = [
+	{
+		id: '1a2b3c4d-1111-2222-3333-444455556666',
+		amount: 50,
+		action: PointAction['INITIAL_POINT'],
+		userId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
+	},
+	{
+		id: '2b3c4d5e-2222-3333-4444-555566667777',
+		amount: 50,
+		action: PointAction['INITIAL_POINT'],
+		userId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',
+	},
+	{
+		id: '3c4d5e6f-3333-4444-5555-666677778888',
+		amount: 50,
+		action: PointAction['INITIAL_POINT'],
+		userId: '364a024f-eeb5-4341-88c2-2259aa0bf0ce',
+	},
+	{
+		id: '4d5e6f7g-4444-5555-6666-777788889999',
+		amount: 50,
+		action: PointAction['INITIAL_POINT'],
+		userId: 'df3085cd-1dd4-474d-8972-e65d716af906',
+	},
+	{
+		id: '5e6f7g8h-5555-6666-7777-888899990000',
+		amount: 50,
+		action: PointAction['INITIAL_POINT'],
+		userId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 	},
 ];
 

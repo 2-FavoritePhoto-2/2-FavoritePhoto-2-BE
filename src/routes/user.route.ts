@@ -20,3 +20,6 @@ userRouter.get('/exchanges/:shopId', verifyAccessToken, asyncHandler(userControl
 
 // 유저 포토 카드 등록
 userRouter.post('/cards', verifyAccessToken, upload.single('image'), asyncHandler(userController.createPhotoCard));
+
+// 상점에 등록한 유저 카드 전체 조회
+userRouter.get('/my-cards/sales', verifyAccessToken, asyncHandler(userController.getMyCardsOnSale));

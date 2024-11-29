@@ -1,7 +1,9 @@
 export class AuthRepository {
 	data: any;
+	prisma: any;
 	constructor(client) {
 		this.data = client.User;
+		this.prisma = client;
 	}
 
 	findByEmail = async email => {
