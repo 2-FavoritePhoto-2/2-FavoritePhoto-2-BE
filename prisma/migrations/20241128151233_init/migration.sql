@@ -1,6 +1,9 @@
 -- CreateEnum
 CREATE TYPE "Grades" AS ENUM ('COMMON', 'RARE', 'SUPER_RARE', 'LEGENDARY');
 
+-- CreateEnum
+CREATE TYPE "PointAction" AS ENUM ('INITIAL_POINT', 'PURCHASE', 'SALE', 'RANDOM_REWARD');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
@@ -8,6 +11,7 @@ CREATE TABLE "User" (
     "nickname" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "point" INTEGER NOT NULL DEFAULT 50,
+    "lastDrawTime" TIMESTAMP(3),
     "refreshToken" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -18,8 +22,10 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Notification" (
     "id" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
+    "recipientId" TEXT NOT NULL,
     "content" TEXT NOT NULL,
-    "isRead" BOOLEAN NOT NULL,
+    "isRead" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -91,11 +97,27 @@ CREATE TABLE "Exchange" (
     CONSTRAINT "Exchange_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "PointLog" (
+    "id" TEXT NOT NULL,
+    "amount" INTEGER NOT NULL,
+    "action" "PointAction" NOT NULL,
+    "metaData" JSONB,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "userId" TEXT NOT NULL,
+
+    CONSTRAINT "PointLog_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_nickname_key" ON "User"("nickname");
+
+-- AddForeignKey
+ALTER TABLE "Notification" ADD CONSTRAINT "Notification_recipientId_fkey" FOREIGN KEY ("recipientId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Card" ADD CONSTRAINT "Card_uploaderId_fkey" FOREIGN KEY ("uploaderId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
@@ -129,3 +151,6 @@ ALTER TABLE "Exchange" ADD CONSTRAINT "Exchange_buyerCardId_fkey" FOREIGN KEY ("
 
 -- AddForeignKey
 ALTER TABLE "Exchange" ADD CONSTRAINT "Exchange_shopId_fkey" FOREIGN KEY ("shopId") REFERENCES "Shop"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "PointLog" ADD CONSTRAINT "PointLog_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

@@ -1,37 +1,38 @@
 export class PointsRepository {
-	data: any;
+	prisma: any;
 	constructor(client) {
-		this.data = client.User;
+		this.prisma = client;
 	}
 
-	// 랜덤 포인트 획득
-	addPoints = async (userId, points) => {
-		try {
-			await this.data.update({
-				where: { id: userId },
-				data: {
-					point: {
-						increment: points,
-					},
-				},
-			});
-		} catch (error) {
-			console.error('Error in addPoints:', error); // 오류 출력
-			throw error;
-		}
+	// 유저 포인트 업데이트
+	updateUserPoints = async (userId, points) => {
+		return await this.prisma.User.update({
+			where: { id: userId },
+			data: {
+				point: { increment: points },
+				lastDrawTime: new Date(),
+			},
+		});
+	};
+
+	// 포인트 로그 추가
+	createPointLog = async (userId, amount, action, metaData = null) => {
+		return await this.prisma.pointLog.create({
+			data: {
+				userId,
+				amount,
+				action,
+				metaData,
+			},
+		});
 	};
 
 	// 마지막 뽑기 시간 조회
 	getLastDrawTime = async userId => {
-		try {
-			const user = await this.data.findUnique({
-				where: { id: userId },
-				select: { updatedAt: true },
-			});
-			return user ? user.updatedAt : null;
-		} catch (error) {
-			console.error('Error in getLastDrawTime:', error); // 오류 출력
-			throw error;
-		}
+		const user = await this.prisma.User.findUnique({
+			where: { id: userId },
+			select: { lastDrawTime: true },
+		});
+		return user?.lastDrawTime;
 	};
 }
