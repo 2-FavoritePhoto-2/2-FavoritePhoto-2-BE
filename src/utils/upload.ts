@@ -16,7 +16,7 @@ const upload = multer({
 		},
 		// 파일 업로드 시 Content-Type과 Content-Disposition 설정
 		metadata: (req, file, cb) => {
-			cb(null, { 'Content-Type': file.mimetype, 'Content-Disposition': 'inline' }); // 'inline' 설정
+			cb(null, { 'Content-Type': file.mimetype, 'Content-Disposition': 'inline' });
 		},
 	}),
 	limits: { fileSize: 5 * 1024 * 1024 }, // 5MB 제한

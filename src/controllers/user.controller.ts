@@ -55,18 +55,6 @@ export class UserController {
 	};
 
 	// GET /user/exchanges/:shopId
-	getExchangesByShopId = async (req, res) => {
-		const userId = req.auth.userId;
-		const { shopId } = req.params;
-
-		try {
-			const exchanges = await this.service.getExchangesByShopId(shopId, userId);
-			res.status(HttpStatus.SUCCESS).json(exchanges);
-		} catch (error) {
-			res.status(HttpStatus.SERVER_ERROR).json({ error: error.message });
-		}
-	};
-
 	createPhotoCard = async (req, res) => {
 		const ownerId = req.auth.userId; // 인증된 사용자 ID (JWT나 세션에서 가져옴)
 		const { name, price, grade, quantity, type, description } = req.body;
@@ -74,6 +62,11 @@ export class UserController {
 		// 파일이 없는 경우 오류 반환
 		if (!req.file) {
 			return res.status(HttpStatus.BAD_REQUEST).json({ error: '이미지를 업로드해야 합니다.' });
+		}
+
+		// 파일 크기 초과 오류 처리
+		if (req.fileValidationError) {
+			return res.status(HttpStatus.BAD_REQUEST).json({ error: req.fileValidationError });
 		}
 
 		// type 유효성 검사 및 파싱
