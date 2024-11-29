@@ -55,6 +55,19 @@ export class UserController {
 	};
 
 	// GET /user/exchanges/:shopId
+	getExchangesByShopId = async (req, res) => {
+		const userId = req.auth.userId;
+		const { shopId } = req.params;
+
+		try {
+			const exchanges = await this.service.getExchangesByShopId(shopId, userId);
+			res.status(HttpStatus.SUCCESS).json(exchanges);
+		} catch (error) {
+			res.status(HttpStatus.SERVER_ERROR).json({ error: error.message });
+		}
+	};
+
+	// GET /user/exchanges/:shopId
 	createPhotoCard = async (req, res) => {
 		const ownerId = req.auth.userId; // 인증된 사용자 ID (JWT나 세션에서 가져옴)
 		const { name, price, grade, quantity, type, description } = req.body;
