@@ -7,6 +7,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExM
 GET http://localhost:3100/user/cards?page=1&orderBy=priceHighest&keyword=팬텀
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI3NjcwMDIsImV4cCI6MTczMjg1MzQwMn0.SRpdM_hsm7xPPBOz1_iOb7Ff8-srddemdl-kY3y9QWE
 
+
 // 카드 상세
 ###
 GET http://localhost:3100/user/cards/3d7bf9f6-1437-4a01-890b-0ff4d4dfd9b8
@@ -16,6 +17,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExM
 // 교환 목록
 GET http://localhost:3100/user/exchanges/c3febc1f-43c0-4b19-a039-bae3b3969ee5
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZjMwODVjZC0xZGQ0LTQ3NGQtODk3Mi1lNjVkNzE2YWY5MDYiLCJpYXQiOjE3MzI4NjQwNDksImV4cCI6MTczMjk1MDQ0OX0.GocwIVcyEECwsspoePQh79SZFihIsIZp8iwV-CTyAHY
+
 ###
 // 나의 판매 포토카드 전체 목록
 GET http://localhost:3100/user/my-cards/sales
@@ -36,11 +38,15 @@ quantity=3
 image=@../mock/images/루카리오.jpg
 
 ###
+GET http://localhost:3100/user/my-cards/sales?keyword=루기아
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI4MDM1MjEsImV4cCI6MTczMjg4OTkyMX0.zq-3gjUscVLY4lAPIm-KU8BRsi_DkPTC65gpy3iSQ5k
+
+###
 // 임시 로그인
 POST http://localhost:3100/auth/login
 Content-Type: application/json
 
 {
-	"email": "test4@naver.com",
+	"email": "test1@naver.com",
 	"password": "1234"
 }

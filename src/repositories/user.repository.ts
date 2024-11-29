@@ -188,10 +188,7 @@ export class UserRepository {
 				keyword
 					? {
 							buyerCard: {
-								OR: [
-									{ name: { contains: keyword, mode: 'insensitive' } },
-									{ description: { contains: keyword, mode: 'insensitive' } },
-								],
+								name: { contains: keyword, mode: 'insensitive' },
 							},
 						}
 					: {},
