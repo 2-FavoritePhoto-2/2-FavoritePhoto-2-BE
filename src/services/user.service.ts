@@ -78,7 +78,7 @@ export class UserService {
 
 		return {
 			totalCount: myCards.length,
-			list: paginatedCards,
+			card: paginatedCards,
 		};
 	};
 }
