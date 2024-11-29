@@ -19,7 +19,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZjMwO
 ###
 // 나의 판매 포토카드 전체 목록
 GET http://localhost:3100/user/my-cards/sales
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI4MDM1MjEsImV4cCI6MTczMjg4OTkyMX0.zq-3gjUscVLY4lAPIm-KU8BRsi_DkPTC65gpy3iSQ5k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZjMwODVjZC0xZGQ0LTQ3NGQtODk3Mi1lNjVkNzE2YWY5MDYiLCJpYXQiOjE3MzI4NzA3MzYsImV4cCI6MTczMjk1NzEzNn0.zKrkpwpIuVJ9uyY_Is6I10IlQ4HnpSRVkWj3ORxlczY
 
 ###
 POST http://localhost:3100/user/cards
@@ -44,17 +44,3 @@ Content-Type: application/json
 	"email": "test4@naver.com",
 	"password": "1234"
 }
-
-###
-// 임시 로그인
-POST https://pikapick.onrender.com/auth/login
-Content-Type: application/json
-
-{
-	"email": "test4@naver.com",
-	"password": "1234"
-}
-
-###
-GET https://pikapick.onrender.com/user/exchanges/3a2bdf0e-b5b8-4b98-9c35-a63d40ce987e
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZjMwODVjZC0xZGQ0LTQ3NGQtODk3Mi1lNjVkNzE2YWY5MDYiLCJpYXQiOjE3MzI4NjQyMjIsImV4cCI6MTczMjk1MDYyMn0.M3DTNEsBadzXT1_cfqvkZgIbtt1Bdp1qCh7LmU9mepE

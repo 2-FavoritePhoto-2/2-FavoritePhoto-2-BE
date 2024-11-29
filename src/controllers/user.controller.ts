@@ -118,7 +118,7 @@ export class UserController {
 		} catch (error) {
 			res.status(HttpStatus.SERVER_ERROR).json({ error: error.message });
 		}
-    
+	};
 	// GET /user/my-cards/sales
 	getMyCardsOnSale = async (req, res) => {
 		const userId = req.auth.userId;
