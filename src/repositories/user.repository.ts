@@ -140,9 +140,8 @@ export class UserRepository {
 				image,
 			},
 		});
-
 		return newCard;
-  }
+	};
 
 	getMyShopCards = async (userId, keyword, grade, type, available) => {
 		const where = {
@@ -151,10 +150,7 @@ export class UserRepository {
 				keyword
 					? {
 							card: {
-								OR: [
-									{ name: { contains: keyword, mode: 'insensitive' } },
-									{ description: { contains: keyword, mode: 'insensitive' } },
-								],
+								name: { contains: keyword, mode: 'insensitive' },
 							},
 						}
 					: {},

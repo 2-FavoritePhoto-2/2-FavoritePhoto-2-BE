@@ -113,12 +113,12 @@ export class UserController {
 				description,
 				image: imageUrl,
 			});
-
 			res.status(HttpStatus.CREATED).json(card);
 		} catch (error) {
 			res.status(HttpStatus.SERVER_ERROR).json({ error: error.message });
 		}
 	};
+
 	// GET /user/my-cards/sales
 	getMyCardsOnSale = async (req, res) => {
 		const userId = req.auth.userId;
