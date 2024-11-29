@@ -35,7 +35,7 @@ export class UserService {
 		const where = {
 			ownerId: userId,
 			...(keyword && {
-				OR: [{ name: { contains: keyword, mode: 'insensitive' } }, { description: { contains: keyword, mode: 'insensitive' } }],
+				name: { contains: keyword, mode: 'insensitive' },
 			}),
 			...(grade && { grade: Grades[grade] }),
 			...(type && { type: { has: type } }),

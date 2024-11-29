@@ -4,8 +4,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExM
 
 // 마이카드 리스트
 ###
-GET http://localhost:3100/user/cards?page=1&orderBy=priceHighest&keyword=데
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI2NzM2NzYsImV4cCI6MTczMjc2MDA3Nn0.0GSrUBos5n_0WjDFMX6_5vTElCwKnM4ZSTzh1MzHPIM
+GET http://localhost:3100/user/cards?page=1&orderBy=priceHighest&keyword=팬
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI4NTkzODYsImV4cCI6MTczMjk0NTc4Nn0._4Lqb4jhgYPuaKOtEXe6DdZFEaubI8-4KQTe_DmU9vo
 
 // 카드 상세
 ###
@@ -18,7 +18,7 @@ GET http://localhost:3100/user/exchanges/c3febc1f-43c0-4b19-a039-bae3b3969ee5
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlZmJlYTcyZS0wZmQwLTQ5YjAtOGVjNS1iY2YzZWFmNWUzMzUiLCJpYXQiOjE3MzI4NDgzNjgsImV4cCI6MTczMjkzNDc2OH0._dbc_Oc5WcLVHJrXu3Zn3J9wINV9lNLts_ACqVvfjQA
 ###
 // 나의 판매 포토카드 전체 목록
-GET http://localhost:3100/user/my-cards/sales
+GET http://localhost:3100/user/my-cards/sales?keyword=루기아
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI4MDM1MjEsImV4cCI6MTczMjg4OTkyMX0.zq-3gjUscVLY4lAPIm-KU8BRsi_DkPTC65gpy3iSQ5k
 
 ###
@@ -27,6 +27,6 @@ POST http://localhost:3100/auth/login
 Content-Type: application/json
 
 {
-	"email": "test2@hanmail.com",
+	"email": "test1@naver.com",
 	"password": "1234"
 }

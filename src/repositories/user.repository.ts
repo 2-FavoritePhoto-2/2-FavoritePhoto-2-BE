@@ -133,10 +133,7 @@ export class UserRepository {
 				keyword
 					? {
 							card: {
-								OR: [
-									{ name: { contains: keyword, mode: 'insensitive' } },
-									{ description: { contains: keyword, mode: 'insensitive' } },
-								],
+								name: { contains: keyword, mode: 'insensitive' },
 							},
 						}
 					: {},
@@ -174,10 +171,7 @@ export class UserRepository {
 				keyword
 					? {
 							buyerCard: {
-								OR: [
-									{ name: { contains: keyword, mode: 'insensitive' } },
-									{ description: { contains: keyword, mode: 'insensitive' } },
-								],
+								name: { contains: keyword, mode: 'insensitive' },
 							},
 						}
 					: {},
