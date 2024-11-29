@@ -1263,7 +1263,7 @@ export const SHOPS = [
 export const EXCHANGES = [
 	{
 		id: '3eb0325c-d17e-4f1a-b88b-d56942d631e3',
-		description: '교환을 신청합니다!',
+		description: '구교환을 신청합니다',
 		complete: false,
 		sellerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		buyerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
@@ -1275,7 +1275,7 @@ export const EXCHANGES = [
 	},
 	{
 		id: '3eb0325c-d17e-4f1a-b88b-d56942d631e4',
-		description: '교환을 신청합니다!',
+		description: '교환 신청해봐요 ㅎㅎ',
 		complete: false,
 		sellerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		buyerId: '53a10ad5-5c7a-4415-9683-a151b861b26d',
@@ -1287,7 +1287,7 @@ export const EXCHANGES = [
 	},
 	{
 		id: '3eb0325c-d17e-4f1a-b88b-d56942d631e5',
-		description: '교환을 신청합니다!',
+		description: '교환이요~~',
 		complete: false,
 		sellerId: 'efbea72e-0fd0-49b0-8ec5-bcf3eaf5e335',
 		buyerId: 'e6cd05c6-34d5-4871-82c1-f882988d0ece',

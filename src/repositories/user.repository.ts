@@ -1,3 +1,5 @@
+import { Grades } from '@prisma/client';
+
 export class UserRepository {
 	data: any;
 	exchangeData: any;
@@ -73,6 +75,11 @@ export class UserRepository {
 						owner: true, // 카드 소유자 정보 포함
 					},
 				},
+				sellerCard: {
+					include: {
+						owner: true, // 판매자 카드 소유자 정보 포함
+					},
+				},
 			},
 		});
 
@@ -80,22 +87,21 @@ export class UserRepository {
 			throw new Error('No exchanges found for this shop');
 		}
 
-		// 판매자 ID를 따로 확인하기 위해 첫 번째 교환에서 참조
+		// 판매자 ID를 첫 번째 교환에서 확인
 		const sellerId = exchanges[0]?.sellerId;
 
 		if (sellerId === userId) {
 			// 판매자 관점
 			return exchanges.map(exchange => ({
 				buyerId: exchange.buyerId,
-				buyerNickname: exchange.buyer?.nickname,
 				buyerCard: {
 					name: exchange.buyerCard?.name,
 					grade: exchange.buyerCard?.grade,
 					type: exchange.buyerCard?.type,
-					description: exchange.buyerCard?.description,
+					description: exchange.description,
 					image: exchange.buyerCard?.image,
-					price: exchange.buyerCard?.price, // 카드 가격
-					ownerNickname: exchange.buyerCard?.owner?.nickname, // 카드 소유자 닉네임
+					price: exchange.buyerCard?.price,
+					buyerNickname: exchange.buyer?.nickname,
 				},
 			}));
 		} else {
@@ -105,20 +111,100 @@ export class UserRepository {
 			if (userExchanges.length === 0) {
 				return [];
 			}
-
-			// 요청한 모든 교환을 배열로 반환
 			return userExchanges.map(exchange => ({
-				buyerId: exchange.buyerId,
+				description: exchange.description,
 				buyerCard: {
 					name: exchange.buyerCard?.name,
 					grade: exchange.buyerCard?.grade,
 					type: exchange.buyerCard?.type,
-					description: exchange.buyerCard?.description,
+					description: exchange.description,
 					image: exchange.buyerCard?.image,
-					price: exchange.buyerCard?.price, // 카드 가격
-					ownerNickname: exchange.buyerCard?.owner?.nickname, // 카드 소유자 닉네임
+					price: exchange.buyerCard?.price,
+					buyerNickname: exchange.buyer?.nickname,
 				},
 			}));
 		}
+	};
+
+	getMyShopCards = async (userId, keyword, grade, type, available) => {
+		const where = {
+			AND: [
+				{ sellerId: userId },
+				keyword
+					? {
+							card: {
+								OR: [
+									{ name: { contains: keyword, mode: 'insensitive' } },
+									{ description: { contains: keyword, mode: 'insensitive' } },
+								],
+							},
+						}
+					: {},
+				grade ? { card: { grade: Grades[grade] } } : {},
+				type ? { card: { type: { has: type } } } : {},
+				available !== undefined ? { available: available } : {},
+			],
+		};
+
+		const list = await this.prisma.shop.findMany({
+			where,
+			include: { seller: true, card: true },
+		});
+
+		const listData = list.map(l => ({
+			mode: 'shop',
+			nickname: l.seller?.nickname,
+			cardName: l.card?.name,
+			grade: l.card?.grade,
+			type: l.card?.type,
+			description: l.card?.description,
+			image: l.card?.image,
+			price: l.price,
+			quantity: l.remainingQuantity,
+			createdAt: l.createdAt,
+		}));
+
+		return listData;
+	};
+
+	getMyExchangeCards = async (userId, keyword, grade, type, available) => {
+		const where = {
+			AND: [
+				{ buyerId: userId },
+				keyword
+					? {
+							buyerCard: {
+								OR: [
+									{ name: { contains: keyword, mode: 'insensitive' } },
+									{ description: { contains: keyword, mode: 'insensitive' } },
+								],
+							},
+						}
+					: {},
+				grade ? { buyerCard: { grade: Grades[grade] } } : {},
+				type ? { buyerCard: { type: { has: type } } } : {},
+				available !== undefined ? { complete: !available } : {},
+			],
+		};
+
+		const list = await this.prisma.exchange.findMany({
+			where,
+			include: { buyer: true, buyerCard: true },
+		});
+
+		const listData = list.map(l => ({
+			mode: 'exchange',
+			nickname: l.buyer?.nickname,
+			cardName: l.buyerCard?.name,
+			grade: l.buyerCard?.grade,
+			type: l.buyerCard?.type,
+			description: l.buyerCard?.description,
+			image: l.buyerCard?.image,
+			price: l.buyerCard?.price,
+			quantity: 1,
+			createdAt: l.createdAt,
+		}));
+
+		return listData;
 	};
 }

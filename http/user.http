@@ -15,7 +15,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExM
 ###
 // 교환 목록
 GET http://localhost:3100/user/exchanges/c3febc1f-43c0-4b19-a039-bae3b3969ee5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZjMwODVjZC0xZGQ0LTQ3NGQtODk3Mi1lNjVkNzE2YWY5MDYiLCJpYXQiOjE3MzI3NjIzOTcsImV4cCI6MTczMjg0ODc5N30.aAakwncs9Jr-K4yqWsdRWCnrWXrPy4d04utta4n3Py4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlZmJlYTcyZS0wZmQwLTQ5YjAtOGVjNS1iY2YzZWFmNWUzMzUiLCJpYXQiOjE3MzI4NDgzNjgsImV4cCI6MTczMjkzNDc2OH0._dbc_Oc5WcLVHJrXu3Zn3J9wINV9lNLts_ACqVvfjQA
+###
+// 나의 판매 포토카드 전체 목록
+GET http://localhost:3100/user/my-cards/sales
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI4MDM1MjEsImV4cCI6MTczMjg4OTkyMX0.zq-3gjUscVLY4lAPIm-KU8BRsi_DkPTC65gpy3iSQ5k
 
 ###
 // 임시 로그인
@@ -23,6 +27,6 @@ POST http://localhost:3100/auth/login
 Content-Type: application/json
 
 {
-	"email": "test4@naver.com",
+	"email": "test2@hanmail.com",
 	"password": "1234"
 }
