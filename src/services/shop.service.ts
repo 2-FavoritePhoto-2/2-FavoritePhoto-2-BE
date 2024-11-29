@@ -34,10 +34,7 @@ export class ShopService {
 				keyword
 					? {
 							card: {
-								OR: [
-									{ name: { contains: keyword, mode: 'insensitive' } },
-									{ description: { contains: keyword, mode: 'insensitive' } },
-								],
+								name: { contains: keyword, mode: 'insensitive' },
 							},
 						}
 					: {},

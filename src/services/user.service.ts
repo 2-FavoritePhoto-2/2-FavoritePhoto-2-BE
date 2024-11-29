@@ -35,7 +35,7 @@ export class UserService {
 		const where = {
 			ownerId: userId,
 			...(keyword && {
-				OR: [{ name: { contains: keyword, mode: 'insensitive' } }, { description: { contains: keyword, mode: 'insensitive' } }],
+				name: { contains: keyword, mode: 'insensitive' },
 			}),
 			...(grade && { grade: Grades[grade] }),
 			...(type && { type: { has: type } }),
@@ -54,5 +54,31 @@ export class UserService {
 	getExchangesByShopId = async (shopId: string, userId: string) => {
 		const exchanges = await this.data.getExchangesByShopId(shopId, userId);
 		return exchanges;
+	};
+
+	getMyCardsOnSale = async ({ userId, page, pageSize, keyword, grade, type, available, mode }) => {
+		// 전체 데이터 가져오기
+		const myShopCards = await this.data.getMyShopCards(userId, keyword, grade, type, available);
+		const myExchangeCards = await this.data.getMyExchangeCards(userId, keyword, grade, type, available);
+
+		// 데이터 합치기 (mode: shop/exchange 필터링)
+		let myCards;
+		if (mode === 'shop') {
+			myCards = [...myShopCards];
+		} else if (mode === 'exchange') {
+			myCards = [...myExchangeCards];
+		} else {
+			myCards = [...myShopCards, ...myExchangeCards];
+		}
+		// 기본 최신순 정렬
+		myCards.sort((a, b) => b.createdAt - a.createdAt);
+		// 페이지네이션
+		const start = (page - 1) * pageSize;
+		const paginatedCards = myCards.slice(start, start + pageSize);
+
+		return {
+			totalCount: myCards.length,
+			card: paginatedCards,
+		};
 	};
 }
