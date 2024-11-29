@@ -65,66 +65,68 @@ export class UserRepository {
 		return cardDetails.myCards[0];
 	};
 
-	getExchangesByShopId = async (shopId: string, userId: string) => {
-		const exchanges = await this.exchangeData.findMany({
-			where: { shopId },
-			include: {
-				buyer: true,
-				buyerCard: {
-					include: {
-						owner: true, // 카드 소유자 정보 포함
-					},
-				},
-				sellerCard: {
-					include: {
-						owner: true, // 판매자 카드 소유자 정보 포함
-					},
-				},
-			},
-		});
+  getExchangesByShopId = async (shopId: string, userId: string) => {
+    const exchanges = await this.exchangeData.findMany({
+      where: { shopId },
+      include: {
+        buyer: true,
+        buyerCard: {
+          include: {
+            owner: true, // 카드 소유자 정보 포함
+          },
+        },
+        sellerCard: {
+          include: {
+            owner: true, // 판매자 카드 소유자 정보 포함
+          },
+        },
+      },
+    });
 
-		if (!exchanges || exchanges.length === 0) {
-			return [];
-		}
+    if (!exchanges || exchanges.length === 0) {
+      return [];
+    }
 
-		// 판매자 ID를 첫 번째 교환에서 확인
-		const sellerId = exchanges[0]?.sellerId;
+    // 판매자 ID를 첫 번째 교환에서 확인
+    const sellerId = exchanges[0]?.sellerId;
 
-		if (sellerId === userId) {
-			// 판매자 관점
-			return exchanges.map(exchange => ({
-				buyerId: exchange.buyerId,
-				buyerCard: {
-					name: exchange.buyerCard?.name,
-					grade: exchange.buyerCard?.grade,
-					type: exchange.buyerCard?.type,
-					description: exchange.description,
-					image: exchange.buyerCard?.image,
-					price: exchange.buyerCard?.price,
-					buyerNickname: exchange.buyer?.nickname,
-				},
-			}));
-		} else {
-			// 구매자 관점
-			const userExchanges = exchanges.filter(exchange => exchange.buyerId === userId);
+    if (sellerId === userId) {
+      // 판매자 관점
+      return exchanges.map(exchange => ({
+        id: exchange.id,
+        buyerId: exchange.buyerId,
+        buyerCard: {
+          name: exchange.buyerCard?.name,
+          grade: exchange.buyerCard?.grade,
+          type: exchange.buyerCard?.type,
+          description: exchange.description,
+          image: exchange.buyerCard?.image,
+          price: exchange.buyerCard?.price,
+          buyerNickname: exchange.buyer?.nickname,
+        },
+      }));
+    } else {
+      // 구매자 관점
+      const userExchanges = exchanges.filter(exchange => exchange.buyerId === userId);
 
-			if (userExchanges.length === 0) {
-				return [];
-			}
-			return userExchanges.map(exchange => ({
-				description: exchange.description,
-				buyerCard: {
-					name: exchange.buyerCard?.name,
-					grade: exchange.buyerCard?.grade,
-					type: exchange.buyerCard?.type,
-					description: exchange.description,
-					image: exchange.buyerCard?.image,
-					price: exchange.buyerCard?.price,
-					buyerNickname: exchange.buyer?.nickname,
-				},
-			}));
-		}
-	};
+      if (userExchanges.length === 0) {
+        return [];
+      }
+      return userExchanges.map(exchange => ({
+        id: exchange.id,
+        description: exchange.description,
+        buyerCard: {
+          name: exchange.buyerCard?.name,
+          grade: exchange.buyerCard?.grade,
+          type: exchange.buyerCard?.type,
+          description: exchange.description,
+          image: exchange.buyerCard?.image,
+          price: exchange.buyerCard?.price,
+          buyerNickname: exchange.buyer?.nickname,
+        },
+      }));
+    }
+  };
 
 	createPhotoCard = async ({ ownerId, name, grade, type, price, quantity, image, description }) => {
 		const parsedType = Array.isArray(type) ? type : type.split(',');
@@ -218,4 +220,3 @@ export class UserRepository {
 
 		return listData;
 	};
-}
