@@ -111,7 +111,6 @@ export class ShopService {
       await this.data.updateCard(shop.cardId, -quantity);
 
       const newCardData = {
-        uploaderId: shop.card?.uploaderId,
         ownerId: buyerId,
         name: shop.card?.name,
         price: shop.card?.price,

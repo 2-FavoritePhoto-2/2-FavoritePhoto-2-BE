@@ -35,7 +35,6 @@ CREATE TABLE "Notification" (
 -- CreateTable
 CREATE TABLE "Card" (
     "id" TEXT NOT NULL,
-    "uploaderId" TEXT,
     "ownerId" TEXT,
     "name" TEXT NOT NULL,
     "price" INTEGER NOT NULL,
@@ -118,9 +117,6 @@ CREATE UNIQUE INDEX "User_nickname_key" ON "User"("nickname");
 
 -- AddForeignKey
 ALTER TABLE "Notification" ADD CONSTRAINT "Notification_recipientId_fkey" FOREIGN KEY ("recipientId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Card" ADD CONSTRAINT "Card_uploaderId_fkey" FOREIGN KEY ("uploaderId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Card" ADD CONSTRAINT "Card_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;

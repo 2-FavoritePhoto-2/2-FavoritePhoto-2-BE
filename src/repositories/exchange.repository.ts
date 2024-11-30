@@ -60,7 +60,6 @@ export class ExchangeRepository {
   createUserCard = async (userId, cardInfo) => {
     return await this.prisma.Card.create({
       data: {
-        uploaderId: cardInfo.uploaderId,
         name: cardInfo.name,
         grade: cardInfo.grade,
         type: cardInfo.type,
