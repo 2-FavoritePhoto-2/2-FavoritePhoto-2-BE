@@ -67,6 +67,58 @@ export class UserController {
 		}
 	};
 
+	// GET /user/exchanges/:shopId
+	createPhotoCard = async (req, res) => {
+		const ownerId = req.auth.userId;
+		const { name, price, grade, quantity, type, description } = req.body;
+
+		if (!req.file) {
+			return res.status(HttpStatus.BAD_REQUEST).json({ error: '이미지를 업로드해야 합니다.' });
+		}
+
+		if (req.fileValidationError) {
+			return res.status(HttpStatus.BAD_REQUEST).json({ error: req.fileValidationError });
+		}
+
+		try {
+			let parsedType;
+
+			if (Array.isArray(type)) {
+				parsedType = type;
+			} else {
+				try {
+					parsedType = JSON.parse(type);
+				} catch (error) {
+					return res.status(HttpStatus.BAD_REQUEST).json({
+						error: 'type 필드는 배열 형식으로 입력되어야 합니다.',
+					});
+				}
+			}
+
+			if (!Array.isArray(parsedType) || parsedType.length < 1 || parsedType.length > 2) {
+				return res.status(HttpStatus.BAD_REQUEST).json({
+					error: 'type 필드는 최소 1가지, 최대 2가지를 선택해야 합니다.',
+				});
+			}
+
+			const imageUrl = req.file.location;
+
+			const card = await this.service.createPhotoCard({
+				ownerId,
+				name,
+				price: parseInt(price, 10),
+				grade,
+				quantity: parseInt(quantity, 10),
+				type: parsedType,
+				description,
+				image: imageUrl,
+			});
+			res.status(HttpStatus.CREATED).json(card);
+		} catch (error) {
+			res.status(HttpStatus.SERVER_ERROR).json({ error: error.message });
+		}
+	};
+
 	// GET /user/my-cards/sales
 	getMyCardsOnSale = async (req, res) => {
 		const userId = req.auth.userId;
