@@ -15,7 +15,16 @@ import { notificationRouter } from './routes/notification.route.js';
 dotenv.config();
 
 const app = express();
-app.use(cors());
+// CORS 설정: 모든 Origin 허용하고, Credential 활성화
+app.use(
+  cors({
+    origin: (origin: any, callback: (error: null, allow: boolean) => void) => {
+      callback(null, true);
+    },
+    credentials: true,
+  }),
+);
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -29,7 +38,7 @@ app.use('/cards', exchangeRouter);
 app.use('/notifications', notificationRouter);
 
 app.use((err, req, res, next) => {
-	ErrorHandler.handle(err, req, res, next);
+  ErrorHandler.handle(err, req, res, next);
 });
 
 app.listen(process.env.PORT || 3000, () => console.log('Server On💡'));
