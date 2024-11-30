@@ -147,7 +147,7 @@ export class ShopService {
           content: `[${shop.card?.grade}|${shop.card?.name}]이 품절되었습니다.`,
         });
         if (!alertSeller) {
-          throw new Error('교환 알림이 전달되지 않았습니다.');
+          throw new Error('품절 알림이 전달되지 않았습니다.');
         }
       }
 
