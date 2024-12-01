@@ -1,29 +1,32 @@
-GET http://localhost:3100/shop?keyword=킹크랩&grade=RARE&type=물&available=false
+GET http://localhost:3100/shop
 
 ###
-GET http://localhost:3100/shop/c3febc1f-43c0-4b19-a039-bae3b3969ee5
+GET http://localhost:3100/shop/e86b3e8c-dd16-46fa-b2cc-a3cf219dbc18
 
 ###
-POST http://localhost:3100/shop/cards
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmZiMzlkNi0wZmNjLTRiMjMtOTg3YS0xZTAzYjIzYzJkOWYiLCJpYXQiOjE3MzIxNjc3OTUsImV4cCI6MTczMjE3MTM5NX0.r4PrKaKTj3jLyMARAtK-e7PBD7NJSUjY8cjfrPzp6m0
+POST http://localhost:3100/shop
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzMwMzc1MTcsImV4cCI6MTczMzEyMzkxN30.QXJmZzSVwIJQzFRwMGOfhFK6K8M6b3HUKgmC-GTocy8
 Content-Type: application/json
 
 {
 	"price": 5,
 	"quantity": 3,
 	"exchangeGrade": "LEGENDARY",
-	"exchangeType": "Card",
+	"exchangeType": ["드래곤", "물"],
 	"exchangeDetails": "교환",
 	"cardId": "32e9359c-fd10-44d8-bab4-e4c9cf28a87c"
 }
 
 ###
-PATCH http://localhost:3100/shop/cards/c11737c0-a283-43b4-9f13-b26d1ce78758
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNmZiMzlkNi0wZmNjLTRiMjMtOTg3YS0xZTAzYjIzYzJkOWYiLCJpYXQiOjE3MzIxNjc3OTUsImV4cCI6MTczMjE3MTM5NX0.r4PrKaKTj3jLyMARAtK-e7PBD7NJSUjY8cjfrPzp6m0
+PATCH http://localhost:3100/shop/e86b3e8c-dd16-46fa-b2cc-a3cf219dbc18
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzMwMzc1MTcsImV4cCI6MTczMzEyMzkxN30.QXJmZzSVwIJQzFRwMGOfhFK6K8M6b3HUKgmC-GTocy8
 Content-Type: application/json
 
 {
-	"price": 6
+	"price": 5,
+	"totalQuantity": 10,
+	"remainingQuantity": 10,
+	"exchangeType": ["드래곤"]
 }
 
 ###

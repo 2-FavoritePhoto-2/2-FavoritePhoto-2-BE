@@ -56,7 +56,7 @@ CREATE TABLE "Shop" (
     "totalQuantity" INTEGER NOT NULL,
     "remainingQuantity" INTEGER NOT NULL,
     "exchangeGrade" "Grades" NOT NULL,
-    "exchangeType" TEXT NOT NULL,
+    "exchangeType" TEXT[],
     "exchangeDetails" TEXT NOT NULL,
     "available" BOOLEAN NOT NULL DEFAULT true,
     "sellerId" TEXT,
