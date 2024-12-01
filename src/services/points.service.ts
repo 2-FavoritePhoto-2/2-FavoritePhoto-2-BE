@@ -20,7 +20,7 @@ export class PointsService {
       }
     }
 
-    // 랜덤 포인트 (예: 10 ~ 20)
+    // 랜덤 포인트 (예: 1 ~ 20)
     const randomPoints = Math.floor(Math.random() * 20) + 1;
 
     await prismaClient.$transaction(async () => {
@@ -31,7 +31,7 @@ export class PointsService {
       await this.repository.createPointLog(userId, randomPoints, 'RANDOM_REWARD');
     });
 
-    return { canDraw: true, randomPoints };
+    return { randomPoints };
   };
 
   // 마지막 뽑기 시간 조회
