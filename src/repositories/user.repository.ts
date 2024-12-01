@@ -67,7 +67,7 @@ export class UserRepository {
 
   getExchangesByShopId = async (shopId: string, userId: string) => {
     const exchanges = await this.exchangeData.findMany({
-      where: { shopId },
+      where: { shopId, complete: false },
       include: {
         buyer: true,
         buyerCard: {
