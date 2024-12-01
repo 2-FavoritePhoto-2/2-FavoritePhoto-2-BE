@@ -69,6 +69,14 @@ export class ShopService {
   };
 
   updateShop = async (id, data) => {
+    const { remainingQuantity } = data;
+    const myCardQuantity = await this.data.getShopById(id);
+
+    // 내 카드 수량과 비교
+    if (remainingQuantity >= myCardQuantity?.card.quantity) {
+      throw new Error('판매 가능한 수량이 부족합니다!');
+    }
+
     const shop = await this.data.updateShop(id, data);
 
     return shop;
