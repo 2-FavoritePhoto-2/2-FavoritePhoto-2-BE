@@ -73,7 +73,7 @@ export class ShopService {
     const myCardQuantity = await this.data.getShopById(id);
 
     // 내 카드 수량과 비교
-    if (remainingQuantity >= myCardQuantity?.card.quantity) {
+    if (remainingQuantity > myCardQuantity?.card.quantity) {
       throw new Error('판매 가능한 수량이 부족합니다!');
     }
 
