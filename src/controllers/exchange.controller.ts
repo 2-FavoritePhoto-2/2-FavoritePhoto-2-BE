@@ -1,4 +1,6 @@
+import { assert } from 'superstruct';
 import HttpStatus from '../utils/httpStatus.js';
+import { ExchangeStruct } from '../../prisma/structs.js';
 
 export class ExchangeController {
   service: any;
@@ -10,6 +12,9 @@ export class ExchangeController {
     const { shopId } = req.params;
     const { buyerCardId, description } = req.body;
     const { userId } = req.auth;
+
+    const data = { buyerCardId, description };
+    assert(data, ExchangeStruct);
 
     const newExchange = await this.service.createExchange({
       shopId,
