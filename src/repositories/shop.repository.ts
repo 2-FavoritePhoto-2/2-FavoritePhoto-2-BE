@@ -25,14 +25,7 @@ export class ShopRepository {
 
   // POST
   createShop = async data => {
-    const { grade, ...rest } = data;
-
-    const newShop = await this.data.create({
-      data: {
-        grade: Grades[grade],
-        ...rest,
-      },
-    });
+    const newShop = await this.data.create({ data });
 
     return newShop;
   };
@@ -109,5 +102,14 @@ export class ShopRepository {
     });
 
     return nickname;
+  };
+
+  getCardQuantity = async id => {
+    const card = await this.prisma.card.findUnique({
+      where: { id },
+      select: { quantity: true },
+    });
+
+    return card;
   };
 }
