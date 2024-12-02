@@ -76,19 +76,28 @@ export class ShopService {
   };
 
   updateShop = async (id, data) => {
-    const { totalQuantity, remainingQuantity } = data;
+    const { totalQuantity, ...rest } = data;
     const shopData = await this.data.getShopById(id);
+
     const previousTotalQuantity = shopData.totalQuantity;
+    const previousRemainingQuantity = shopData.remainingQuantity;
     const myCardQuantity = shopData.card.quantity;
+
     const updateCardQuantity = previousTotalQuantity - totalQuantity;
+    const currentRemainingQuantity = previousRemainingQuantity + updateCardQuantity;
+    const currentTotalQuantity = previousTotalQuantity + updateCardQuantity;
 
     // 내 카드 수량과 비교
-    if (remainingQuantity <= 0 || remainingQuantity > myCardQuantity) {
+    if (currentRemainingQuantity <= 0 || updateCardQuantity > myCardQuantity) {
       throw new Error('판매 가능한 수량이 부족합니다!');
     }
 
     const card = await this.data.updateCard(shopData.card.id, updateCardQuantity);
-    const shop = await this.data.updateShop(id, data);
+    const shop = await this.data.updateShop(id, {
+      remainingQuantity: currentRemainingQuantity,
+      totalQuantity: currentTotalQuantity,
+      ...rest,
+    });
 
     return shop;
   };
