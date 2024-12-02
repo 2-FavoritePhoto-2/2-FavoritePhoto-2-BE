@@ -25,14 +25,7 @@ export class ShopRepository {
 
   // POST
   createShop = async data => {
-    const { grade, ...rest } = data;
-
-    const newShop = await this.data.create({
-      data: {
-        grade: Grades[grade],
-        ...rest,
-      },
-    });
+    const newShop = await this.data.create({ data });
 
     return newShop;
   };
