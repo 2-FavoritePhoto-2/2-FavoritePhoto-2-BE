@@ -103,4 +103,13 @@ export class ShopRepository {
 
     return nickname;
   };
+
+  getCard = async id => {
+    const card = await this.prisma.card.findUnique({
+      where: { id },
+      select: { quantity: true },
+    });
+
+    return card;
+  };
 }
