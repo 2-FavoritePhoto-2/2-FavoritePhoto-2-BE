@@ -32,6 +32,10 @@ export class ExchangeService {
         throw new Error('교환 제안이 존재하지 않습니다.');
       }
 
+      if (exchange.complete) {
+        throw new Error('이미 승인된 교환 제안입니다.');
+      }
+
       if (exchange.sellerId !== sellerId) {
         throw new Error('교환 제안을 승인할 권한이 없습니다.');
       }
@@ -84,6 +88,10 @@ export class ExchangeService {
         throw new Error('교환 제안이 존재하지 않습니다.');
       }
 
+      if (exchange.complete) {
+        throw new Error('이미 승인된 교환 제안입니다.');
+      }
+
       if (exchange.sellerId !== sellerId) {
         throw new Error('교환 제안을 거절할 권한이 없습니다.');
       }
@@ -106,6 +114,10 @@ export class ExchangeService {
 
       if (!exchange) {
         throw new Error('교환 제안이 존재하지 않습니다.');
+      }
+
+      if (exchange.complete) {
+        throw new Error('이미 승인된 교환 제안입니다.');
       }
 
       if (exchange.buyerId !== buyerId) {

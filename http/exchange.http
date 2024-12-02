@@ -10,9 +10,9 @@ Content-Type: application/json
 
 ###
 // 교환 승인
-POST http://localhost:3100/cards/exchange/f3512d89-c991-43bf-8cfc-02d8084e0440/accept
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNjRhMDI0Zi1lZWI1LTQzNDEtODhjMi0yMjU5YWEwYmYwY2UiLCJpYXQiOjE3MzI5MDc2MzgsImV4cCI6MTczNDExNzIzOH0.Erz8rCVovnE6SHbYpVSbh2NJaE2icVx2Wg0s2Hjc70U
-Content-Type: application/json
+POST http://localhost:3100/cards/exchange/0acef970-1b0a-4840-9c73-5cc065522329/accept
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNjRhMDI0Zi1lZWI1LTQzNDEtODhjMi0yMjU5YWEwYmYwY2UiLCJpYXQiOjE3MzMxMTcxOTAsImV4cCI6MTczNDMyNjc5MH0.FVZrpgS6AA6D4ngbjVe4aranZboYxSIQ161OooC9tZg
+
 
 
 ###
