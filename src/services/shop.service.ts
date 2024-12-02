@@ -60,7 +60,7 @@ export class ShopService {
       ...rest,
     });
 
-    const card = await this.data.getCard(cardId);
+    const card = await this.data.getCardQuantity(cardId);
     if (!card || card?.quantity < quantity) {
       throw new Error('판매 가능한 수량이 부족합니다!');
     }
@@ -84,11 +84,11 @@ export class ShopService {
     const myCardQuantity = shopData.card.quantity;
 
     const updateCardQuantity = previousTotalQuantity - totalQuantity;
-    const currentRemainingQuantity = previousRemainingQuantity + updateCardQuantity;
-    const currentTotalQuantity = previousTotalQuantity + updateCardQuantity;
+    const currentRemainingQuantity = previousRemainingQuantity - updateCardQuantity;
+    const currentTotalQuantity = previousTotalQuantity - updateCardQuantity;
 
     // 내 카드 수량과 비교
-    if (currentRemainingQuantity <= 0 || updateCardQuantity > myCardQuantity) {
+    if (currentRemainingQuantity <= 0 || -updateCardQuantity > myCardQuantity) {
       throw new Error('판매 가능한 수량이 부족합니다!');
     }
 
