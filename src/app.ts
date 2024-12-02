@@ -3,8 +3,9 @@ import cors from 'cors';
 import * as dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import swaggerUI from 'swagger-ui-express';
-import swaggerJSDoc from 'swagger-jsdoc';
 import YAML from 'yamljs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { exampleRouter } from './routes/example.route.js';
 import { pointRouter } from './routes/points.route.js';
 import { StructError } from 'superstruct';
@@ -14,8 +15,6 @@ import { shopRouter } from './routes/shop.route.js';
 import { exchangeRouter } from './routes/exchange.route.js';
 import ErrorHandler from './utils/errors.js';
 import { notificationRouter } from './routes/notification.route.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 dotenv.config();
 
