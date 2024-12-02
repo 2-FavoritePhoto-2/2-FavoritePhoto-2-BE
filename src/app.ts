@@ -2,6 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import swaggerUI from 'swagger-ui-express';
+import YAML from 'yamljs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { exampleRouter } from './routes/example.route.js';
 import { pointRouter } from './routes/points.route.js';
 import { StructError } from 'superstruct';
@@ -25,6 +29,9 @@ app.use(
   }),
 );
 
+// swagger
+const specs = YAML.load(path.join(path.dirname(fileURLToPath(import.meta.url)), './swagger/swagger.yaml'));
+app.use('/api', swaggerUI.serve, swaggerUI.setup(specs));
 app.use(express.json());
 app.use(cookieParser());
 
