@@ -472,6 +472,10 @@ components:
             items:
               $ref: '#/components/schemas/User'
   securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
     petstore_auth:
       type: oauth2
       flows:
