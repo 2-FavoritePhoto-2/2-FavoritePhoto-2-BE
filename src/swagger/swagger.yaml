@@ -181,7 +181,7 @@ components:
           $ref: '#/components/schemas/Exchange'
         buyingExchanges:
           $ref: '#/components/schemas/Exchange'
-        Notification:
+        notifications:
           $ref: '#/components/schemas/Notification'
     Notification:
       type: object
