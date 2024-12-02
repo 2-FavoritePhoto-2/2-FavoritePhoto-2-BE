@@ -1,101 +1,102 @@
 export class ExchangeRepository {
-	data: any;
-	prisma: any; // prismaClient를 여기서 관리
-	constructor(client) {
-		this.data = client.Exchange;
-		this.prisma = client;
-	}
-	createExchange = async data => {
-		const { shopId, buyerId, buyerCardId, description } = data;
-		const sellerCardInfo = await this.prisma.Shop.findUnique({ where: { id: shopId } });
-		const { sellerId, cardId: sellerCardId } = sellerCardInfo;
-		const newExchange = await this.data.create({
-			data: {
-				shopId,
-				sellerId,
-				buyerId,
-				sellerCardId,
-				buyerCardId,
-				description,
-			},
-		});
-		return newExchange;
-	};
+  prisma: any;
+  constructor(client) {
+    this.prisma = client;
+  }
 
-	acceptExchange = async exchangeId => {
-		const exchange = await this.data.findUnique({ where: { id: exchangeId } });
+  createExchange = async data => {
+    const { shopId, buyerId, buyerCardId, description } = data;
+    const sellerCardInfo = await this.prisma.Shop.findUnique({ where: { id: shopId } });
+    const { sellerId, cardId: sellerCardId } = sellerCardInfo;
+    const newExchange = await this.prisma.Exchange.create({
+      data: {
+        shopId,
+        sellerId,
+        buyerId,
+        sellerCardId,
+        buyerCardId,
+        description,
+      },
+    });
+    return newExchange;
+  };
 
-		const { shopId, sellerId, buyerId, sellerCardId, buyerCardId } = exchange;
+  findExchangeById = async exchangeId => {
+    return await this.prisma.Exchange.findUnique({ where: { id: exchangeId } });
+  };
 
-		const approvedExchange = await this.prisma.$transaction(async prisma => {
-			// shop에서 quantity 1 감소
-			await prisma.Shop.update({
-				where: { id: shopId },
-				data: { remainingQuantity: { decrement: 1 } },
-			});
+  findCardById = async cardId => {
+    return await this.prisma.Card.findUnique({ where: { id: cardId } });
+  };
 
-			// buyerCard quantity 1 감소
-			await prisma.Card.update({
-				where: { id: buyerCardId },
-				data: { quantity: { decrement: 1 } },
-			});
+  findShopQuantityById = async shopId => {
+    return await this.prisma.Shop.findUnique({
+      where: { id: shopId },
+      select: { remainingQuantity: true },
+    });
+  };
 
-			// sellerId로 card생성
-			const buyerCardInfo = await prisma.Card.findUnique({ where: { id: buyerCardId } });
+  decrementShopQuantity = async shopId => {
+    return await this.prisma.Shop.update({
+      where: { id: shopId },
+      data: { remainingQuantity: { decrement: 1 } },
+    });
+  };
 
-			await prisma.Card.create({
-				data: {
-					uploaderId: buyerCardInfo.uploaderId,
-					name: buyerCardInfo.name,
-					grade: buyerCardInfo.grade,
-					type: buyerCardInfo.type,
-					description: buyerCardInfo.description,
-					image: buyerCardInfo.image,
-					price: buyerCardInfo.price,
-					ownerId: sellerId,
-					quantity: 1,
-				},
-			});
+  decrementCardQuantity = async buyerCardId => {
+    return await this.prisma.Card.update({
+      where: { id: buyerCardId },
+      data: { quantity: { decrement: 1 } },
+    });
+  };
 
-			// buyerId로 card생성
-			const sellerCardInfo = await prisma.Card.findUnique({ where: { id: sellerCardId } });
+  incrementCardQuantity = async buyerCardId => {
+    return await this.prisma.Card.update({
+      where: { id: buyerCardId },
+      data: { quantity: { increment: 1 } },
+    });
+  };
 
-			await prisma.Card.create({
-				data: {
-					uploaderId: sellerCardInfo.uploaderId,
-					name: sellerCardInfo.name,
-					grade: sellerCardInfo.grade,
-					type: sellerCardInfo.type,
-					description: sellerCardInfo.description,
-					image: sellerCardInfo.image,
-					price: sellerCardInfo.price,
-					ownerId: buyerId,
-					quantity: 1,
-				},
-			});
+  createUserCard = async (userId, cardInfo) => {
+    return await this.prisma.Card.create({
+      data: {
+        name: cardInfo.name,
+        grade: cardInfo.grade,
+        type: cardInfo.type,
+        description: cardInfo.description,
+        image: cardInfo.image,
+        price: cardInfo.price,
+        ownerId: userId,
+        quantity: 1,
+      },
+    });
+  };
 
-			//교환 제안 승인 상태로 업데이트
-			return await prisma.Exchange.update({
-				where: { id: exchangeId },
-				data: { complete: true },
-			});
-		});
-		return approvedExchange;
-	};
+  updateShopAvailability = async shopId => {
+    return await this.prisma.Shop.update({
+      where: { id: shopId },
+      data: {
+        available: false,
+      },
+    });
+  };
 
-	// 교환 제안 거절
-	refuseExchange = async exchangeId => {
-		const deletedExchange = await this.data.delete({ where: { id: exchangeId } });
-		return deletedExchange;
-	};
+  updateExchangeComplete = async exchangeId => {
+    return await this.prisma.Exchange.update({
+      where: { id: exchangeId },
+      data: { complete: true },
+    });
+  };
 
-	// 교환 제안 취소
-	cancelExchange = async exchangeId => {
-		const deletedExchange = await this.data.delete({ where: { id: exchangeId } });
-		return deletedExchange;
-	};
+  // 교환 제안 거절
+  refuseExchange = async exchangeId => {
+    const deletedExchange = await this.prisma.Exchange.delete({ where: { id: exchangeId } });
+    return deletedExchange;
+  };
 
-	findExchangeById = async exchangeId => {
-		return await this.data.findUnique({ where: { id: exchangeId } });
-	};
+  // 교환 제안 취소
+  cancelExchange = async exchangeId => {
+    const deletedExchange = await this.prisma.Exchange.delete({ where: { id: exchangeId } });
+    return deletedExchange;
+  };
 }

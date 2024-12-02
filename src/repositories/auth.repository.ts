@@ -1,13 +1,23 @@
 export class AuthRepository {
 	data: any;
+	prisma: any;
 	constructor(client) {
 		this.data = client.User;
+		this.prisma = client;
 	}
 
 	findByEmail = async email => {
 		return await this.data.findUnique({
 			where: {
 				email,
+			},
+		});
+	};
+
+	findByNickname = async nickname => {
+		return await this.data.findUnique({
+			where: {
+				nickname,
 			},
 		});
 	};

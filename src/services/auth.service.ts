@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { createPointLog } from '../containers/points.container.js';
 
 export class AuthService {
 	data: any;
@@ -12,10 +13,16 @@ export class AuthService {
 	};
 
 	createUser = async user => {
-		const existedUser = await this.data.findByEmail(user.email);
+		const isUniqueEmail = await this.data.findByEmail(user.email);
 
-		if (existedUser) {
+		if (isUniqueEmail) {
 			throw new Error('이미 존재하는 이메일입니다.');
+		}
+
+		const isUniqueNickname = await this.data.findByNickname(user.nickname);
+
+		if (isUniqueNickname) {
+			throw new Error('이미 존재하는 닉네임입니다.');
 		}
 
 		const hashedPassword = await this.hashingPassword(user.password);
@@ -23,6 +30,9 @@ export class AuthService {
 			...user,
 			password: hashedPassword,
 		});
+
+		await createPointLog(newUser.id, 50, 'INITIAL_POINT');
+
 		return;
 	};
 

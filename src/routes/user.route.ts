@@ -2,6 +2,7 @@ import express from 'express';
 import { userController } from '../containers/user.container.js';
 import { verifyAccessToken } from '../utils/verifyAuth.js';
 import asyncHandler from '../utils/asyncHandler.js';
+import upload from '../utils/upload.js';
 
 export const userRouter = express.Router();
 
@@ -16,3 +17,9 @@ userRouter.get('/cards/:cardId', verifyAccessToken, asyncHandler(userController.
 
 // 거래 제안 목록 조회
 userRouter.get('/exchanges/:shopId', verifyAccessToken, asyncHandler(userController.getExchangesByShopId));
+
+// 유저 포토 카드 등록
+userRouter.post('/cards', verifyAccessToken, upload.single('image'), asyncHandler(userController.createPhotoCard));
+
+// 상점에 등록한 유저 카드 전체 조회
+userRouter.get('/my-cards/sales', verifyAccessToken, asyncHandler(userController.getMyCardsOnSale));
