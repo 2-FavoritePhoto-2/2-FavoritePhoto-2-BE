@@ -11,7 +11,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExM
 // 카드 상세
 ###
 GET http://localhost:3100/user/cards/3d7bf9f6-1437-4a01-890b-0ff4d4dfd9b8
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI3MDAwNjcsImV4cCI6MTczMjc4NjQ2N30.g81lqgalCJnJ7uun5ew-lFzBFkMdAPbnk3y19ESow1o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzMyMDIzNDMsImV4cCI6MTczMzI4ODc0M30.wYw5IcxrZeLgtbW7qJBUm0CHkbl2S6Xih2TJFQEohr8
 
 ###
 // 교환 목록
