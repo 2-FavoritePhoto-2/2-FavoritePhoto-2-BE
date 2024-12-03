@@ -16,7 +16,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExM
 ###
 // 교환 목록
 GET http://localhost:3100/user/exchanges/c3febc1f-43c0-4b19-a039-bae3b3969ee5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZjMwODVjZC0xZGQ0LTQ3NGQtODk3Mi1lNjVkNzE2YWY5MDYiLCJpYXQiOjE3MzI4NjQwNDksImV4cCI6MTczMjk1MDQ0OX0.GocwIVcyEECwsspoePQh79SZFihIsIZp8iwV-CTyAHY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzMyMDc1OTMsImV4cCI6MTczMzI5Mzk5M30.dKXixj-Ed05G5GNYpoD80qqRorWhmoxVxOUSbm50kng
 
 ###
 // 나의 판매 포토카드 전체 목록
