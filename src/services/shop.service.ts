@@ -64,7 +64,7 @@ export class ShopService {
     if (!card || card?.quantity < quantity) {
       throw new Error('판매 가능한 수량이 부족합니다!');
     }
-    await this.data.updateCard(cardId, -quantity);
+    await this.data.updateCardQuantity(cardId, -quantity);
 
     return newShop;
   };
@@ -92,7 +92,7 @@ export class ShopService {
       throw new Error('판매 가능한 수량이 부족합니다!');
     }
 
-    const card = await this.data.updateCard(shopData.card.id, updateCardQuantity);
+    const card = await this.data.updateCardQuantity(shopData.card.id, updateCardQuantity);
     const shop = await this.data.updateShop(id, {
       remainingQuantity: currentRemainingQuantity,
       totalQuantity: currentTotalQuantity,
@@ -103,6 +103,8 @@ export class ShopService {
   };
 
   deleteShop = async id => {
+    const { remainingQuantity, cardId } = await this.data.getShopById(id);
+    const changeQuantity = await this.data.updateCardQuantity(cardId, remainingQuantity);
     const shop = await this.data.deleteShop(id);
 
     return shop;

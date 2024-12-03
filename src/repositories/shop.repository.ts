@@ -76,7 +76,7 @@ export class ShopRepository {
     return shop;
   };
 
-  updateCard = async (id, quantity) => {
+  updateCardQuantity = async (id, quantity) => {
     const card = await this.prisma.card.update({
       where: { id },
       data: {
@@ -85,6 +85,8 @@ export class ShopRepository {
         },
       },
     });
+
+    return card;
   };
 
   createPurchasedCard = async cards => {
