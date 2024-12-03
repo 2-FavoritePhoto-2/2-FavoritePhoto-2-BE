@@ -21,6 +21,120 @@ tags:
   - name: pet ########### example
     description: 참고 예시
 paths:
+  /user/profile:
+    get:
+      tags:
+        - user
+      summary: '내 프로필 조회'
+      description: '로그인한 사용자의 포인트 및 닉네임 정보를 조회합니다.'
+      operationId: getUserProfile
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: '성공적으로 프로필을 반환합니다.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  point:
+                    type: integer
+                    example: 100
+                  nickname:
+                    type: string
+                    example: 'string'
+        '401':
+          description: '인증 실패'
+  /user/cards:
+    get:
+      tags:
+        - user
+      summary: '내 포켓몬 카드 전체 조회'
+      description: '나의 포켓몬 카드를 전체 조회 합니다.'
+      operationId: getUserPhotoCards
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          description: Page number
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: pageSize
+          in: query
+          description: Number of items per page
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - name: orderBy
+          in: query
+          description: Sorting option
+          required: false
+          schema:
+            type: string
+            enum: [priceLowest, priceHighest, nameAsc, nameDesc]
+            default: priceLowest
+        - name: keyword
+          in: query
+          description: Keyword for searching cards
+          required: false
+          schema:
+            type: string
+        - name: grade
+          in: query
+          description: Filter by card grade
+          required: false
+          schema:
+            type: string
+            enum: [COMMON, RARE, SUPER_RARE, LEGENDARY]
+        - name: type
+          in: query
+          description: Filter by card type
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: '성공적으로 나의 포토카드를 반환합니다.'
+
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                    minimum: 0
+                  card:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        name:
+                          type: string
+                        price:
+                          type: integer
+                          minimum: 0
+                        grade:
+                          type: string
+                          enum: [COMMON, RARE, SUPER_RARE, LEGENDARY]
+                        type:
+                          type: array
+                          items:
+                            type: string
+                        description:
+                          type: string
+                          maxLength: 500
+                        image:
+                          type: string
+                          format: uri
   /pet:
     put:
       tags:
