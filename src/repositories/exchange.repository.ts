@@ -1,3 +1,5 @@
+import { sendNotification } from '../containers/notification.container.js';
+
 export class ExchangeRepository {
   prisma: any;
   constructor(client) {
@@ -6,7 +8,7 @@ export class ExchangeRepository {
 
   createExchange = async data => {
     const { shopId, buyerId, buyerCardId, description } = data;
-    const sellerCardInfo = await this.prisma.Shop.findUnique({ where: { id: shopId } });
+    const sellerCardInfo = await this.prisma.Shop.findUnique({ where: { id: shopId }, include: { card: true } });
     const { sellerId, cardId: sellerCardId } = sellerCardInfo;
     const newExchange = await this.prisma.Exchange.create({
       data: {
@@ -18,11 +20,27 @@ export class ExchangeRepository {
         description,
       },
     });
+
+    // 교환 신청 알림 to 판매자
+    const buyer = await this.getNickname(buyerId);
+    const alertSeller = await sendNotification({
+      type: 'EXCHANGE',
+      recipientId: sellerId,
+      content: `${buyer.nickname}님이 [${sellerCardInfo.card.grade}|${sellerCardInfo.card.name}]의 포토카드 교환을 제안했습니다.`,
+    });
+    console.log(alertSeller);
+    if (!alertSeller) {
+      throw new Error('교환 알림이 전달되지 않았습니다.');
+    }
+
     return newExchange;
   };
 
   findExchangeById = async exchangeId => {
-    return await this.prisma.Exchange.findUnique({ where: { id: exchangeId } });
+    return await this.prisma.Exchange.findUnique({
+      where: { id: exchangeId },
+      include: { shop: true, seller: true, buyer: true, sellerCard: true },
+    });
   };
 
   findCardById = async cardId => {
@@ -98,5 +116,12 @@ export class ExchangeRepository {
   cancelExchange = async exchangeId => {
     const deletedExchange = await this.prisma.Exchange.delete({ where: { id: exchangeId } });
     return deletedExchange;
+  };
+
+  getNickname = async id => {
+    return await this.prisma.user.findUnique({
+      where: { id },
+      select: { nickname: true },
+    });
   };
 }
