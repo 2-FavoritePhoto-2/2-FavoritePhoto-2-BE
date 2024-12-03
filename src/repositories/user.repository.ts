@@ -46,6 +46,7 @@ export class UserRepository {
         myCards: {
           where: { id: cardId },
           select: {
+            id: true,
             name: true,
             price: true,
             grade: true,
