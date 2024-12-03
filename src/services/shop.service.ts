@@ -52,12 +52,19 @@ export class ShopService {
   };
 
   createShop = async data => {
-    const { quantity, ...rest } = data;
+    const { quantity, cardId, ...rest } = data;
     const newShop = await this.data.createShop({
       totalQuantity: quantity,
       remainingQuantity: quantity,
+      cardId,
       ...rest,
     });
+
+    const card = await this.data.getCardQuantity(cardId);
+    if (!card || card?.quantity < quantity) {
+      throw new Error('판매 가능한 수량이 부족합니다!');
+    }
+    await this.data.updateCard(cardId, -quantity);
 
     return newShop;
   };
@@ -69,15 +76,28 @@ export class ShopService {
   };
 
   updateShop = async (id, data) => {
-    const { remainingQuantity } = data;
-    const myCardQuantity = await this.data.getShopById(id);
+    const { totalQuantity, ...rest } = data;
+    const shopData = await this.data.getShopById(id);
+
+    const previousTotalQuantity = shopData.totalQuantity;
+    const previousRemainingQuantity = shopData.remainingQuantity;
+    const myCardQuantity = shopData.card.quantity;
+
+    const updateCardQuantity = previousTotalQuantity - totalQuantity;
+    const currentRemainingQuantity = previousRemainingQuantity - updateCardQuantity;
+    const currentTotalQuantity = previousTotalQuantity - updateCardQuantity;
 
     // 내 카드 수량과 비교
-    if (remainingQuantity > myCardQuantity?.card.quantity) {
+    if (currentRemainingQuantity <= 0 || -updateCardQuantity > myCardQuantity) {
       throw new Error('판매 가능한 수량이 부족합니다!');
     }
 
-    const shop = await this.data.updateShop(id, data);
+    const card = await this.data.updateCard(shopData.card.id, updateCardQuantity);
+    const shop = await this.data.updateShop(id, {
+      remainingQuantity: currentRemainingQuantity,
+      totalQuantity: currentTotalQuantity,
+      ...rest,
+    });
 
     return shop;
   };
@@ -116,7 +136,6 @@ export class ShopService {
 
       const updatedQuantity = shop.remainingQuantity - quantity;
       await this.data.updateShop(shopId, { remainingQuantity: updatedQuantity, available: updatedQuantity > 0 });
-      await this.data.updateCard(shop.cardId, -quantity);
 
       const newCardData = {
         ownerId: buyerId,
