@@ -141,6 +141,207 @@ paths:
         - petstore_auth:
             - write:pets
             - read:pets
+  /cards/{shopId}/exchange:
+    post:
+      tags:
+        - exchange
+      summary: '카드 교환 제안'
+      description: '카드 교환을 제안하는 API입니다.'
+      operationId: createExchange
+      parameters:
+        - $ref: '#/components/parameters/shopIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                buyerCardId:
+                  type: string
+                  format: uuid
+                description:
+                  type: string
+      responses:
+        '201':
+          description: '교환 제안 생성'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exchange'
+        '400':
+          description: '잘못된 요청'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+  /cards/exchange/{exchangeId}/accept:
+    post:
+      tags:
+        - exchange
+      summary: '카드 교환 제안 승인'
+      description: '카드 교환 제안을 승인하는 API입니다.'
+      operationId: acceptExchange
+      parameters:
+        - $ref: '#/components/parameters/exchangeIdParam'
+      responses:
+        '200':
+          description: '교환 승인'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/acceptExchange'
+        '400':
+          description: '잘못된 요청'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: '찾을 수 없음'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+  /cards/exchange/{exchangeId}/refuse:
+    delete:
+      tags:
+        - exchange
+      summary: '카드 교환 제안 거절'
+      description: '카드 교환 제안을 거절하는 API입니다.'
+      operationId: refuseExchange
+      parameters:
+        - $ref: '#/components/parameters/exchangeIdParam'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: '잘못된 요청'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: '찾을 수 없음'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+  /cards/exchange/{exchangeId}/cancel:
+    delete:
+      tags:
+        - exchange
+      summary: '카드 교환 제안 취소'
+      description: '카드 교환 제안을 취소하는 API입니다.'
+      operationId: cancelExchange
+      parameters:
+        - $ref: '#/components/parameters/exchangeIdParam'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: '잘못된 요청'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: '찾을 수 없음'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+  /points/box:
+    post:
+      tags:
+        - points
+      summary: '랜덤 포인트 획득'
+      description: '사용자가 랜덤으로 포인트를 획득하는 API입니다.'
+      operationId: drawRandomBox
+      responses:
+        '200':
+          description: '랜덤 포인트 획득'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RandomPoints'
+        '400':
+          description: 1시간 이내에 이미 뽑았습니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+  /points/last-draw-time:
+    get:
+      tags:
+        - points
+      summary: '유저 랜덤 상자 뽑은 시간 조회'
+      description: '유저가 마지막으로 랜덤상자를 뽑은 시간을 조회하는 API입니다.'
+      operationId: getLastDrawTime
+      responses:
+        '200':
+          description: '랜덤상자 뽑은 시간'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LastDrawTime'
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+  /points/logs:
+    get:
+      tags:
+        - points
+      summary: '유저의 포인트로그 조회'
+      description: '유저의 포인트로그를 조회하는 API입니다.'
+      operationId: getPointLogs
+      parameters:
+        - $ref: '#/components/parameters/startDate'
+        - $ref: '#/components/parameters/endDate'
+        - $ref: '#/components/parameters/action'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/order'
+      responses:
+        '200':
+          description: '유저의 포인트로그'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PointLog'
+        '401':
+          description: Unauthorized
+      security:
+        - bearerAuth: []
 components:
   schemas:
     User:
@@ -360,6 +561,9 @@ components:
         buyerCardId:
           type: string
           format: uuid
+        shopId:
+          type: string
+          format: uuid
         createAt:
           type: string
           format: date-time
@@ -368,33 +572,28 @@ components:
           type: string
           format: date-time
           example: '2023-01-01T00:00:00Z'
-        seller:
-          $ref: '#/components/schemas/User'
-        buyer:
-          $ref: '#/components/schemas/User'
-        sellerCard:
-          $ref: '#/components/schemas/Card'
-        buyerCard:
-          $ref: '#/components/schemas/Card'
-        shop:
-          $ref: '#/components/schemas/Shop'
-    PointLog:
+    acceptExchange:
       type: object
       properties:
         id:
           type: string
           format: uuid
-        amount:
-          type: integer
-          example: 5
-        action:
+        description:
           type: string
-          enum:
-            - INITIAL_POINT
-            - PURCHASE
-            - SALE
-            - RANDOM_REWARD
-        userId:
+          example: '교환 제안 내용'
+        complete:
+          type: boolean
+          example: true
+        sellerId:
+          type: string
+          format: uuid
+        buyerId:
+          type: string
+          format: uuid
+        selerCardId:
+          type: string
+          format: uuid
+        buyerCardId:
           type: string
           format: uuid
         createAt:
@@ -405,8 +604,84 @@ components:
           type: string
           format: date-time
           example: '2023-01-01T00:00:00Z'
-        user:
-          $ref: '#/components/schemas/User'
+    PointLog:
+      type: array
+      items:
+        oneOf:
+          - type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              amount:
+                type: integer
+                example: 50
+              action:
+                type: string
+                enum:
+                  - INITIAL_POINT
+                  - PURCHASE
+                  - SALE
+                  - RANDOM_REWARD
+              metaData:
+                type: object
+                example: null
+              createAt:
+                type: string
+                format: date-time
+                example: '2023-01-01T00:00:00Z'
+              updateAt:
+                type: string
+                format: date-time
+                example: '2023-01-01T00:00:00Z'
+              userId:
+                type: string
+                format: uuid
+          - type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              amount:
+                type: integer
+                example: -5
+              action:
+                type: string
+                enum:
+                  - PURCHASE
+                  - INITIAL_POINT
+                  - SALE
+                  - RANDOM_REWARD
+              metaData:
+                type: object
+                example: { purchaseId: '123e4567-e89b-12d3-a456-426614174000' }
+              createAt:
+                type: string
+                format: date-time
+                example: '2023-01-01T00:00:00Z'
+              updateAt:
+                type: string
+                format: date-time
+                example: '2023-01-01T00:00:00Z'
+              userId:
+                type: string
+                format: uuid
+    RandomPoints:
+      type: object
+      properties:
+        randomPoints:
+          type: integer
+    LastDrawTime:
+      type: object
+      properties:
+        lastDrawTime:
+          type: string
+          format: date-time
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
     Pet:
       required:
         - name
@@ -488,3 +763,67 @@ components:
       type: apiKey
       name: api_key
       in: header
+  parameters:
+    exchangeIdParam:
+      name: exchangeId
+      in: path
+      required: true
+      description: 카드 교환 제안 ID
+      schema:
+        type: string
+        format: uuid
+    shopIdParam:
+      name: shopId
+      in: path
+      required: true
+      description: 상점 ID
+      schema:
+        type: string
+        format: uuid
+    startDate:
+      in: query
+      name: startDate
+      schema:
+        type: string
+      description: The start date for filtering point logs (e.g., "2023-12-03")
+    endDate:
+      in: query
+      name: endDate
+      schema:
+        type: string
+      description: The end date for filtering point logs (e.g., "2023-12-03")
+    action:
+      in: query
+      name: action
+      schema:
+        type: string
+        enum:
+          - INITIAL_POINT
+          - PURCHASE
+          - SALE
+          - RANDOM_REWARD
+      description: The action type for filtering point logs
+    page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        minimum: 1
+      description: The page number for pagination (must be 1 or higher)
+    limit:
+      in: query
+      name: limit
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+      description: The number of items per page (must be between 1 and 100)
+    order:
+      in: query
+      name: order
+      schema:
+        type: string
+        enum:
+          - asc
+          - desc
+      description: The sorting order of the results (asc for ascending, desc for descending)
