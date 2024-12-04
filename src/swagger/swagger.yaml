@@ -628,6 +628,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: jwt expired
         '500':
           description: '서버 오류'
           content:
@@ -691,6 +693,12 @@ paths:
                     type: string
                     format: date-time
                     example: '2023-01-01T00:00:00Z'
+        '401':
+          description: jwt expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         '500':
           description: '서버 오류'
           content:
@@ -793,6 +801,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: jwt expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         '500':
           description: '서버 오류'
           content:
@@ -811,6 +825,12 @@ paths:
       responses:
         '204':
           description: '판매 취소 성공'
+        '401':
+          description: jwt expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         '400':
           description: '잘못된 요청'
           content:
@@ -875,6 +895,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: jwt expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         '500':
           description: '서버 오류'
           content:
@@ -917,6 +943,12 @@ paths:
                     type: string
                     format: date-time
                     example: '2023-01-01T00:00:00Z'
+        '401':
+          description: jwt expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         '500':
           description: '서버 오류'
           content:
@@ -965,6 +997,12 @@ paths:
                     example: '2023-01-01T00:00:00Z'
         '400':
           description: '잘못된 요청'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: jwt expired
           content:
             application/json:
               schema:
