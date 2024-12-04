@@ -9,9 +9,24 @@ export class ExchangeService {
 
   createExchange = async data => {
     const newExchange = await prismaClient.$transaction(async () => {
+      const shop = await this.data.findShopQuantityById(data.shopId);
+
+      if (!shop || shop.remainingQuantity < 1) {
+        throw new Error('상점에 남은 수량이 없습니다.');
+      }
+
+      const sellerCardInfo = await this.data.getSellerCardInfo(data.shopId);
+      const sellerId = sellerCardInfo.sellerId;
+      if (sellerId === data.buyerId) {
+        throw new Error('판매자는 자신의 상품에 교환 요청을 할 수 없습니다.');
+      }
+
       const buyerCardInfo = await this.data.findCardById(data.buyerCardId);
       if (!buyerCardInfo) {
         throw new Error('구매자의 카드 정보를 찾을 수 없습니다.');
+      }
+      if (buyerCardInfo.ownerId !== data.buyerId) {
+        throw new Error('해당 카드는 구매자의 소유가 아닙니다.');
       }
       if (buyerCardInfo.quantity < 1) {
         throw new Error('구매자 카드의 수량이 부족합니다.');
@@ -20,9 +35,11 @@ export class ExchangeService {
       // buyerCard quantity 1 감소
       await this.data.decrementCardQuantity(data.buyerCardId);
 
-      const newData = await this.data.createExchange(data);
-      const { newExchange: createdExchange, sellerId, buyer, sellerCardGrade, sellerCardName } = newData;
-      console.log('create!', createdExchange, sellerId, buyer, sellerCardGrade, sellerCardName);
+      const createdExchange = await this.data.createExchange(data);
+
+      const buyer = await this.data.getNickname(data.buyerId);
+      const sellerCardGrade = sellerCardInfo.card.grade;
+      const sellerCardName = sellerCardInfo.card.name;
 
       // 교환 신청 알림 to 판매자
       const alertSeller = await sendNotification({

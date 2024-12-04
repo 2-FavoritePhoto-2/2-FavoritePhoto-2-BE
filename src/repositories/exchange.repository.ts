@@ -8,7 +8,7 @@ export class ExchangeRepository {
 
   createExchange = async data => {
     const { shopId, buyerId, buyerCardId, description } = data;
-    const sellerCardInfo = await this.prisma.Shop.findUnique({ where: { id: shopId }, include: { card: true } });
+    const sellerCardInfo = await this.getSellerCardInfo(shopId);
     const { sellerId, cardId: sellerCardId } = sellerCardInfo;
     const newExchange = await this.prisma.Exchange.create({
       data: {
@@ -20,13 +20,14 @@ export class ExchangeRepository {
         description,
       },
     });
+    return newExchange;
+  };
 
-    const buyer = await this.getNickname(buyerId);
-    const sellerCardGrade = sellerCardInfo.card.grade;
-    const sellerCardName = sellerCardInfo.card.name;
-
-    console.log('send: ', newExchange, sellerId, buyer, sellerCardGrade, sellerCardName);
-    return { newExchange, sellerId, buyer, sellerCardGrade, sellerCardName };
+  getSellerCardInfo = async shopId => {
+    return await this.prisma.Shop.findUnique({
+      where: { id: shopId },
+      include: { card: true },
+    });
   };
 
   findExchangeById = async exchangeId => {
