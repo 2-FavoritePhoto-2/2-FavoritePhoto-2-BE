@@ -23,7 +23,7 @@ export class AuthController {
       path: '/token/refresh',
       httpOnly: true,
       sameSite: 'none',
-      secure: false,
+      secure: true,
       maxAge: 14 * 24 * 60 * 60 * 1000, // 14일
     });
 
