@@ -1,4 +1,6 @@
 import HttpStatus from '../utils/httpStatus.js';
+import { CardStruct } from '../../prisma/structs.js';
+import { validate } from 'superstruct';
 
 export class UserController {
   service: any;
@@ -56,6 +58,7 @@ export class UserController {
     const ownerId = req.auth.userId;
     const { name, price, grade, quantity, type, description } = req.body;
 
+    // 파일 업로드 유효성 검사
     if (!req.file) {
       return res.status(HttpStatus.BAD_REQUEST).json({ error: '이미지를 업로드해야 합니다.' });
     }
@@ -64,37 +67,42 @@ export class UserController {
       return res.status(HttpStatus.BAD_REQUEST).json({ error: req.fileValidationError });
     }
 
+    // type 필드를 배열로 파싱
     let parsedType;
-
-    if (Array.isArray(type)) {
-      parsedType = type;
-    } else {
-      try {
-        parsedType = JSON.parse(type);
-      } catch (error) {
-        return res.status(HttpStatus.BAD_REQUEST).json({
-          error: 'type 필드는 배열 형식으로 입력되어야 합니다.',
-        });
-      }
+    try {
+      parsedType = JSON.parse(type); // type이 JSON 문자열이므로 파싱
+    } catch (error) {
+      return res.status(HttpStatus.BAD_REQUEST).json({ error: 'type 필드는 JSON 배열 형식이어야 합니다.' });
     }
 
+    // type 필드 유효성 검사
     if (!Array.isArray(parsedType) || parsedType.length < 1 || parsedType.length > 2) {
       return res.status(HttpStatus.BAD_REQUEST).json({
-        error: 'type 필드는 최소 1가지, 최대 2가지를 선택해야 합니다.',
+        error: 'type 필드는 최소 1가지, 최대 2가지 값을 포함한 배열이어야 합니다.',
       });
     }
 
-    const imageUrl = req.file.location;
-
-    const card = await this.service.createPhotoCard({
-      ownerId,
+    // CardStruct를 통한 유효성 검사
+    const cardData = {
       name,
       price: parseInt(price, 10),
       grade,
       quantity: parseInt(quantity, 10),
       type: parsedType,
       description,
-      image: imageUrl,
+      image: req.file.location,
+    };
+
+    const [error, validatedData] = validate(cardData, CardStruct);
+
+    if (error) {
+      return res.status(HttpStatus.BAD_REQUEST).json({ error: error.message });
+    }
+
+    // 유효성 검사 통과 후 카드 생성
+    const card = await this.service.createPhotoCard({
+      ownerId,
+      ...validatedData,
     });
     res.status(HttpStatus.CREATED).json(card);
   };
