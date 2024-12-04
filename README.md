@@ -42,7 +42,8 @@ _~~(협업 문서 링크: 노션- 어떤 페이지 넣을지 고민 중)
 
 ### 이동훈
 
-#### 프로필 조회
+<details>
+<summary>프로필 조회</summary>
 
 - 기능 : 로그인한 유저의 프로필 정보를 조회합니다.
 - Response : 닉네임, 보유 포인트
@@ -54,10 +55,11 @@ _~~(협업 문서 링크: 노션- 어떤 페이지 넣을지 고민 중)
   - Service
     1. `UserRepository.getUserId` 호출하여 유저 데이터를 가져옵니다.
     2. 닉네임과 포인트만 반환하도록 데이터를 가공합니다.
-  - Repository
-    1. 데이터베이스에서 사용자 ID로 유저 정보를 조회합니다.
+  - Repository 1. 데이터베이스에서 사용자 ID로 유저 정보를 조회합니다.
+  </details>
 
-#### 유저 포켓몬 카드 전체 조회
+<details>
+<summary>유저 포켓몬 카드 전체 조회</summary>
 
 - 기능 : 유저가 소유한 모든 포켓몬 카드를 페이지네이션 및 필터링 옵션과 함께 조회합니다.
 - Response : 카드 목록, 전체 카드 수
@@ -69,11 +71,11 @@ _~~(협업 문서 링크: 노션- 어떤 페이지 넣을지 고민 중)
     1. 페이지네이션및 정렬기준 설정
     2. 검색조건 구성
     3. `UserRepository.getUserPhotoCards`를 호출하여 데이터 반환
-  - Repository
-    1. 카드 목록 및 전체 개수를 조회.
-    2. 조건에 맞는 카드 목록과 총 개수를 반환
+  - Repository 1. 카드 목록 및 전체 개수를 조회. 2. 조건에 맞는 카드 목록과 총 개수를 반환
+  </details>
 
-#### 카드 상세 조회
+<details>
+<summary>카드 상세 조회</summary>
 
 - 기능 : 특정 포토카드의 세부 정보를 조회합니다.
 - Response : 카드 ID, 이름, 가격, 등급, 타입, 이미지, 수량
@@ -84,10 +86,11 @@ _~~(협업 문서 링크: 노션- 어떤 페이지 넣을지 고민 중)
     3. 세부 정보를 JSON 형식으로 반환
   - Service
     1. `UserRepository.getPhotoCardDetails`를 호출하여 카드 정보를 가져옵니다.
-  - Repository
-    1. 사용자 ID와 카드 ID를 기반으로 데이터베이스에서 카드 정보를 조회
+  - Repository 1. 사용자 ID와 카드 ID를 기반으로 데이터베이스에서 카드 정보를 조회
+  </details>
 
-#### 거래 목록 조회
+<details>
+<summary>거래 목록 조회</summary>
 
 - 기능 : 특정 상점에서 진행 중인 거래 목록을 로그인중인 유저의 기준에 맞게 조회 합니다
 - Response : 구매자 또는 판매자 관점에 맞는 거래 세부 정보
@@ -99,11 +102,11 @@ _~~(협업 문서 링크: 노션- 어떤 페이지 넣을지 고민 중)
   - Service
     1. `UserRepository.getExchangesByShopId` 호출
     2. 사용자 관점에 따라 데이터 가공
-  - Repository
-    1. 상점 ID와 진행 상태를 조건으로 거래 목록을 조회
-    2. 구매자 또는 판매자 정보를 포함하여 반환
+  - Repository 1. 상점 ID와 진행 상태를 조건으로 거래 목록을 조회 2. 구매자 또는 판매자 정보를 포함하여 반환
+  </details>
 
-#### 판매 중인 카드 조회
+<details>
+<summary>판매 중인 카드 조회</summary>
 
 - 기능 : 유저가 판매 중인 카드와 거래 중인 카드를 조회합니다.
 - Response : 카드 목록(판매, 교환 구분), 총 카드 개수
@@ -116,11 +119,11 @@ _~~(협업 문서 링크: 노션- 어떤 페이지 넣을지 고민 중)
     1. `UserRepository.getMyShopCards`와 `UserRepository.getMyExchangeCards` 호출.
     2. mode에 따라 판매 카드, 교환 카드, 또는 전체 데이터를 병합.
     3. 기본 최신순으로 정렬 후 페이지네이션 처리.
-  - Repository
-    1. 판매 정보는 `Shop` 모델에서, 교환 정보는 `Exchange`모델에서 조회
-    2. 조건에 따라 카드 정보를 필터링하고 데이터 반환
+  - Repository 1. 판매 정보는 `Shop` 모델에서, 교환 정보는 `Exchange`모델에서 조회 2. 조건에 따라 카드 정보를 필터링하고 데이터 반환
+  </details>
 
-#### 카드 생성
+<details>
+<summary>카드 생성</summary>
 
 - 기능 : 새로운 포켓몬 카드를 생성합니다.
 - Response : 생성된 카드의 세부 정보
@@ -135,8 +138,8 @@ _~~(협업 문서 링크: 노션- 어떤 페이지 넣을지 고민 중)
     4. 생성된 카드 정보를 반환
   - Service
     1. `UserRepository.createPhotoCard`호출
-  - Repository
-    1. Prisma를 통해 데이터베이스에 카드 정보 생성
+  - Repository 1. Prisma를 통해 데이터베이스에 카드 정보 생성
+  </details>
 
 ### 강명곤
 
