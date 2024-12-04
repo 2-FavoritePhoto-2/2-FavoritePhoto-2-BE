@@ -1,3 +1,5 @@
+import { sendNotification } from '../containers/notification.container.js';
+
 export class ExchangeRepository {
   prisma: any;
   constructor(client) {
@@ -6,7 +8,7 @@ export class ExchangeRepository {
 
   createExchange = async data => {
     const { shopId, buyerId, buyerCardId, description } = data;
-    const sellerCardInfo = await this.prisma.Shop.findUnique({ where: { id: shopId } });
+    const sellerCardInfo = await this.prisma.Shop.findUnique({ where: { id: shopId }, include: { card: true } });
     const { sellerId, cardId: sellerCardId } = sellerCardInfo;
     const newExchange = await this.prisma.Exchange.create({
       data: {
@@ -18,11 +20,20 @@ export class ExchangeRepository {
         description,
       },
     });
-    return newExchange;
+
+    const buyer = await this.getNickname(buyerId);
+    const sellerCardGrade = sellerCardInfo.card.grade;
+    const sellerCardName = sellerCardInfo.card.name;
+
+    console.log('send: ', newExchange, sellerId, buyer, sellerCardGrade, sellerCardName);
+    return { newExchange, sellerId, buyer, sellerCardGrade, sellerCardName };
   };
 
   findExchangeById = async exchangeId => {
-    return await this.prisma.Exchange.findUnique({ where: { id: exchangeId } });
+    return await this.prisma.Exchange.findUnique({
+      where: { id: exchangeId },
+      include: { shop: true, seller: true, buyer: true, sellerCard: true },
+    });
   };
 
   findCardById = async cardId => {
@@ -98,5 +109,12 @@ export class ExchangeRepository {
   cancelExchange = async exchangeId => {
     const deletedExchange = await this.prisma.Exchange.delete({ where: { id: exchangeId } });
     return deletedExchange;
+  };
+
+  getNickname = async id => {
+    return await this.prisma.user.findUnique({
+      where: { id },
+      select: { nickname: true },
+    });
   };
 }
