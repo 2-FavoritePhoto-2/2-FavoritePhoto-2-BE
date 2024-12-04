@@ -20,7 +20,22 @@ export class ExchangeService {
       // buyerCard quantity 1 감소
       await this.data.decrementCardQuantity(data.buyerCardId);
 
-      return await this.data.createExchange(data);
+      const newData = await this.data.createExchange(data);
+      const { newExchange: createdExchange, sellerId, buyer, sellerCardGrade, sellerCardName } = newData;
+      console.log('create!', createdExchange, sellerId, buyer, sellerCardGrade, sellerCardName);
+
+      // 교환 신청 알림 to 판매자
+      const alertSeller = await sendNotification({
+        type: 'EXCHANGE',
+        recipientId: sellerId,
+        content: `${buyer.nickname}님이 [${sellerCardGrade}|${sellerCardName}]의 포토카드 교환을 제안했습니다.`,
+      });
+      console.log(alertSeller);
+      if (!alertSeller) {
+        throw new Error('교환 알림이 전달되지 않았습니다.');
+      }
+
+      return createdExchange;
     });
     return newExchange;
   };

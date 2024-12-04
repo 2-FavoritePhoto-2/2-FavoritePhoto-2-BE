@@ -21,19 +21,12 @@ export class ExchangeRepository {
       },
     });
 
-    // 교환 신청 알림 to 판매자
     const buyer = await this.getNickname(buyerId);
-    const alertSeller = await sendNotification({
-      type: 'EXCHANGE',
-      recipientId: sellerId,
-      content: `${buyer.nickname}님이 [${sellerCardInfo.card.grade}|${sellerCardInfo.card.name}]의 포토카드 교환을 제안했습니다.`,
-    });
-    console.log(alertSeller);
-    if (!alertSeller) {
-      throw new Error('교환 알림이 전달되지 않았습니다.');
-    }
+    const sellerCardGrade = sellerCardInfo.card.grade;
+    const sellerCardName = sellerCardInfo.card.name;
 
-    return newExchange;
+    console.log('send: ', newExchange, sellerId, buyer, sellerCardGrade, sellerCardName);
+    return { newExchange, sellerId, buyer, sellerCardGrade, sellerCardName };
   };
 
   findExchangeById = async exchangeId => {

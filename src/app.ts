@@ -6,7 +6,6 @@ import swaggerUI from 'swagger-ui-express';
 import YAML from 'yamljs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { exampleRouter } from './routes/example.route.js';
 import { pointRouter } from './routes/points.route.js';
 import { StructError } from 'superstruct';
 import { userRouter } from './routes/user.route.js';
@@ -36,7 +35,6 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Routes: 각 엔드포인트는 라우터로 연결
-app.use('/examples', exampleRouter);
 app.use('/points', pointRouter);
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
