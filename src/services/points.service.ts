@@ -53,9 +53,16 @@ export class PointsService {
   };
 
   // UTC 변환 함수 (한국 시간 -> UTC)
-  convertToUTC = dateString => {
-    const localDate = new Date(dateString + 'T00:00:00+09:00'); // 'T00:00:00+09:00'으로 한국 시간 명시
-    const utcDate = new Date(localDate.getTime() - 9 * 60 * 60 * 1000); // 9시간 빼기
+  convertToUTC = (dateString, isEndDate = false) => {
+    // 한국 시간으로 날짜 객체 생성
+    let localDate = new Date(dateString + 'T00:00:00+09:00'); // 기본적으로 오전 00:00로 설정
+
+    if (isEndDate) {
+      // endDate일 경우, 시간을 23:59:59로 설정
+      localDate.setHours(23, 59, 59, 999);
+    }
+
+    const utcDate = new Date(localDate.toISOString()); // 한국 시간을 ISO 형식으로 UTC로 변환
     return utcDate;
   };
 
@@ -67,7 +74,7 @@ export class PointsService {
       filters.createdAt = { ...filters.createdAt, gte: this.convertToUTC(startDate) };
     }
     if (endDate) {
-      filters.createdAt = { ...filters.createdAt, lte: this.convertToUTC(endDate) };
+      filters.createdAt = { ...filters.createdAt, lte: this.convertToUTC(endDate, true) };
     }
     if (action) {
       filters.action = action;
