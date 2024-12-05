@@ -16,10 +16,10 @@ _~~(협업 문서 링크: 노션- 어떤 페이지 넣을지 고민 중)
 
 ## 💁 구성원
 
-|                       김영은                       |                     이동훈                     |                    강명곤                    |
-| :------------------------------------------------: | :--------------------------------------------: | :------------------------------------------: |
-|     ![imgur](https://i.imgur.com/lVepEn6.png)      |    ![imgur](https://imgur.com/sPgtNAy.png)     |  ![imgur](https://i.imgur.com/UtZDvAf.png)   |
-| [Maybeiley's Github](https://github.com/Maybeiley) | [ciin1411 Github](https://github.com/ciin1411) | [GGON123 Github](https://github.com/GGON123) |
+|                       김영은                       |                     이동훈                     |                                 강명곤                                 |
+| :------------------------------------------------: | :--------------------------------------------: | :--------------------------------------------------------------------: |
+|     ![imgur](https://i.imgur.com/lVepEn6.png)      |    ![imgur](https://imgur.com/sPgtNAy.png)     | <img src="https://i.imgur.com/UtZDvAf.png"  width="200" height="400"/> |
+| [Maybeiley's Github](https://github.com/Maybeiley) | [ciin1411 Github](https://github.com/ciin1411) |              [GGON123 Github](https://github.com/GGON123)              |
 
 김영은
 
