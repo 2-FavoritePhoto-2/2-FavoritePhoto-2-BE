@@ -1,4 +1,5 @@
 import { prismaClient } from '../connection/connection.js';
+import { AppError } from '../utils/errors.js';
 
 export class PointsService {
   repository: any;
@@ -16,7 +17,7 @@ export class PointsService {
       // 1시간 이내라면 뽑을 수 없으므로 에러 던짐
       const elapsedTime = now.getTime() - lastDrawTime.getTime();
       if (elapsedTime < 3600000) {
-        throw new Error('1시간 이내에 이미 뽑았습니다.');
+        throw new AppError('1시간 이내에 이미 뽑았습니다.', 400);
       }
     }
 
