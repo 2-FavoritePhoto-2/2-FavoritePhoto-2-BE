@@ -12,7 +12,7 @@ import { userRouter } from './routes/user.route.js';
 import { authRouter } from './routes/auth.route.js';
 import { shopRouter } from './routes/shop.route.js';
 import { exchangeRouter } from './routes/exchange.route.js';
-import ErrorHandler from './utils/errors.js';
+import ErrorHandler from './utils/errorHandler.js';
 import { notificationRouter } from './routes/notification.route.js';
 
 dotenv.config();
