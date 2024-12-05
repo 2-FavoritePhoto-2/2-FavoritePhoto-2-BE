@@ -2,18 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
-import swaggerUI from 'swagger-ui-express';
-import YAML from 'yamljs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { pointRouter } from './routes/points.route.js';
-import { StructError } from 'superstruct';
-import { userRouter } from './routes/user.route.js';
-import { authRouter } from './routes/auth.route.js';
-import { shopRouter } from './routes/shop.route.js';
-import { exchangeRouter } from './routes/exchange.route.js';
 import ErrorHandler from './utils/errorHandler.js';
-import { notificationRouter } from './routes/notification.route.js';
+import { appRouter } from './routes/index.route.js';
 
 dotenv.config();
 
@@ -28,19 +18,9 @@ app.use(
   }),
 );
 
-// swagger
-const specs = YAML.load(path.join(path.dirname(fileURLToPath(import.meta.url)), './swagger/swagger.yaml'));
-app.use('/api', swaggerUI.serve, swaggerUI.setup(specs));
 app.use(express.json());
 app.use(cookieParser());
-
-// Routes: 각 엔드포인트는 라우터로 연결
-app.use('/points', pointRouter);
-app.use('/user', userRouter);
-app.use('/auth', authRouter);
-app.use('/shop', shopRouter);
-app.use('/cards', exchangeRouter);
-app.use('/notifications', notificationRouter);
+app.use('/api', appRouter);
 
 app.use((err, req, res, next) => {
   ErrorHandler.handle(err, req, res, next);
