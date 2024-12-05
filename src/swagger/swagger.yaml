@@ -44,6 +44,16 @@ paths:
                     example: 'string'
         '401':
           description: jwt expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: '서버 오류'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   /user/cards/{cardId}:
     get:
       tags:
@@ -94,6 +104,22 @@ paths:
                     minimum: 0
         '401':
           description: jwt expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: '찾을 수 없음'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: '서버 오류'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   /user/exchanges/{shopId}:
     get:
       tags:
@@ -159,6 +185,22 @@ paths:
                           description: 구매자의 닉네임
         '401':
           description: jwt expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: '찾을 수 없음'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: '서버 오류'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   /user/my-cards/sales:
     get:
       tags:
@@ -273,6 +315,16 @@ paths:
                           description: 카드 생성 날짜
         '401':
           description: jwt expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: '서버 오류'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   /user/cards:
     get:
       tags:
@@ -363,6 +415,16 @@ paths:
                           format: uri
         '401':
           description: jwt expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: '서버 오류'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     post:
       tags:
         - user
@@ -432,6 +494,16 @@ paths:
                     type: string
         '401':
           description: jwt expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: '서버 오류'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   /auth/signup:
     post:
       tags:
