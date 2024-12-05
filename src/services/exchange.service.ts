@@ -1,5 +1,6 @@
 import { prismaClient } from '../connection/connection.js';
 import { sendNotification } from '../containers/notification.container.js';
+import { AppError } from '../utils/errors.js';
 
 export class ExchangeService {
   data: any;
@@ -12,24 +13,24 @@ export class ExchangeService {
       const shop = await this.data.findShopQuantityById(data.shopId);
 
       if (!shop || shop.remainingQuantity < 1) {
-        throw new Error('상점에 남은 수량이 없습니다.');
+        throw new AppError('상점에 남은 수량이 없습니다.', 400);
       }
 
       const sellerCardInfo = await this.data.getSellerCardInfo(data.shopId);
       const sellerId = sellerCardInfo.sellerId;
       if (sellerId === data.buyerId) {
-        throw new Error('판매자는 자신의 상품에 교환 요청을 할 수 없습니다.');
+        throw new AppError('판매자는 자신의 상품에 교환 요청을 할 수 없습니다.', 403);
       }
 
       const buyerCardInfo = await this.data.findCardById(data.buyerCardId);
       if (!buyerCardInfo) {
-        throw new Error('구매자의 카드 정보를 찾을 수 없습니다.');
+        throw new AppError('구매자의 카드 정보를 찾을 수 없습니다.', 404);
       }
       if (buyerCardInfo.ownerId !== data.buyerId) {
-        throw new Error('해당 카드는 구매자의 소유가 아닙니다.');
+        throw new AppError('해당 카드는 구매자의 소유가 아닙니다.', 403);
       }
       if (buyerCardInfo.quantity < 1) {
-        throw new Error('구매자 카드의 수량이 부족합니다.');
+        throw new AppError('구매자 카드의 수량이 부족합니다.', 400);
       }
 
       // buyerCard quantity 1 감소
@@ -49,7 +50,7 @@ export class ExchangeService {
       });
       console.log(alertSeller);
       if (!alertSeller) {
-        throw new Error('교환 알림이 전달되지 않았습니다.');
+        throw new AppError('교환 알림이 전달되지 않았습니다.', 500);
       }
 
       return createdExchange;
@@ -62,15 +63,15 @@ export class ExchangeService {
       const exchange = await this.data.findExchangeById(exchangeId);
 
       if (!exchange) {
-        throw new Error('교환 제안이 존재하지 않습니다.');
+        throw new AppError('교환 제안이 존재하지 않습니다.', 404);
       }
 
       if (exchange.complete) {
-        throw new Error('이미 승인된 교환 제안입니다.');
+        throw new AppError('이미 승인된 교환 제안입니다.', 400);
       }
 
       if (exchange.sellerId !== sellerId) {
-        throw new Error('교환 제안을 승인할 권한이 없습니다.');
+        throw new AppError('교환 제안을 승인할 권한이 없습니다.', 403);
       }
 
       const { shopId, buyerId, sellerCardId, buyerCardId } = exchange;
@@ -78,17 +79,17 @@ export class ExchangeService {
       const shop = await this.data.findShopQuantityById(shopId);
 
       if (!shop || shop.remainingQuantity < 1) {
-        throw new Error('상점에 남은 수량이 없습니다.');
+        throw new AppError('상점에 남은 수량이 없습니다.', 400);
       }
 
       const buyerCardInfo = await this.data.findCardById(buyerCardId);
       if (!buyerCardInfo) {
-        throw new Error('구매자의 카드 정보를 찾을 수 없습니다.');
+        throw new AppError('구매자의 카드 정보를 찾을 수 없습니다.', 404);
       }
 
       const sellerCardInfo = await this.data.findCardById(sellerCardId);
       if (!sellerCardInfo) {
-        throw new Error('판매자의 카드 정보를 찾을 수 없습니다.');
+        throw new AppError('판매자의 카드 정보를 찾을 수 없습니다.', 404);
       }
 
       // shop에서 quantity 1 감소
@@ -120,7 +121,7 @@ export class ExchangeService {
       });
       console.log('교환완료:', alertBuyer, '교환완료', alertSeller);
       if (!alertBuyer || !alertSeller) {
-        throw new Error('교환 알림이 전달되지 않았습니다.');
+        throw new AppError('교환 알림이 전달되지 않았습니다.', 500);
       }
       // 판매 품절 알림 to 판매자
       if (exchange.shop.remainingQuantity === 1) {
@@ -131,7 +132,7 @@ export class ExchangeService {
         });
         console.log('판매품절:', alertSeller);
         if (!alertSeller) {
-          throw new Error('교환 알림이 전달되지 않았습니다.');
+          throw new AppError('교환 알림이 전달되지 않았습니다.', 500);
         }
       }
 
@@ -147,15 +148,15 @@ export class ExchangeService {
       const exchange = await this.data.findExchangeById(exchangeId);
 
       if (!exchange) {
-        throw new Error('교환 제안이 존재하지 않습니다.');
+        throw new AppError('교환 제안이 존재하지 않습니다.', 404);
       }
 
       if (exchange.complete) {
-        throw new Error('이미 승인된 교환 제안입니다.');
+        throw new AppError('이미 승인된 교환 제안입니다.', 400);
       }
 
       if (exchange.sellerId !== sellerId) {
-        throw new Error('교환 제안을 거절할 권한이 없습니다.');
+        throw new AppError('교환 제안을 거절할 권한이 없습니다.', 403);
       }
 
       const { buyerCardId } = exchange;
@@ -171,7 +172,7 @@ export class ExchangeService {
       });
       console.log(alertBuyer);
       if (!alertBuyer) {
-        throw new Error('거절 알림이 전달되지 않았습니다.');
+        throw new AppError('거절 알림이 전달되지 않았습니다.', 500);
       }
 
       // 교환 제안 삭제
@@ -186,15 +187,15 @@ export class ExchangeService {
       const exchange = await this.data.findExchangeById(exchangeId);
 
       if (!exchange) {
-        throw new Error('교환 제안이 존재하지 않습니다.');
+        throw new AppError('교환 제안이 존재하지 않습니다.', 404);
       }
 
       if (exchange.complete) {
-        throw new Error('이미 승인된 교환 제안입니다.');
+        throw new AppError('이미 승인된 교환 제안입니다.', 400);
       }
 
       if (exchange.buyerId !== buyerId) {
-        throw new Error('교환 제안을 취소할 권한이 없습니다.');
+        throw new AppError('교환 제안을 취소할 권한이 없습니다.', 403);
       }
 
       const { buyerCardId } = exchange;
@@ -211,7 +212,7 @@ export class ExchangeService {
       });
       console.log(alertSeller);
       if (!alertSeller) {
-        throw new Error('취소 알림이 전달되지 않았습니다.');
+        throw new AppError('취소 알림이 전달되지 않았습니다.', 500);
       }
       // 교환 제안 취소
       return await this.data.cancelExchange(exchangeId);
