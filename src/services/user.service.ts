@@ -68,10 +68,6 @@ export class UserService {
   getExchangesByShopId = async (shopId: string, userId: string) => {
     const exchanges = await this.data.getExchangesByShopId(shopId, userId);
 
-    if (!exchanges || exchanges.length === 0) {
-      throw new AppError('교환 내역이 없습니다.', 404);
-    }
-
     return exchanges;
   };
 
