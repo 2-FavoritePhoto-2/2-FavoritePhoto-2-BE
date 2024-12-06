@@ -20,10 +20,10 @@ export class AuthController {
     await this.service.updateUser(user.id, { refreshToken });
 
     res.cookie('refreshToken', refreshToken, {
-      path: '/token/refresh',
+      path: '/api/auth/token/refresh',
       httpOnly: true,
-      sameSite: 'none',
-      secure: true,
+      sameSite: 'Strict',
+      secure: false,
       maxAge: 14 * 24 * 60 * 60 * 1000, // 14일
     });
 
@@ -37,10 +37,10 @@ export class AuthController {
     await this.service.updateUser(userId, { refreshToken: newRefreshToken });
 
     res.cookie('refreshToken', newRefreshToken, {
-      path: '/token/refresh',
+      path: '/api/auth/token/refresh',
       httpOnly: true,
-      sameSite: 'none',
-      secure: true,
+      sameSite: 'Strict',
+      secure: false,
       maxAge: 14 * 24 * 60 * 60 * 1000, // 14일
     });
 
