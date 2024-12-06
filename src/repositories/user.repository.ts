@@ -29,11 +29,6 @@ export class UserRepository {
       take,
     });
 
-    if (!userWithCards) {
-      throw new Error('User not found');
-    }
-
-    // 전체 개수는 _count 필드에서 가져옴
     const totalCount = await this.prisma.card.count({ where });
 
     return { totalCount, card: userWithCards };
@@ -58,10 +53,6 @@ export class UserRepository {
         },
       },
     });
-
-    if (!cardDetails || cardDetails.myCards.length === 0) {
-      throw new Error('해당 포토 카드를 찾을 수 없습니다.');
-    }
 
     return cardDetails.myCards[0];
   };
@@ -178,6 +169,7 @@ export class UserRepository {
       image: l.card?.image,
       price: l.price,
       quantity: l.remainingQuantity,
+      available: l.available,
       createdAt: l.createdAt,
     }));
 
@@ -216,6 +208,7 @@ export class UserRepository {
       image: l.buyerCard?.image,
       price: l.buyerCard?.price,
       quantity: 1,
+      available: !l.complete,
       createdAt: l.createdAt,
     }));
 

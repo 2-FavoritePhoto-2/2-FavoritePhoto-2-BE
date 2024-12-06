@@ -770,8 +770,7 @@ export const CARDS = [
     type: ['노말'],
     description: '전신의 세포를 재구성해서 본 것의 모양과 똑같이 변신하는 능력을 가지고 있다.',
     quantity: 10,
-    image:
-      'https://postfiles.pstatic.net/MjAxNzAyMDlfMTU2/MDAxNDg2NTY5MjY1NDQ1.hqoh7tz9WJ62NoRRMyVlYEA-KfUSW14zaz9P-s5Nfksg.KRIvdWU3RKrxeJm9qawHLqJfpMgJ_dCZEdaiRCxOir0g.JPEG.doghter4our/IMG_3244.jpg?type=w773',
+    image: 'https://data1.pokemonkorea.co.kr/newdata/pokedex/full/013201.png',
   },
 
   {
@@ -783,8 +782,7 @@ export const CARDS = [
     type: ['풀'],
     description: '머리의 잎사귀에서 살짝 달콤한 향기가 감돈다. 얌전하며 햇볕을 쬐는 것을 매우 좋아한다.',
     quantity: 10,
-    image:
-      'https://static.wikia.nocookie.net/pokemon/images/0/08/%EA%B8%88%EC%84%A0%EC%9D%98_%EC%B9%98%EC%BD%94%EB%A6%AC%ED%83%80.jpg/revision/latest/scale-to-width-down/1200?cb=20240218083437&path-prefix=ko',
+    image: 'https://data1.pokemonkorea.co.kr/newdata/pokedex/full/015201.png',
   },
 
   {
@@ -796,8 +794,7 @@ export const CARDS = [
     type: ['노말'],
     description: '깨끗한 것을 좋아하는 포켓몬이다. 꼬리를 빗자루 대신 써서 항상 거처의 먼지를 쓸어 낸다.',
     quantity: 10,
-    image:
-      'https://static.wikia.nocookie.net/pokemon/images/d/d1/%EB%B2%A8%EC%9D%98_%EC%B9%98%EB%9D%BC%EB%AF%B8.png/revision/latest?cb=20230503124325&path-prefix=ko',
+    image: 'https://data1.pokemonkorea.co.kr/newdata/pokedex/full/057201.png',
   },
 
   {
