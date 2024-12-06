@@ -1,11 +1,14 @@
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Poppins&weight=900&size=46&pause=1000&color=F7D511&vCenter=true&width=435&lines=pikapick+photo)](https://git.io/typing-svg)
 
-> 2024.11.15 - 12.09
-> 코드잇 스프린트 풀스택 2기 중급 프로젝트 2팀 (Backend)</br>
+> 2024.11.15 - 12.09 </br>
+> 코드잇 스프린트 풀스택 2기 중급 프로젝트 2팀 (Backend) </br>
 > [Frontend Github 바로가기 🔗](https://github.com/2-FavoritePhoto-2/2-FavoritePhoto-2-FE)
 
-_~~(협업 문서 링크: 노션- 어떤 페이지 넣을지 고민 중)
-(프로젝트 소개)~~_
+</br>
+
+- 피카픽포토 홈페이지: https://pikapick-photo.kro.kr
+- 🗂️ 팀 문서: https://www.notion.so/2-135c4cf223fc804a827de53230da2422?pvs=4
+- 🔍 API 명세: https://pikapick.onrender.com/api/docs
 
 </br>
 
@@ -496,15 +499,17 @@ _~~(협업 문서 링크: 노션- 어떤 페이지 넣을지 고민 중)
 
 </br>
 
-## 💡 결과물
+## 💡 백엔드 결과물
 
-~~_(링크)_~~
+- DEV 배포 (Render) : https://pikapick.onrender.com/api/
+- PROD 배포 (AWS) : https://pikapick-photo.kro.kr/api/
 
 </br>
 
 ## 🍰 프로젝트 회고
 
-~~_(링크)_~~
+- 발표 자료:
+- 시연 영상: 
 
 </br>
 
