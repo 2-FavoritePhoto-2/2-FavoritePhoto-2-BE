@@ -4,7 +4,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExM
 // 마이카드 리스트
 ###
 GET http://localhost:3100/api/user/cards?page=1&orderBy=priceHighest&keyword=팬텀좌
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzM0NjIyNjAsImV4cCI6MTczMzU0ODY2MH0.JXX-SEDKHrN_bge6ri_M7wdXJrBiWickbriW8LZ3Mp0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzM0NjIzNzYsImV4cCI6MTczMzU0ODc3Nn0.B77GsFA0YBmrobIhy9YVwM4pZIEeY808L02CnAHFFJU
 
 
 // 카드 상세
