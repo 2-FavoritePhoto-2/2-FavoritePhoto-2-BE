@@ -169,6 +169,7 @@ export class UserRepository {
       image: l.card?.image,
       price: l.price,
       quantity: l.remainingQuantity,
+      available: l.available,
       createdAt: l.createdAt,
     }));
 
@@ -207,6 +208,7 @@ export class UserRepository {
       image: l.buyerCard?.image,
       price: l.buyerCard?.price,
       quantity: 1,
+      available: !l.complete,
       createdAt: l.createdAt,
     }));
 
