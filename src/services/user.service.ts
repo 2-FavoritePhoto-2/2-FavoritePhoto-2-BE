@@ -49,7 +49,7 @@ export class UserService {
     const card = await this.data.getUserPhotoCards(skip, take, sortOption, where);
 
     if (!card || card.totalCount === 0) {
-      throw new AppError('포토카드가 없습니다.', 404);
+      return { totalCount: 0, card: [] };
     }
 
     return card;

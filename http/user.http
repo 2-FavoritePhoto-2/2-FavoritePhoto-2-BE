@@ -1,29 +1,29 @@
 // 프로필 조회
-GET http://localhost:3100/user/profile/
+GET http://localhost:3100/api/user/profile/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzMzNjQ5NTgsImV4cCI6MTczMzQ1MTM1OH0.L190e4BKaKDKXu-_MZGwhA-b5-qnFtEgUEXb--wVQRM
 // 마이카드 리스트
 ###
-GET http://localhost:3100/user/cards?page=1&orderBy=priceHighest&keyword=팬텀
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzMzNjQ5NTgsImV4cCI6MTczMzQ1MTM1OH0.L190e4BKaKDKXu-_MZGwhA-b5-qnFtEgUEXb--wVQRM
+GET http://localhost:3100/api/user/cards?page=1&orderBy=priceHighest&keyword=팬텀좌
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzM0NjIyNjAsImV4cCI6MTczMzU0ODY2MH0.JXX-SEDKHrN_bge6ri_M7wdXJrBiWickbriW8LZ3Mp0
 
 
 // 카드 상세
 ###
-GET http://localhost:3100/user/cards/3d7bf9f6-1437-4a01-890b-0ff4d4dfd9b8
+GET http://localhost:3100/api/user/cards/3d7bf9f6-1437-4a01-890b-0ff4d4dfd9b8
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzMzNjQ5NTgsImV4cCI6MTczMzQ1MTM1OH0.L190e4BKaKDKXu-_MZGwhA-b5-qnFtEgUEXb--wVQRM
 
 ###
 // 교환 목록
-GET http://localhost:3100/user/exchanges/c3febc1f-43c0-4b19-a039-bae3b3969ee5
+GET http://localhost:3100/api/user/exchanges/c3febc1f-43c0-4b19-a039-bae3b3969ee5
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkZjMwODVjZC0xZGQ0LTQ3NGQtODk3Mi1lNjVkNzE2YWY5MDYiLCJpYXQiOjE3MzMzODIwODYsImV4cCI6MTczMzQ2ODQ4Nn0.BWI1kloOYMAHoX_4TZ6x5a_u6USEafnCehCeRs28vtk
 
 ###
 // 나의 판매 포토카드 전체 목록
-GET http://localhost:3100/user/my-cards/sales
+GET http://localhost:3100/api/user/my-cards/sales
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzMzNjQ5NTgsImV4cCI6MTczMzQ1MTM1OH0.L190e4BKaKDKXu-_MZGwhA-b5-qnFtEgUEXb--wVQRM
 
 ###
-POST http://localhost:3100/user/cards
+POST http://localhost:3100/api/user/cards
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzI3NzkzMjYsImV4cCI6MTczMjg2NTcyNn0.2ozZ-yJRAh2qyRXJUJcgtfMBwLVgtsNEoPGz322f-D8
 Content-Type: multipart/form-data
 
@@ -37,15 +37,15 @@ quantity=3
 image=@../mock/images/루카리오.jpg
 
 ###
-GET http://localhost:3100/user/my-cards/sales?keyword=루기아
+GET http://localhost:3100/api/user/my-cards/sales?keyword=루기아
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2ExMGFkNS01YzdhLTQ0MTUtOTY4My1hMTUxYjg2MWIyNmQiLCJpYXQiOjE3MzMzNjQ5NTgsImV4cCI6MTczMzQ1MTM1OH0.L190e4BKaKDKXu-_MZGwhA-b5-qnFtEgUEXb--wVQRM
 
 ###
-// 임시 로그인
-POST http://localhost:3100/auth/login
+// 테스트용 로그인
+POST http://localhost:3100/api/auth/login
 Content-Type: application/json
 
 {
-	"email": "test4@naver.com",
+	"email": "test1@naver.com",
 	"password": "1234"
 }
