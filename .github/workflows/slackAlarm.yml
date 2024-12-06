@@ -1,31 +1,49 @@
-name: Pull request
+name: Pull Request # 워크플로우 이름
 
 on:
   pull_request:
-    types: [review_requested] # 리뷰 요청된 이벤트 감지
+    types: [review_requested] # 리뷰 요청 이벤트 감지
 
 jobs:
   specific_review_requested:
-    runs-on: ubuntu-latest
-    steps: # 작업 단계 정의
-      - name: reviewer 되면 slack 알림 보냄
-        uses: slackapi/slack-github-action@v1.24.0 # slack 액션 사용
+    runs-on: ubuntu-latest # 실행 환경 설정
+
+    steps:
+      # 1. GitHub 리포지토리 체크아웃
+      - uses: actions/checkout@v3
+
+      # 2. 리뷰어 목록 가져오기
+      - name: Get Reviewers List
+        id: reviewers
+        uses: actions/github-script@v6
         with:
-          channel-id: ${{ secrets.BE_CHANNEL}} # slack 채널 ID를 비밀로 설정
+          script: |
+            const fs = require('fs');
+            const workers = JSON.parse(fs.readFileSync('.github/workflows/reviewers.json'));
+            const mention = context.payload.pull_request.requested_reviewers.map((user) => {
+              const login = user.login;
+              const mappedValue = workers[login];
+              return mappedValue ? `<@${mappedValue}>` : `No mapping found for ${login}`;
+            });
+            core.setOutput('result', mention.join(', ')); # 결과값 설정
+
+      # 3. Slack 알림 전송
+      - name: pr reviewer 되면 slack 알림 보냄
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          channel-id: ${{ secrets.BE_CHANNEL }} # Slack 채널 ID
           payload: |
             {
-              "text": "pr review request",
-
+              "text": "PR Review Request",
               "blocks": [
                 {
-                 "type": "section",
+                  "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    
-                    "text": 리뷰어로 할당되었습니다.\\\\n • 제목: PR 제목\\n • 리뷰어: @리뷰어 \\n • 링크: 리뷰 링크" # 메시지의 내용을 설정합니다.
+                    "text": "리뷰어로 할당되었습니다.\n • 제목: *${{ github.event.pull_request.title }}*\n • 리뷰어: ${{ steps.reviewers.outputs.result }}\n • 링크: <${{ github.event.pull_request.html_url }}|리뷰하러 가기>"
                   }
                 }
-              ] 
+              ]
             }
         env:
-          SLACK_BOT_TOKEN: ${{secrets.TSET_BOT_TOKEN}}
+          SLACK_BOT_TOKEN: ${{ secrets.TEST_BOT_TOKEN }} # Slack 봇 토큰
