@@ -1,12 +1,12 @@
-name: Pull Request # 워크플로우 이름
+name: Pull Request
 
 on:
   pull_request:
-    types: [review_requested] # 리뷰 요청 이벤트 감지
+    types: [review_requested]
 
 jobs:
   specific_review_requested:
-    runs-on: ubuntu-latest # 실행 환경 설정
+    runs-on: ubuntu-latest
 
     steps:
       # 1. GitHub 리포지토리 체크아웃
@@ -19,19 +19,20 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const workers = JSON.parse(fs.readFileSync('.github/workflows/reviewers.json'));
+            const path = '.github/workflows/reviewers.json'; // reviewers.json 파일 경로
+            const workers = JSON.parse(fs.readFileSync(path, 'utf8')); // 파일 읽기
             const mention = context.payload.pull_request.requested_reviewers.map((user) => {
               const login = user.login;
               const mappedValue = workers[login];
               return mappedValue ? `<@${mappedValue}>` : `No mapping found for ${login}`;
             });
-            core.setOutput('result', mention.join(', ')); # 결과값 설정
+            core.setOutput('result', mention.join(', ')); // 슬랙 멘션 리스트 출력
 
       # 3. Slack 알림 전송
-      - name: pr reviewer 되면 slack 알림 보냄
+      - name: Send Slack Notification
         uses: slackapi/slack-github-action@v1.24.0
         with:
-          channel-id: ${{ secrets.BE_CHANNEL }} # Slack 채널 ID
+          channel-id: ${{ secrets.TEST_CHANNEL }}
           payload: |
             {
               "text": "PR Review Request",
@@ -46,4 +47,4 @@ jobs:
               ]
             }
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.TEST_BOT_TOKEN }} # Slack 봇 토큰
+          SLACK_BOT_TOKEN: ${{ secrets.TEST_BOT_TOKEN }}
