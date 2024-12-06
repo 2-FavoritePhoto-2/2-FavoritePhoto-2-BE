@@ -1,4 +1,4 @@
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Poppins&weight=900&size=46&pause=1000&color=F7D511&vCenter=true&width=435&lines=pikapick+photo)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Poppins&weight=900&size=46&pause=1000&color=F7D511&vCenter=true&width=435&lines=pikapick+photo)](https://github.com/2-FavoritePhoto-2/2-FavoritePhoto-2-BE)
 
 > 2024.11.15 - 12.09 </br>
 > 코드잇 스프린트 풀스택 2기 중급 프로젝트 2팀 (Backend) </br>
