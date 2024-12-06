@@ -1,7 +1,7 @@
 import express from 'express';
 import { authController } from '../containers/auth.container.js';
-import { verifyRefreshToken } from '../utils/verifyAuth.js';
-import asyncHandler from '../utils/asyncHandler.js';
+import { verifyRefreshToken } from '../middleware/verifyAuth.js';
+import asyncHandler from '../middleware/asyncHandler.js';
 
 export const authRouter = express.Router();
 

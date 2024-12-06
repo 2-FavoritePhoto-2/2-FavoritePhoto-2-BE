@@ -1,5 +1,6 @@
 import { boolean } from 'superstruct';
 import HttpStatus from '../utils/httpStatus.js';
+import { AppError } from '../utils/errors.js';
 
 export class ShopController {
   service: any;
@@ -38,7 +39,7 @@ export class ShopController {
     const { userId } = req.auth;
     const newShop = await this.service.createShop({ ...req.body, sellerId: userId });
     if (!newShop) {
-      throw new Error('판매 등록에 실패했습니다');
+      throw new AppError('판매 등록에 실패했습니다', HttpStatus.SERVER_ERROR);
     }
     res.status(HttpStatus.CREATED).json(newShop);
   };
@@ -48,7 +49,7 @@ export class ShopController {
 
     const shop = await this.service.getShopById(shopId);
     if (!shop) {
-      throw new Error('해당 판매 정보를 찾을 수 없습니다');
+      throw new AppError('해당 판매 정보를 찾을 수 없습니다', HttpStatus.NOT_FOUND);
     }
     res.status(HttpStatus.SUCCESS).json(shop);
   };
@@ -59,7 +60,7 @@ export class ShopController {
     const { userId } = req.auth;
     const shop = await this.service.updateShop(shopId, { ...req.body, sellerId: userId });
     if (!shop) {
-      return res.status(HttpStatus.NOT_FOUND).json({ error: '해당 판매 정보를 찾을 수 없습니다' });
+      throw new AppError('해당 판매 정보를 찾을 수 없습니다', HttpStatus.NOT_FOUND);
     }
     res.status(HttpStatus.SUCCESS).json(shop);
   };
@@ -69,7 +70,7 @@ export class ShopController {
 
     const shop = await this.service.deleteShop(shopId);
     if (!shop) {
-      return res.status(HttpStatus.NOT_FOUND).json({ message: '해당 판매 정보를 찾을 수 없습니다' });
+      throw new AppError('해당 판매 정보를 찾을 수 없습니다', HttpStatus.NOT_FOUND);
     }
     res.status(HttpStatus.NO_CONTENT).json(shop);
   };

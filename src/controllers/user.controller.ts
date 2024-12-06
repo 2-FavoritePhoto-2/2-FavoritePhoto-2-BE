@@ -1,5 +1,5 @@
 import HttpStatus from '../utils/httpStatus.js';
-import { CardStruct } from '../../prisma/structs.js';
+import { CardStruct } from '../utils/structs.js';
 import { validate } from 'superstruct';
 
 export class UserController {

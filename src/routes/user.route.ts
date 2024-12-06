@@ -1,8 +1,8 @@
 import express from 'express';
 import { userController } from '../containers/user.container.js';
-import { verifyAccessToken } from '../utils/verifyAuth.js';
-import asyncHandler from '../utils/asyncHandler.js';
-import upload from '../utils/upload.js';
+import { verifyAccessToken } from '../middleware/verifyAuth.js';
+import asyncHandler from '../middleware/asyncHandler.js';
+import upload from '../utils/S3/upload.js';
 
 export const userRouter = express.Router();
 
