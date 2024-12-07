@@ -1,7 +1,7 @@
 import express from 'express';
 import { userController } from '../containers/user.container.js';
-import { verifyAccessToken } from '../middleware/verifyAuth.js';
-import asyncHandler from '../middleware/asyncHandler.js';
+import { verifyAccessToken } from '../middlewares/verifyAuth.js';
+import asyncHandler from '../middlewares/asyncHandler.js';
 import upload from '../utils/S3/upload.js';
 
 export const userRouter = express.Router();

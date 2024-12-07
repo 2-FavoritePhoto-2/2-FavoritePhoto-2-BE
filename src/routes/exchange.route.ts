@@ -1,7 +1,7 @@
 import express from 'express';
 import { exchangeController } from '../containers/exchange.container.js';
-import { verifyAccessToken } from '../middleware/verifyAuth.js';
-import asyncHandler from '../middleware/asyncHandler.js';
+import { verifyAccessToken } from '../middlewares/verifyAuth.js';
+import asyncHandler from '../middlewares/asyncHandler.js';
 
 export const exchangeRouter = express.Router();
 
