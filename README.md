@@ -580,7 +580,7 @@
 │   ├── swagger
 │   │   └── swagger.yaml
 │   └── utils
-│       ├── services
+│       ├── S3
 │       │   ├── s3.ts
 │       │   └── upload.ts
 │       ├── bcrypt.ts
