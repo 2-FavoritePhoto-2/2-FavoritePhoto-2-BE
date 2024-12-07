@@ -531,8 +531,7 @@
 ├── prisma
 │   ├── migrations
 │   ├── schema.prisma
-│   ├── seed.ts
-│   └── structs.ts
+│   └── seed.ts
 ├── src
 │   ├── app.ts
 │   ├── connection
