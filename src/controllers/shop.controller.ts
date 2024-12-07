@@ -1,6 +1,7 @@
-import { boolean } from 'superstruct';
+import { assert } from 'superstruct';
 import HttpStatus from '../utils/httpStatus.js';
 import { AppError } from '../utils/errors.js';
+import { PartialShopStruct, PurchaseStruct } from '../utils/structs.js';
 
 export class ShopController {
   service: any;
@@ -37,6 +38,8 @@ export class ShopController {
 
   createShop = async (req, res) => {
     const { userId } = req.auth;
+    assert(req.body, PartialShopStruct);
+
     const newShop = await this.service.createShop({ ...req.body, sellerId: userId });
     if (!newShop) {
       throw new AppError('판매 등록에 실패했습니다', HttpStatus.SERVER_ERROR);
@@ -56,8 +59,9 @@ export class ShopController {
 
   updateShop = async (req, res) => {
     const { shopId } = req.params;
-
     const { userId } = req.auth;
+    assert(req.body, PartialShopStruct);
+
     const shop = await this.service.updateShop(shopId, { ...req.body, sellerId: userId });
     if (!shop) {
       throw new AppError('해당 판매 정보를 찾을 수 없습니다', HttpStatus.NOT_FOUND);
@@ -78,6 +82,8 @@ export class ShopController {
   createPurchase = async (req, res) => {
     const { userId: buyerId } = req.auth;
     const { shopId } = req.params;
+
+    assert(req.body, PurchaseStruct);
     const { quantity, totalPrice } = req.body;
 
     const purchase = await this.service.createPurchase(shopId, buyerId, quantity, totalPrice);

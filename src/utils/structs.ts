@@ -4,7 +4,7 @@ import isUuid from 'is-uuid';
 
 const Grade = s.enums(['COMMON', 'RARE', 'SUPER_RARE', 'LEGENDARY']);
 const Uuid = s.define('Uuid', value => isUuid.v4(value));
-const non_negative = s.refine(s.number(), 'non-negative', value => value >= 0);
+const non_negative = s.refine(s.integer(), 'non-negative', value => value >= 0);
 
 // User Struct
 const UserStruct = s.object({
@@ -30,13 +30,17 @@ const CardStruct = s.object({
 // Shop Struct
 const BaseShopStruct = s.object({
   price: non_negative,
+  quantity: non_negative,
   totalQuantity: non_negative,
   remainingQuantity: non_negative,
   available: s.boolean(),
   exchangeGrade: Grade,
-  exchangeType: s.string(),
+  exchangeType: s.array(s.string()),
   exchangeDetails: s.refine(s.string(), 'details', value => value.length <= 500),
+  cardId: Uuid,
 });
+
+const PartialShopStruct = s.partial(BaseShopStruct);
 
 // 객체의 전체 상태를 검증하는 추가 구조체
 const ShopStruct = s.refine(BaseShopStruct, 'available_logic', value =>
@@ -55,4 +59,4 @@ const ExchangeStruct = s.object({
   buyerCardId: Uuid,
 });
 
-export { UserStruct, CardStruct, ShopStruct, PurchaseStruct, ExchangeStruct };
+export { UserStruct, CardStruct, BaseShopStruct, PartialShopStruct, ShopStruct, PurchaseStruct, ExchangeStruct };
