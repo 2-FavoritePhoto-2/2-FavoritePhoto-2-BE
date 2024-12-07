@@ -4,16 +4,14 @@ import isUuid from 'is-uuid';
 
 const Grade = s.enums(['COMMON', 'RARE', 'SUPER_RARE', 'LEGENDARY']);
 const Uuid = s.define('Uuid', value => isUuid.v4(value));
+const Email = s.define('Email', value => isEmail(value));
 const non_negative = s.refine(s.integer(), 'non-negative', value => value >= 0);
 
 // User Struct
 const UserStruct = s.object({
-  id: Uuid,
-  email: s.define('Email', value => typeof value === 'string' && isEmail(value) && value.length <= 500),
-  nickname: s.refine(s.string(), 'nickname', value => value.length >= 3 && value.length <= 20),
-  password: s.refine(s.string(), 'password', value => value.length >= 8 && value.length <= 15),
-  point: non_negative,
-  refreshToken: s.optional(s.string()),
+  email: Email,
+  nickname: s.refine(s.string(), 'nickname', value => value.length >= 2 && value.length <= 20),
+  password: s.refine(s.string(), 'password', value => value.length >= 8 && value.length <= 20),
 });
 
 // Card Struct
