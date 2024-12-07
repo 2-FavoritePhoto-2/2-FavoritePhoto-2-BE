@@ -1,7 +1,7 @@
 import express from 'express';
 import { pointsController } from '../containers/points.container.js';
-import { verifyAccessToken } from '../utils/verifyAuth.js';
-import asyncHandler from '../utils/asyncHandler.js';
+import { verifyAccessToken } from '../middlewares/verifyAuth.js';
+import asyncHandler from '../middlewares/asyncHandler.js';
 
 export const pointRouter = express.Router();
 

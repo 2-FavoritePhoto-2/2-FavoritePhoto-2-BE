@@ -1,6 +1,6 @@
 import { assert } from 'superstruct';
 import HttpStatus from '../utils/httpStatus.js';
-import { ExchangeStruct } from '../../prisma/structs.js';
+import { ExchangeStruct } from '../utils/structs.js';
 
 export class ExchangeController {
   service: any;
