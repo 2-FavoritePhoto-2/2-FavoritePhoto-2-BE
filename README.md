@@ -484,6 +484,7 @@
 - 개발 초중반에는 1차 배포 서버로 Render를 활용하고, 이후 AWS로 최종 배포했습니다. Render는 간단하게 서비스와 데이터베이스를 배포하고 연결할 수 있어, 개발을 한창 진행 중인 상황에서 dev 브랜치로 자동 배포하도록 설정하여 기능 개발 및 테스트를 진행하는 데 효율적이었습니다.
 - 실제 Production 배포는 AWS로 진행하면서 직접 서버 호스팅부터 스토리지, 데이터베이스를 설정하고 연동하며 배포와 운영에 대해 자세히 배울 수 있었습니다. AWS에서 제공하는 다양한 옵션으로 배포 환경을 구성하고 실무에 가까운 서비스 배포 경험을 쌓았습니다.
 - 배포 후에는 Nginx를 Reverse Proxy를 설정하여, 쿠키 사용 및 CORS 문제를 방지하기 위해 프론트엔드와 백엔드 요청을 하나의 도메인에서 처리할 수 있도록 했습니다.
+- 또 AWS에 직접 배포를 진행하면서 처음 접하게 된 PM2를 통해 배포 환경에 대해 더 많이 공부하게 되었습니다. PM2로 프로세스와 로그 관리 및 무중단 배포를 구현하여, 서비스 가용성을 유지하면서도 코드 변경 사항을 빠르게 반영할 수 있었습니다.
 </details>
 
 <details>
@@ -518,7 +519,6 @@
 ├── README.md
 ├── http
 │   ├── auth.http
-│   ├── example.http
 │   ├── exchange.http
 │   ├── notification.http
 │   ├── points.http
@@ -530,9 +530,6 @@
 ├── package.json
 ├── prisma
 │   ├── migrations
-│   │   ├── 20241202044446_init
-│   │   │   └── migration.sql
-│   │   └── migration_lock.toml
 │   ├── schema.prisma
 │   ├── seed.ts
 │   └── structs.ts
@@ -542,7 +539,6 @@
 │   │   └── connection.ts
 │   ├── containers
 │   │   ├── auth.container.ts
-│   │   ├── example.container.ts
 │   │   ├── exchange.container.ts
 │   │   ├── notification.container.ts
 │   │   ├── points.container.ts
@@ -550,15 +546,17 @@
 │   │   └── user.container.ts
 │   ├── controllers
 │   │   ├── auth.controller.ts
-│   │   ├── example.controller.ts
 │   │   ├── exchange.controller.ts
 │   │   ├── notification.controller.ts
 │   │   ├── points.controller.ts
 │   │   ├── shop.controller.ts
 │   │   └── user.controller.ts
+│   ├── middlewares
+│   │   ├── asyncHandler.ts
+│   │   ├── errorHandler.ts
+│   │   └── verifyAuth.ts
 │   ├── repositories
 │   │   ├── auth.repository.ts
-│   │   ├── example.repository.ts
 │   │   ├── exchange.repository.ts
 │   │   ├── notification.repository.ts
 │   │   ├── points.repository.ts
@@ -566,15 +564,14 @@
 │   │   └── user.repository.ts
 │   ├── routes
 │   │   ├── auth.route.ts
-│   │   ├── example.route.ts
 │   │   ├── exchange.route.ts
+│   │   ├── index.route.ts
 │   │   ├── notification.route.ts
 │   │   ├── points.route.ts
 │   │   ├── shop.route.ts
 │   │   └── user.route.ts
 │   ├── services
 │   │   ├── auth.service.ts
-│   │   ├── example.service.ts
 │   │   ├── exchange.service.ts
 │   │   ├── notification.service.ts
 │   │   ├── points.service.ts
@@ -583,12 +580,13 @@
 │   ├── swagger
 │   │   └── swagger.yaml
 │   └── utils
-│       ├── asyncHandler.ts
+│       ├── services
+│       │   ├── s3.ts
+│       │   └── upload.ts
+│       ├── bcrypt.ts
 │       ├── errors.ts
 │       ├── httpStatus.ts
-│       ├── s3.ts
-│       ├── upload.ts
-│       └── verifyAuth.ts
+│       └── structs.ts
 └── tsconfig.json
 
 ```
