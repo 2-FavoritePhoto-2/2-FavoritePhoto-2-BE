@@ -65,7 +65,7 @@
 <details>
 <summary>로그인</summary>
 
-- 기능 : 유저 정보를 확인하여 로그인 합니다.
+- 기능 : 유저 정보를 확인하여 로그인 합니다.
 - Response : Access Token (Refresh Token은 쿠키에 저장)
 - 구현
   - Controller
