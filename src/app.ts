@@ -8,7 +8,7 @@ import { appRouter } from './routes/index.route.js';
 dotenv.config();
 
 const app = express();
-// CORS 설정: 모든 Origin 허용하고, Credential 활성화
+
 app.use(
   cors({
     origin: 'https://pikapick-photo.kro.kr/',
