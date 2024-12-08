@@ -54,8 +54,8 @@
 <details>
 <summary>회원가입</summary>
 
-- 기능 : 
-- Response : 
+- 기능 : 기입한 회원 정보에 따라 새로운 회원을 등록합니다.
+- Response : 가입한 회원 정보
 - 구현
   - Controller
   - Service
@@ -65,8 +65,8 @@
 <details>
 <summary>로그인</summary>
 
-- 기능 : 
-- Response : 
+- 기능 : 유저 정보를 확인하여 로그인 합니다.
+- Response : Access Token (Refresh Token은 쿠키에 저장)
 - 구현
   - Controller
   - Service
@@ -76,8 +76,8 @@
 <details>
 <summary>토큰 재발급</summary>
 
-- 기능 : 
-- Response : 
+- 기능 : 브라우저 쿠키에 저장된 Refresh Token을 받아와 해당되는 유저인지 확인 후 새 토큰을 발급합니다.
+- Response : 새로운 Access Token (새 Refresh Token은 쿠키에 저장)
 - 구현
   - Controller
   - Service
@@ -88,8 +88,8 @@
 <details>
 <summary>알림 전체 조회</summary>
 
-- 기능 : 
-- Response : 
+- 기능 : 해당 유저의 교환, 구매 등에 대한 알림 목록을 전체 조회합니다.
+- Response : 유저의 알림 전체 목록
 - 구현
   - Controller
   - Service
@@ -99,8 +99,8 @@
 <details>
 <summary>알림 수정</summary>
 
-- 기능 : 
-- Response : 
+- 기능 : 해당 알림을 읽음 처리합니다.
+- Response : 수정(알림 처리)한 알림 내용
 - 구현
   - Controller
   - Service
@@ -111,8 +111,8 @@
 <details>
 <summary>판매 전체 조회</summary>
 
-- 기능 : 
-- Response : 
+- 기능 : 판매 중인 카드 전체 목록을 조회합니다.
+- Response : 판매 및 판매자와 카드 정보 목록, 전체 수량
 - 구현
   - Controller
   - Service
@@ -122,8 +122,8 @@
 <details>
 <summary>판매 상세 조회</summary>
 
-- 기능 : 
-- Response : 
+- 기능 : 해당 판매에 대한 상세 내용을 조회합니다.
+- Response : 해당 판매의 판매 및 판매자와 카드 정보
 - 구현
   - Controller
   - Service
@@ -133,8 +133,8 @@
 <details>
 <summary>판매 생성</summary>
 
-- 기능 : 
-- Response : 
+- 기능 : 새로운 카드 판매를 등록합니다.
+- Response : 등록한 판매 정보
 - 구현
   - Controller
   - Service
@@ -144,8 +144,8 @@
 <details>
 <summary>판매 수정</summary>
 
-- 기능 : 
-- Response : 
+- 기능 : 판매를 등록한 유저가 판매 정보를 수정합니다.
+- Response : 수정한 판매 정보
 - 구현
   - Controller
   - Service
@@ -155,8 +155,8 @@
 <details>
 <summary>판매 취소</summary>
 
-- 기능 : 
-- Response : 
+- 기능 : 판매를 등록한 유저가 판매 정보를 삭제합니다.
+- Response : X
 - 구현
   - Controller
   - Service
@@ -166,8 +166,8 @@
 <details>
 <summary>구매</summary>
 
-- 기능 : 
-- Response : 
+- 기능 : 유저가 해당 판매에 대해 원하는 수량을 구매합니다.
+- Response : 구매한 판매 정보
 - 구현
   - Controller
   - Service
