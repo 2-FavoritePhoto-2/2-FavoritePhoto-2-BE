@@ -508,8 +508,7 @@
 
 ## 🍰 프로젝트 회고
 
-- 발표 자료:
-- 시연 영상: 
+- 발표 자료 및 시연 영상 : https://drive.google.com/drive/folders/12M97vB0noxyK9XGVUaz27shGSBxD2GiW
 
 </br>
 
