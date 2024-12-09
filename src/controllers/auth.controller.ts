@@ -1,4 +1,6 @@
+import { assert } from 'superstruct';
 import HttpStatus from '../utils/httpStatus.js';
+import { UserStruct } from '../utils/structs.js';
 
 export class AuthController {
   service: any;
@@ -7,6 +9,8 @@ export class AuthController {
   }
 
   createUser = async (req, res, next) => {
+    assert(req.body, UserStruct);
+
     const user = await this.service.createUser(req.body);
     return res.status(HttpStatus.CREATED).json(user);
   };

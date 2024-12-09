@@ -2,6 +2,8 @@ import { Grades } from '@prisma/client';
 import { prismaClient } from '../connection/connection.js';
 import { sendNotification } from '../containers/notification.container.js';
 import { createPointLog } from '../containers/points.container.js';
+import HttpStatus from '../utils/httpStatus.js';
+import { AppError } from '../utils/errors.js';
 
 export class ShopService {
   data: any;
@@ -62,7 +64,7 @@ export class ShopService {
 
     const card = await this.data.getCardQuantity(cardId);
     if (!card || card?.quantity < quantity) {
-      throw new Error('판매 가능한 수량이 부족합니다!');
+      throw new AppError('판매 가능한 수량이 부족합니다!', HttpStatus.BAD_REQUEST);
     }
     await this.data.updateCardQuantity(cardId, -quantity);
 
@@ -89,7 +91,7 @@ export class ShopService {
 
     // 내 카드 수량과 비교
     if (currentRemainingQuantity <= 0 || -updateCardQuantity > myCardQuantity) {
-      throw new Error('판매 가능한 수량이 부족합니다!');
+      throw new AppError('판매 가능한 수량이 부족합니다!', HttpStatus.BAD_REQUEST);
     }
 
     const card = await this.data.updateCardQuantity(shopData.card.id, updateCardQuantity);
@@ -115,14 +117,14 @@ export class ShopService {
       const shop = await this.data.getShopById(shopId);
 
       if (!shop || shop.remainingQuantity < quantity) {
-        throw new Error('구매 가능한 수량이 부족합니다!');
+        throw new AppError('구매 가능한 수량이 부족합니다!', HttpStatus.BAD_REQUEST);
       }
 
       const buyerPoints = await this.data.updateUser(buyerId, -totalPrice);
       const sellerPoints = await this.data.updateUser(shop.sellerId, totalPrice);
 
       if (!buyerPoints) {
-        throw new Error('구매 포인트가 부족합니다!');
+        throw new AppError('구매 포인트가 부족합니다!', HttpStatus.BAD_REQUEST);
       }
 
       const purchase = await this.data.purchase({
@@ -165,7 +167,7 @@ export class ShopService {
         content: `${buyer.nickname}님이 [${shop.card?.grade}|${shop.card?.name}] ${quantity}장 구매했습니다.`,
       });
       if (!alertBuyer || !alertSeller) {
-        throw new Error('구매 알림이 전달되지 않았습니다.');
+        throw new AppError('구매 알림이 전달되지 않았습니다.', HttpStatus.SERVER_ERROR);
       }
       // 판매 품절 알림 to 판매자
       if (shop.remainingQuantity === quantity) {
@@ -175,7 +177,7 @@ export class ShopService {
           content: `[${shop.card?.grade}|${shop.card?.name}]이 품절되었습니다.`,
         });
         if (!alertSeller) {
-          throw new Error('품절 알림이 전달되지 않았습니다.');
+          throw new AppError('품절 알림이 전달되지 않았습니다.', HttpStatus.SERVER_ERROR);
         }
       }
 
