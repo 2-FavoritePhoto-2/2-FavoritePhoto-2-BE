@@ -11,7 +11,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'https://pikapick-photo.kro.kr/',
+    origin: (origin: any, callback: (error: null, allow: boolean) => void) => {
+      callback(null, true);
+    },
     credentials: true,
   }),
 );
